@@ -4,11 +4,29 @@
     <title>WangShuShu Blog</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 31 Jan 2016 23:47:40 +0800</pubDate>
-    <lastBuildDate>Sun, 31 Jan 2016 23:47:40 +0800</lastBuildDate>
+    <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
+    <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 01 Feb 2016 13:55:06 +0800</pubDate>
+    <lastBuildDate>Mon, 01 Feb 2016 13:55:06 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>Hello Myblog!</title>
+        <description>&lt;p&gt;Hello Myblog！&lt;/p&gt;
+
+&lt;p&gt;用了快三天时间总算是把博客搭出来了！&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 01 Feb 2016 07:40:40 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Hello-Myblog.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Hello-Myblog.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -28,8 +46,8 @@
 
 </description>
         <pubDate>Thu, 09 Apr 2015 19:23:32 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2015/04/09/welcome-to-jekyll-copy.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2015/04/09/welcome-to-jekyll-copy.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2015/04/09/welcome-to-jekyll-copy.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2015/04/09/welcome-to-jekyll-copy.html</guid>
         
         
         <category>jekyll</category>
