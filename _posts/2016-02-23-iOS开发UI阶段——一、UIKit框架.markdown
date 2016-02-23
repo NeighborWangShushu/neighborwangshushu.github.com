@@ -1,10 +1,9 @@
 ---
 layout: post
 title:  "iOS开发UI阶段——一、UIKit框架"
-date:   2016-02-23 20:43:40
+date:   2016-02-23 10:23:32
 categories: jekyll update
 ---
-
 一个视图默认其左上角就是这个视图的坐标系原点，每一个视图都有一个自己的坐标系，一个视图布局时，frame中的x，y是相对于父视图的坐标系原点的距离
 
 1.frame,center是相对于父视图而言的，改变视图本身的frame,center会直接影响自身在其父视图上的显示位置
