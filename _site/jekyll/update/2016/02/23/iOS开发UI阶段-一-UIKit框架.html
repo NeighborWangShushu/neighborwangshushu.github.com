@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>iOS开发UI阶段——一、UIKit框架</title>
+  <meta name="description" content="一个视图默认其左上角就是这个视图的坐标系原点，每一个视图都有一个自己的坐标系，一个视图布局时，frame中的x，y是相对于父视图的坐标系原点的距离">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/23/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6.html">
+  <link rel="alternate" type="application/atom+xml" title="WangShuShu Blog" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> My surname really is Wang，I promise </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/NeighborWangShuShu" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="mailto:NeighborWangShuShu@Gmail.com" title="Email">
+					<img width="19px" height="19px" src="/images/email.png"/>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li> -->
+			<!-- <li>
+				<a href="https://twitter.com/jekyllrb" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li> -->
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">iOS开发UI阶段——一、UIKit框架</h1>
+    <p class="post-meta">Feb 23, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>一个视图默认其左上角就是这个视图的坐标系原点，每一个视图都有一个自己的坐标系，一个视图布局时，frame中的x，y是相对于父视图的坐标系原点的距离</p>
+
+<p>1.frame,center是相对于父视图而言的，改变视图本身的frame,center会直接影响自身在其父视图上的显示位置</p>
+
+<p>2.bounds是相对于自身而言的，改变bounds的值会影响自身坐标系原点的位置，进而会影响子视图在其上的显示位置</p>
+
+<p>3.一个视图的bounds的默认值为（0，0，宽，高），因为bounds前面的两个值x，y代表的含义是视图本身左上角点距离其自身坐标系原点的距离。因为视图本身坐标系与左上角重合，所以是0</p>
+
+<p>4.改变一个视图的bounds中的x，y值，不会造成自身位置的变化，因为父视图的bounds没有改变，自身的frame以及center没有改变，所以与父视图的关系没有任何变化，所以不会动</p>
+
+<p>获取随机色的方法：[UIColor colorWithRed:arc4random()%256 / 255.0 green:arc4random()%256 / 255.0 blue:arc4random()%256 / 255.0 alpha:1.0]</p>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	NeighborWangShuShu@2016 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>
