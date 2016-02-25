@@ -51,10 +51,7 @@ return YES;
 }
 指定代理对象 textField.delegate = self;
 
-
-
-
-
+<img src="/images/iOS开发/UI阶段/二、UI基本控件/image1.jpg">
 
 UIButton 基本属性
 
@@ -68,7 +65,7 @@ UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];//通常用Norma
 
 [button setTitle:@“标题” forState:UIControlStateNormal];
 
-
+<img src="/images/iOS开发/UI阶段/二、UI基本控件/image2.jpg">
 
 添加button的点击事件
 
