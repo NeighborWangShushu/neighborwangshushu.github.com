@@ -17,7 +17,7 @@ categories: jekyll update
 退出新的视图控制器，返回跟原视图控制器：
 
 在连接的button的方法中添加如下代码
-<!--
+
 {% highlight ruby %}
 [self dismissViewControllerAnimate:YES completion:nil];
 {% endhighlight %}
@@ -63,4 +63,4 @@ self.button.frame = CGRectMake(  ,  ,  ,  );
 }
 
 ｝
-{% endhighlight %} -->
+{% endhighlight %} 

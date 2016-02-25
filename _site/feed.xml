@@ -6,9 +6,77 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 Feb 2016 15:09:52 +0800</pubDate>
-    <lastBuildDate>Thu, 25 Feb 2016 15:09:52 +0800</lastBuildDate>
+    <pubDate>Thu, 25 Feb 2016 15:28:48 +0800</pubDate>
+    <lastBuildDate>Thu, 25 Feb 2016 15:28:48 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>iOS开发UI阶段——第三节 视图控制器</title>
+        <description>&lt;p&gt;视图退出新的视图控制器：&lt;/p&gt;
+
+&lt;p&gt;1.先引入新的试图控制器的头文件&lt;/p&gt;
+
+&lt;p&gt;2.找到需要与新的视图连接的button，在其实现方法中添加下列代码：&lt;/p&gt;
+
+&lt;p&gt;3.创建一个新的视图控制器对象:newVC&lt;/p&gt;
+
+&lt;p&gt;4.添加[self presentViewController:newVC animated:YES completion:nil];方法&lt;/p&gt;
+
+&lt;p&gt;退出新的视图控制器，返回跟原视图控制器：&lt;/p&gt;
+
+&lt;p&gt;在连接的button的方法中添加如下代码&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dismissViewControllerAnimate&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:YES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completion&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;屏幕旋转&lt;/p&gt;
+
+&lt;p&gt;设置屏幕的固定方向（无法旋转）在视图控制器中重写方法&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationMask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;supportedInterfaceOrientations&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationMaskLandscape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;只支持横屏&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;在屏幕旋转时处理事件，如回收键盘  在视图控制器中重写方法&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viewWillTransitionToSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CGSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;withTransitionCoordinator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coordinator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;textField&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resignFirstResponder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;屏幕旋转时调整视图的位置 在该视图类中重写方法（只要视图本身的bounds发生变化，此方法就会被执行）&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layoutSubviews&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;UIInterfaceOrientation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIApplication&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sharedApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;statusBarOrientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;获取屏幕方向&lt;/span&gt;
+
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;判断是否横向&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationLandscapeLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationLandscapeRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGRectMack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGRectMake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;｝&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Thu, 25 Feb 2016 14:14:51 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>iOS开发UI阶段——二、UI基本控件</title>
@@ -110,9 +178,9 @@ animationImages //设置一组动态图⽚&lt;/p&gt;
 
 &lt;p&gt;stopAnimating //结束动画&lt;/p&gt;
 </description>
-        <pubDate>Thu, 25 Feb 2016 05:23:32 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%BA%8C-UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%BA%8C-UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6.html</guid>
+        <pubDate>Wed, 24 Feb 2016 22:23:32 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/24/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%BA%8C-UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/24/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%BA%8C-UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6.html</guid>
         
         
         <category>jekyll</category>
@@ -135,7 +203,7 @@ animationImages //设置一组动态图⽚&lt;/p&gt;
 
 &lt;p&gt;获取随机色的方法：[UIColor colorWithRed:arc4random()%256 / 255.0 green:arc4random()%256 / 255.0 blue:arc4random()%256 / 255.0 alpha:1.0]&lt;/p&gt;
 </description>
-        <pubDate>Tue, 23 Feb 2016 18:23:32 +0800</pubDate>
+        <pubDate>Tue, 23 Feb 2016 10:23:32 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/23/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6.html</link>
         <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/23/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6.html</guid>
         
@@ -153,7 +221,7 @@ animationImages //设置一组动态图⽚&lt;/p&gt;
 &lt;p&gt;我的本意是想将我三天时间搭出来的博客经验写出来，但是遇上过年回家，就请见谅!&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 01 Feb 2016 21:52:40 +0800</pubDate>
+        <pubDate>Mon, 01 Feb 2016 13:52:40 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Go-Home.html</link>
         <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Go-Home.html</guid>
         
@@ -171,9 +239,9 @@ animationImages //设置一组动态图⽚&lt;/p&gt;
 &lt;p&gt;用了快三天时间总算是把博客搭出来了！&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 01 Feb 2016 07:40:40 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Hello-Myblog.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Hello-Myblog.html</guid>
+        <pubDate>Sun, 31 Jan 2016 23:40:40 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/01/31/Hello-Myblog.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/01/31/Hello-Myblog.html</guid>
         
         
         <category>jekyll</category>
