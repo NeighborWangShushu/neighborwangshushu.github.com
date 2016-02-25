@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "iOS开发UI阶段——第三节 视图控制器"
-date:   2016-02-025 14:14:32
+date:   2016-02-25 14:14:32
 categories: jekyll update
 ---
 视图退出新的视图控制器：
