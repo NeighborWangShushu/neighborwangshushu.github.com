@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>iOS开发UI阶段——第三节 视图控制器</title>
+  <meta name="description" content="视图退出新的视图控制器：">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html">
+  <link rel="alternate" type="application/atom+xml" title="WangShuShu Blog" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> My surname really is Wang，I promise </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/NeighborWangShuShu" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="mailto:NeighborWangShuShu@Gmail.com" title="Email">
+					<img width="19px" height="19px" src="/images/email.png"/>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li> -->
+			<!-- <li>
+				<a href="https://twitter.com/jekyllrb" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li> -->
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">iOS开发UI阶段——第三节 视图控制器</h1>
+    <p class="post-meta">Feb 25, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>视图退出新的视图控制器：</p>
+
+<p>1.先引入新的试图控制器的头文件</p>
+
+<p>2.找到需要与新的视图连接的button，在其实现方法中添加下列代码：</p>
+
+<p>3.创建一个新的视图控制器对象:newVC</p>
+
+<p>4.添加[self presentViewController:newVC animated:YES completion:nil];方法</p>
+
+<p>退出新的视图控制器，返回跟原视图控制器：</p>
+
+<p>在连接的button的方法中添加如下代码</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="nb">self</span> <span class="n">dismissViewControllerAnimate</span><span class="ss">:YES</span> <span class="n">completion</span><span class="ss">:nil</span><span class="p">];</span></code></pre></figure>
+
+<p>屏幕旋转</p>
+
+<p>设置屏幕的固定方向（无法旋转）在视图控制器中重写方法</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span><span class="p">(</span><span class="no">UIInterfaceOrientationMask</span><span class="p">)</span><span class="n">supportedInterfaceOrientations</span> <span class="p">{</span>
+
+<span class="k">return</span> <span class="no">UIInterfaceOrientationMaskLandscape</span><span class="p">;</span><span class="sr">//</span><span class="err">只支持横屏</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>在屏幕旋转时处理事件，如回收键盘  在视图控制器中重写方法</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">viewWillTransitionToSize</span><span class="p">:(</span><span class="no">CGSize</span><span class="p">)</span> <span class="n">withTransitionCoordinator</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">coordinator</span> <span class="p">{</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="o">.</span><span class="no">View</span><span class="p">.</span><span class="nf">textField</span> <span class="n">resignFirstResponder</span><span class="p">];</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>屏幕旋转时调整视图的位置 在该视图类中重写方法（只要视图本身的bounds发生变化，此方法就会被执行）</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+
+<span class="no">UIInterfaceOrientation</span> <span class="n">orientation</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIApplication</span> <span class="n">sharedApplication</span><span class="p">].</span><span class="nf">statusBarOrientation</span><span class="p">;</span><span class="sr">//</span><span class="err">获取屏幕方向</span>
+
+<span class="sr">//</span><span class="err">判断是否横向</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">orientation</span> <span class="o">==</span> <span class="no">UIInterfaceOrientationLandscapeLeft</span> <span class="o">||</span> <span class="n">orientation</span> <span class="o">==</span> <span class="no">UIInterfaceOrientationLandscapeRight</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nf">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMack</span><span class="p">(</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">);</span>
+
+<span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nf">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMake</span><span class="p">(</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="err">｝</span></code></pre></figure>
+
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	NeighborWangShuShu@2016 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>
