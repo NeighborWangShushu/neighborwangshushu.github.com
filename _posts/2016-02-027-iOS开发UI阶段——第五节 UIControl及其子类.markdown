@@ -19,6 +19,12 @@ UIControl:有控制功能的视图的父类
 - (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents; // 移除一个事件
 {% endhighlight %}
 
+```objc
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents; // 添加一个事件
+
+- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents; // 移除一个事件
+```
+
 UISwitch
 
 在创建过程中在frame里的size是没有意义的，因为系统开关控件大小是固定的

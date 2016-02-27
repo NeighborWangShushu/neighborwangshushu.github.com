@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>iOS开发UI阶段——第五节 UIControl及其子类</title>
+  <meta name="description" content="UIControl">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html">
+  <link rel="alternate" type="application/atom+xml" title="WangShuShu Blog" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> My surname really is Wang，I promise </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/NeighborWangShuShu" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="mailto:NeighborWangShuShu@Gmail.com" title="Email">
+					<img width="19px" height="19px" src="/images/email.png"/>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li> -->
+			<!-- <li>
+				<a href="https://twitter.com/jekyllrb" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li> -->
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">iOS开发UI阶段——第五节 UIControl及其子类</h1>
+    <p class="post-meta">Feb 27, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>UIControl</p>
+
+<p>UIControl:有控制功能的视图的父类</p>
+
+<p>只要跟控制有关的类都是继承自该类，同时我们通常不会直接用这个类，而用的都是该类的子类</p>
+
+<p>常用方法</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">addTarget</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">target</span> <span class="n">action</span><span class="p">:(</span><span class="no">SEL</span><span class="p">)</span><span class="n">action</span> <span class="n">forControlEvents</span><span class="p">:(</span><span class="no">UIControlEvents</span><span class="p">)</span><span class="n">controlEvents</span><span class="p">;</span> <span class="sr">//</span> <span class="err">添加一个事件</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">removeTarget</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">target</span> <span class="n">action</span><span class="p">:(</span><span class="no">SEL</span><span class="p">)</span><span class="n">action</span> <span class="n">forControlEvents</span><span class="p">:(</span><span class="no">UIControlEvents</span><span class="p">)</span><span class="n">controlEvents</span><span class="p">;</span> <span class="sr">//</span> <span class="err">移除一个事件</span></code></pre></figure>
+
+<p>```objc
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents; // 添加一个事件</p>
+
+<ul>
+  <li>(void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents; // 移除一个事件
+```</li>
+</ul>
+
+<p>UISwitch</p>
+
+<p>在创建过程中在frame里的size是没有意义的，因为系统开关控件大小是固定的</p>
+
+<p>UISwitch相关属性</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UISwitch</span> <span class="o">*</span><span class="n">firstSwitch</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UISwitch</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="ss">:CGRectMake</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)];</span> <span class="sr">//</span> <span class="err">创建</span><span class="no">UISwitch</span>
+
+<span class="n">firstSwitch</span><span class="p">.</span><span class="nf">onTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">redColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">设置开关开启状态的颜色</span>
+
+<span class="n">firstSwitch</span><span class="p">.</span><span class="nf">tintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">blackColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">设置开关风格颜色</span>
+
+<span class="n">firstSwitch</span><span class="p">.</span><span class="nf">thumbTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">blueColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">设置开关按钮颜色</span>
+
+<span class="p">[</span><span class="n">firstSwitch</span> <span class="n">setOn</span><span class="ss">:YES</span> <span class="n">animated</span><span class="ss">:YES</span><span class="p">];</span><span class="sr">//</span> <span class="err">手动设置开关状态</span> 
+
+<span class="sr">//</span> <span class="n">firstSwitch</span><span class="p">.</span><span class="nf">on</span> <span class="err">获取开关当前状态</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">view</span> <span class="n">addSubview</span><span class="ss">:firstSwitch</span><span class="p">];</span> <span class="sr">//</span> <span class="err">将</span><span class="no">UISwitch</span><span class="err">放入视图中</span></code></pre></figure>
+
+<p>UISlider</p>
+
+<p>滑块通常用于控制视频或者音频的播放的进度，控制音量等操作</p>
+
+<p>UISlider相关属性</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UISlider</span> <span class="o">*</span><span class="n">slider</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UISlider</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="ss">:CGRectMake</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">40</span><span class="p">)];</span> <span class="sr">//</span> <span class="err">创建</span><span class="no">UISlider</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">minimumValue</span><span class="o">=</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span><span class="sr">//</span> <span class="err">设置滑块的最小值</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">maximumValue</span><span class="o">=</span><span class="mi">100</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span><span class="sr">//</span> <span class="err">设置滑块的最大值</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">value</span><span class="o">=</span><span class="mi">50</span><span class="p">;</span><span class="sr">//</span> <span class="err">设置滑块的值</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">minimumTrackTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorblackColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">设置滑块划过区域的颜色</span>
+
+<span class="p">[</span><span class="n">slider</span> <span class="n">addTarget</span><span class="ss">:selfaction:@selector</span><span class="p">(</span><span class="n">slider</span><span class="p">:)</span> <span class="n">forControlEvents</span><span class="ss">:UIControlEventValueChanged</span><span class="p">];</span><span class="sr">//</span> <span class="err">滑块添加事件，触发方式为值的改变</span></code></pre></figure>
+
+<p>UISegmentedControl</p>
+
+<p>分段控件常用在不同类别的信息之间选择，或者切换不同的视图</p>
+
+<p>UISegmentedControl相关属性</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UISegmentedControl</span> <span class="o">*</span><span class="n">segmentedControl</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UISegmentedControl</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithItems</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="err">@</span><span class="s2">"你"</span><span class="p">,</span><span class="err">@</span><span class="s2">"我"</span><span class="p">]];</span><span class="n">segmentedControl</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMake</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">40</span><span class="p">);</span> <span class="sr">//</span> <span class="err">创建</span><span class="no">UISegmentedControl</span>
+
+<span class="sr">//</span> <span class="n">selectedSegmentIndex</span> <span class="err">指定被选中的分段</span>
+
+<span class="sr">//</span> <span class="n">segmentedControlStyle</span> <span class="err">设置样式</span>
+
+<span class="n">segmentedControl</span><span class="p">.</span><span class="nf">momentary</span><span class="o">=</span><span class="no">YES</span><span class="p">;</span><span class="sr">//</span> <span class="err">设置在点击后是否恢复原样</span>
+
+<span class="sr">//</span> <span class="p">[</span><span class="n">segmentedControl</span> <span class="n">setTitle</span><span class="ss">:nil</span> <span class="n">forSegmentAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span> <span class="err">为指定下标的分段这是</span><span class="n">title</span>
+
+<span class="sr">//</span> <span class="p">[</span><span class="n">segmentedControl</span> <span class="ss">setImage: </span><span class="n">forSegmentAtIndex</span><span class="p">:];</span> <span class="err">为指定小标的分段这只图片</span><span class="p">[</span><span class="n">segmentedControl</span> <span class="n">setEnabled</span><span class="ss">:NO</span> <span class="n">forSegmentAtIndex</span><span class="p">:</span><span class="mi">1</span><span class="p">];</span> <span class="sr">//</span> <span class="err">设置指定索引是否可点</span>
+
+<span class="n">segmentedControl</span><span class="p">.</span><span class="nf">tintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">grayColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">样式颜色</span>
+
+<span class="p">[</span><span class="n">segmentedControl</span> <span class="n">addTarget</span><span class="ss">:selfaction:@selector</span><span class="p">(</span><span class="n">segmentedControl</span><span class="p">:)</span> <span class="n">forControlEvents</span><span class="ss">:UIControlEventValueChanged</span><span class="p">];</span></code></pre></figure>
+
+<p>UIPageControl</p>
+
+<p>UIPageControl相关属性</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UIPageControl</span> <span class="o">*</span><span class="n">pageControl</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UIPageControl</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="ss">:CGRectMake</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">40</span><span class="p">)];</span> <span class="sr">//</span> <span class="err">创建</span><span class="no">UIPageControl</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">backgroundColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorgrayColor</span><span class="p">];</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">numberOfPages</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span><span class="sr">//</span> <span class="err">指定页数</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">currentPage</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="sr">//</span> <span class="err">设置当前页数，第一页为</span><span class="mi">0</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">currentPageIndicatorTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">redColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">设置当前选中页数的颜色</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">pageIndicatorTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColor</span> <span class="n">whiteColor</span><span class="p">];</span><span class="sr">//</span> <span class="err">没有选中页数的颜色</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@implementationViewController</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">sliderAction</span><span class="p">:(</span><span class="no">UISlider</span><span class="o">*</span><span class="p">)</span><span class="n">slider</span> <span class="p">{</span>
+
+<span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"%.2f"</span><span class="p">,</span> <span class="n">slider</span><span class="p">.</span><span class="nf">value</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">segmentedAction</span><span class="p">:(</span><span class="no">UISegmentedControl</span><span class="o">*</span><span class="p">)</span><span class="n">segment</span> <span class="p">{</span>
+
+<span class="n">switch</span><span class="p">(</span><span class="n">segment</span><span class="p">.</span><span class="nf">selectedSegmentIndex</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="ss">case0:
+
+</span><span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"第一"</span><span class="p">);</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nf">view</span><span class="p">.</span><span class="nf">backgroundColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorgreenColor</span><span class="p">];</span>
+
+<span class="k">break</span><span class="p">;</span>
+
+<span class="ss">case1:
+
+</span><span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"第二"</span><span class="p">);</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nf">view</span><span class="p">.</span><span class="nf">backgroundColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColororangeColor</span><span class="p">];</span>
+
+<span class="k">break</span><span class="p">;</span>
+
+<span class="ss">case2:
+
+</span><span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"第三"</span><span class="p">);</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nf">view</span><span class="p">.</span><span class="nf">backgroundColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorlightGrayColor</span><span class="p">];</span>
+
+<span class="k">break</span><span class="p">;</span>
+
+<span class="ss">default:
+
+</span><span class="k">break</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">pageControlAction</span><span class="p">:(</span><span class="no">UIPageControl</span><span class="o">*</span><span class="p">)</span><span class="n">pageControl</span> <span class="p">{</span>
+
+<span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"翻页"</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
+
+<span class="p">[</span><span class="n">superviewDidLoad</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">开关</span>
+
+<span class="no">UISwitch</span><span class="o">*</span><span class="n">newSwitch</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UISwitchalloc</span><span class="p">]</span><span class="n">initWithFrame</span><span class="ss">:CGRectMake</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)];</span><span class="sr">//</span><span class="err">开关大小只能是系统默认值</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">viewaddSubview</span><span class="ss">:newSwitch</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置开关开启状态的颜色</span>
+
+<span class="n">newSwitch</span><span class="p">.</span><span class="nf">onTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorblueColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置开关风格颜色</span>
+
+<span class="n">newSwitch</span><span class="p">.</span><span class="nf">tintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColororangeColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置开关按钮颜色</span>
+
+<span class="n">newSwitch</span><span class="p">.</span><span class="nf">thumbTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorblackColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置开关是否开启</span>
+
+<span class="sr">//</span>    <span class="n">newSwitch</span><span class="p">.</span><span class="nf">on</span> <span class="o">=</span> <span class="no">NO</span><span class="p">;</span>
+
+<span class="sr">//</span><span class="err">手动设置开关状态</span>
+
+<span class="p">[</span><span class="n">newSwitchsetOn</span><span class="ss">:YESanimated:NO</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">滑块</span>
+
+<span class="no">UISlider</span><span class="o">*</span><span class="n">slider</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UISlideralloc</span><span class="p">]</span><span class="n">initWithFrame</span><span class="ss">:CGRectMake</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">40</span><span class="p">)];</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">viewaddSubview</span><span class="ss">:slider</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置</span><span class="n">slider</span><span class="err">的最大、最小值</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">maximumValue</span><span class="o">=</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">minimumValue</span><span class="o">=</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="sr">//</span><span class="err">设置划过区域的颜色</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">minimumTrackTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorredColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置未划过区域的颜色</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">maximumTrackTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorgreenColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置滑块的颜色</span>
+
+<span class="n">slider</span><span class="p">.</span><span class="nf">thumbTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorblueColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">添加点击事件</span>
+
+<span class="p">[</span><span class="n">slideraddTarget</span><span class="ss">:selfaction:@selector</span><span class="p">(</span><span class="n">sliderAction</span><span class="p">:)</span><span class="n">forControlEvents</span><span class="ss">:UIControlEventValueChanged</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">在滑块终点加载图片</span>
+
+<span class="sr">//</span>    <span class="p">[</span><span class="n">slider</span> <span class="n">setMaximumTrackImage</span><span class="ss">:image</span> <span class="n">forState</span><span class="ss">:UIControlStateNormal</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">分段控件</span>
+
+<span class="no">UISegmentedControl</span><span class="o">*</span><span class="n">segment</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UISegmentedControlalloc</span><span class="p">]</span><span class="n">initWithItems</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="err">@</span><span class="s2">"第一"</span><span class="p">,</span><span class="err">@</span><span class="s2">"第二"</span><span class="p">,</span><span class="err">@</span><span class="s2">"第三"</span><span class="p">]];</span>
+
+<span class="n">segment</span><span class="p">.</span><span class="nf">frame</span><span class="o">=</span><span class="no">CGRectMake</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mi">40</span><span class="p">);</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">viewaddSubview</span><span class="ss">:segment</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">指定</span><span class="n">segment</span><span class="err">的颜色</span>
+
+<span class="n">segment</span><span class="p">.</span><span class="nf">tintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorpurpleColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">添加事件</span>
+
+<span class="p">[</span><span class="n">segmentaddTarget</span><span class="ss">:selfaction:@selector</span><span class="p">(</span><span class="n">segmentedAction</span><span class="p">:)</span><span class="n">forControlEvents</span><span class="ss">:UIControlEventValueChanged</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="no">UIPageControl</span>
+
+<span class="no">UIPageControl</span><span class="o">*</span><span class="n">pageControl</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UIPageControlalloc</span><span class="p">]</span><span class="n">initWithFrame</span><span class="ss">:CGRectMake</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">40</span><span class="p">)];</span>
+
+<span class="sr">//</span><span class="err">设置页数</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">numberOfPages</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+
+<span class="sr">//</span><span class="err">设置当前页默认是</span><span class="mi">0</span><span class="p">(</span><span class="err">第一页</span><span class="p">)</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">currentPage</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">backgroundColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorbrownColor</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">设置圆点的颜色</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">currentPageIndicatorTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorredColor</span><span class="p">];</span>
+
+<span class="n">pageControl</span><span class="p">.</span><span class="nf">pageIndicatorTintColor</span><span class="o">=</span> <span class="p">[</span><span class="no">UIColorwhiteColor</span><span class="p">];</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">viewaddSubview</span><span class="ss">:pageControl</span><span class="p">];</span>
+
+<span class="sr">//</span><span class="err">添加事件</span>
+
+<span class="p">[</span><span class="n">pageControladdTarget</span><span class="ss">:selfaction:@selector</span><span class="p">(</span><span class="n">pageControlAction</span><span class="p">:)</span><span class="n">forControlEvents</span><span class="ss">:UIControlEventValueChanged</span><span class="p">];</span>
+
+<span class="p">}</span>
+
+<span class="vi">@end</span></code></pre></figure>
+
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	NeighborWangShuShu@2016 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

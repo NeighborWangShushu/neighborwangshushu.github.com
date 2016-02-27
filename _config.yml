@@ -11,5 +11,7 @@ url: "https://github.com/NeighborWangShushu/neighborwangshushu.github.com" # the
 twitter_username: jekyllrb
 github_username:  NeighborWangShuShu
 
+hard_wrap: true
+
 # Build settings
 markdown: kramdown
