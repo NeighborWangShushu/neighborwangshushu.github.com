@@ -19,11 +19,13 @@ tabBar.viewControllers = @[naVC, naVC2, thirdVC, fourthVC];
 
 标签视图控制器的子视图控制器都带有tabBarItem的属性
 
+```objc
 1.标签显示文本 thirdVC.tabBarItem.title = @“”;
 
 2.设置标签角标 thirdVC.tabBarItem.badgeValue = @“”;
 
 3.设置标签显示图片 thirdVC.tabBarItem.image = [UIImage imageNamed:@“”]; // 图片格式必须为png
+```
 
 也可以通过创建item来设置标签的相关属性
 
