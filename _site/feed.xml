@@ -6,9 +6,58 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Mar 2016 21:21:48 +0800</pubDate>
-    <lastBuildDate>Wed, 02 Mar 2016 21:21:48 +0800</lastBuildDate>
+    <pubDate>Thu, 03 Mar 2016 21:24:35 +0800</pubDate>
+    <lastBuildDate>Thu, 03 Mar 2016 21:24:35 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>iOS开发UI阶段——第九节 UITabBarController</title>
+        <description>&lt;p&gt;创建标签视图控制器，并且指定其为window的根视图控制器&lt;/p&gt;
+
+&lt;p&gt;UITabBarController *tabBar = [UITabBarController alloc] init];&lt;/p&gt;
+
+&lt;p&gt;设置标签视图控制器需要管理的子视图控制器&lt;/p&gt;
+
+&lt;p&gt;tabBar.viewControllers = @[naVC, naVC2, thirdVC, fourthVC];&lt;/p&gt;
+
+&lt;p&gt;改变标签视图控制器的颜色   [[UITabBar appearance] setTintColor:[UIColor orangeColor]];&lt;/p&gt;
+
+&lt;p&gt;设定标签栏最先显示的子视图控制器(标签下标) tabBar.selectedIndex = 2;&lt;/p&gt;
+
+&lt;p&gt;标签视图控制器的子视图控制器都带有tabBarItem的属性&lt;/p&gt;
+
+&lt;p&gt;1.标签显示文本 thirdVC.tabBarItem.title = @“”;&lt;/p&gt;
+
+&lt;p&gt;2.设置标签角标 thirdVC.tabBarItem.badgeValue = @“”;&lt;/p&gt;
+
+&lt;p&gt;3.设置标签显示图片 thirdVC.tabBarItem.image = [UIImage imageNamed:@“”]; // 图片格式必须为png&lt;/p&gt;
+
+&lt;p&gt;也可以通过创建item来设置标签的相关属性&lt;/p&gt;
+
+&lt;p&gt;第一种标签创建方式：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initWithTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@“”&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:image1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedImage&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:image2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第一个参数为显示文本，第二个参数为正常显示图片，第三个为选中状态的显示图片&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;fourth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;创建完标签之后指定为某一个视图控制器的标签&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;第二种标签创建方式：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initWithTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@“”&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:image&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;第三种标签创建方式：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;initWithTabBarSystemItem: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarSystemItemBookmarks&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;创建系统标签样式&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Thu, 03 Mar 2016 21:12:24 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>iOS开发UI阶段——第八节 界面通信</title>
@@ -817,24 +866,6 @@ animationImages //设置一组动态图⽚&lt;/p&gt;
         <pubDate>Mon, 01 Feb 2016 13:52:40 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Go-Home.html</link>
         <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Go-Home.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Hello Myblog!</title>
-        <description>&lt;p&gt;Hello Myblog！&lt;/p&gt;
-
-&lt;p&gt;用了快三天时间总算是把博客搭出来了！&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 31 Jan 2016 23:40:40 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/01/31/Hello-Myblog.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/01/31/Hello-Myblog.html</guid>
         
         
         <category>jekyll</category>
