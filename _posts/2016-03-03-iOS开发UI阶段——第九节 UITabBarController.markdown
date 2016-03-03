@@ -37,9 +37,9 @@ fourth.tabBarItem = item;//创建完标签之后指定为某一个视图控制�
 
 第二种标签创建方式：
 
-{% highlight ruby %}
+```objc
 UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag:101];
-{% endhighlight %}
+```
 
 第三种标签创建方式：
 
