@@ -6,9 +6,85 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Mar 2016 22:02:54 +0800</pubDate>
-    <lastBuildDate>Thu, 03 Mar 2016 22:02:54 +0800</lastBuildDate>
+    <pubDate>Fri, 04 Mar 2016 23:10:21 +0800</pubDate>
+    <lastBuildDate>Fri, 04 Mar 2016 23:10:21 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>iOS开发UI阶段——第十节 UITableView</title>
+        <description>&lt;p&gt;UITableView的属性&lt;/p&gt;
+
+&lt;p&gt;分割线样式&lt;/p&gt;
+
+&lt;p&gt;tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;&lt;/p&gt;
+
+&lt;p&gt;分割线颜色&lt;/p&gt;
+
+&lt;p&gt;tableView.separatorColor= [UIColor redColor];&lt;/p&gt;
+
+&lt;p&gt;指定cell的高度&lt;/p&gt;
+
+&lt;p&gt;tableView.rowHeight = 150;&lt;/p&gt;
+
+&lt;p&gt;UITableView有两个协议 UITableViewDataSource 和 UITableViewDelegate&lt;/p&gt;
+
+&lt;p&gt;UITableViewDataSource协议（前两个为必须实现的方法）&lt;/p&gt;
+
+&lt;p&gt;设置每个分区显示多少行&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { }
+设置每行显示什么内容，也就是指定每一行的cell&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { }
+设置分区个数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView { }
+设置每个分区组名&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section { }
+UITableViewDelegate协议&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;设置分区头的高度&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section { }
+设置分区头的显示的视图(与设置分组名有一定相同的效果)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(UIView&lt;em&gt;)tableView:(UITableView&lt;/em&gt;)tableView viewForHeaderInSection:(NSInteger)section { }
+设置每一行的高度，也就是cell的高度&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(CGFloat)tableView:(UITableView&lt;em&gt;)tableView heightForRowAtIndexPath:(NSIndexPath&lt;/em&gt;)indexPath { }
+指定右侧边栏索引&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(NSArray &lt;em&gt;)sectionIndexTitlesForTableView:(UITableView&lt;/em&gt;)tableView { }
+//点击单元格之后触发的方法(可以完成跳转，传值等)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(void)tableView:(UITableView&lt;em&gt;)tableView didSelectRowAtIndexPath:(NSIndexPath&lt;/em&gt;)indexPath { }&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 04 Mar 2016 22:07:09 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>iOS开发UI阶段——第九节 UITabBarController</title>
@@ -852,24 +928,6 @@ animationImages //设置一组动态图⽚&lt;/p&gt;
         <pubDate>Tue, 23 Feb 2016 10:23:32 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/23/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6.html</link>
         <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/23/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Go Home!</title>
-        <description>&lt;p&gt;因为今天要赶着回家所以技术博客的更新就得等到我回家之后了。&lt;/p&gt;
-
-&lt;p&gt;我的本意是想将我三天时间搭出来的博客经验写出来，但是遇上过年回家，就请见谅!&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 01 Feb 2016 13:52:40 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Go-Home.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/01/Go-Home.html</guid>
         
         
         <category>jekyll</category>
