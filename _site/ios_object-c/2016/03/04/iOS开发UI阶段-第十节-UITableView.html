@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>iOS开发UI阶段——第十节 UITableView</title>
+  <meta name="description" content="UITableView的属性">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html">
+  <link rel="alternate" type="application/atom+xml" title="WangShuShu Blog" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> My surname really is Wang，I promise </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/NeighborWangShuShu" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.facebook.com/neighborwangshushu" title="Facebook">
+					<img width="19px" height="19px" src="/images/facebook.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/neighborwangshu" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="mailto:NeighborWangShuShu@Gmail.com" title="Email">
+					<img width="19px" height="19px" src="/images/email.png"/>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li> -->
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">iOS开发UI阶段——第十节 UITableView</h1>
+    <p class="post-meta">Mar 4, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>UITableView的属性</p>
+
+<p>分割线样式</p>
+
+<p>tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;</p>
+
+<p>分割线颜色</p>
+
+<p>tableView.separatorColor= [UIColor redColor];</p>
+
+<p>指定cell的高度</p>
+
+<p>tableView.rowHeight = 150;</p>
+
+<p>UITableView有两个协议 UITableViewDataSource 和 UITableViewDelegate</p>
+
+<p>UITableViewDataSource协议（前两个为必须实现的方法）</p>
+
+<p>设置每个分区显示多少行</p>
+
+<ul>
+  <li>
+    <p>(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section { }
+设置每行显示什么内容，也就是指定每一行的cell</p>
+  </li>
+  <li>
+    <p>(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { }
+设置分区个数</p>
+  </li>
+  <li>
+    <p>(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView { }
+设置每个分区组名</p>
+  </li>
+  <li>
+    <p>(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section { }
+UITableViewDelegate协议</p>
+  </li>
+</ul>
+
+<p>设置分区头的高度</p>
+
+<ul>
+  <li>
+    <p>(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section { }
+设置分区头的显示的视图(与设置分组名有一定相同的效果)</p>
+  </li>
+  <li>
+    <p>(UIView<em>)tableView:(UITableView</em>)tableView viewForHeaderInSection:(NSInteger)section { }
+设置每一行的高度，也就是cell的高度</p>
+  </li>
+  <li>
+    <p>(CGFloat)tableView:(UITableView<em>)tableView heightForRowAtIndexPath:(NSIndexPath</em>)indexPath { }
+指定右侧边栏索引</p>
+  </li>
+  <li>
+    <p>(NSArray <em>)sectionIndexTitlesForTableView:(UITableView</em>)tableView { }
+//点击单元格之后触发的方法(可以完成跳转，传值等)</p>
+  </li>
+  <li>
+    <p>(void)tableView:(UITableView<em>)tableView didSelectRowAtIndexPath:(NSIndexPath</em>)indexPath { }</p>
+  </li>
+</ul>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	NeighborWangShuShu@2016 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

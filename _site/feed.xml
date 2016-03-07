@@ -6,9 +6,34 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Mar 2016 19:26:06 +0800</pubDate>
-    <lastBuildDate>Sat, 05 Mar 2016 19:26:06 +0800</lastBuildDate>
+    <pubDate>Mon, 07 Mar 2016 18:55:16 +0800</pubDate>
+    <lastBuildDate>Mon, 07 Mar 2016 18:55:16 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>iOS开发UI阶段——第十二节 自定义Cell</title>
+        <description>&lt;p&gt;自定义cell的步骤&lt;/p&gt;
+
+&lt;p&gt;1.将cell所有要显示的子视图声明为属性(不能和cell自带子视图重名)&lt;/p&gt;
+
+&lt;p&gt;2.重写cell的初始化方法,将子视图添加到self.contentView中，frame指定为0&lt;/p&gt;
+
+&lt;p&gt;3.重写layoutSubviews方法，给定内部控件的具体位置&lt;/p&gt;
+
+&lt;p&gt;4.导入模型头文件，在cell内部声明一个绑定模型属性&lt;/p&gt;
+
+&lt;p&gt;5.重写模型的setter方法，给cell内部控件进行赋值&lt;/p&gt;
+
+&lt;p&gt;6.内存管理&lt;/p&gt;
+</description>
+        <pubDate>Mon, 07 Mar 2016 18:53:50 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/07/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82-%E8%87%AA%E5%AE%9A%E4%B9%89Cell.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/07/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82-%E8%87%AA%E5%AE%9A%E4%B9%89Cell.html</guid>
+        
+        
+        <category>iOS_Object-C</category>
+        
+      </item>
     
       <item>
         <title>iOS开发UI阶段——第十一节 UITableView添加、删除、移动cell</title>
@@ -196,13 +221,11 @@ UITableViewDelegate协议&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 04 Mar 2016 22:07:09 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/04/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E8%8A%82-UITableView.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -249,13 +272,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;initWithTabBarSystemItem: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarSystemItemBookmarks&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;创建系统标签样式&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Thu, 03 Mar 2016 21:12:24 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -302,13 +323,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;p&gt;4.实现block&lt;/p&gt;
 </description>
         <pubDate>Wed, 02 Mar 2016 21:20:54 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -373,13 +392,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;p&gt;[self.navigationController popToViewController:vc animated:YES];&lt;/p&gt;
 </description>
         <pubDate>Tue, 01 Mar 2016 20:08:01 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -437,13 +454,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 
 </description>
         <pubDate>Mon, 29 Feb 2016 20:23:32 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -697,13 +712,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 
 </description>
         <pubDate>Sat, 27 Feb 2016 20:07:32 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -842,13 +855,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Fri, 26 Feb 2016 20:14:51 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     
@@ -910,124 +921,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 
 </description>
         <pubDate>Thu, 25 Feb 2016 14:14:51 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS开发UI阶段——二、UI基本控件</title>
-        <description>&lt;p&gt;UILabel 基本属性&lt;/p&gt;
-
-&lt;p&gt;文本显示 label.text = @“”;              文本颜色 label.textColor = [UIColor redColor];&lt;/p&gt;
-
-&lt;p&gt;文本对齐方式 label.textAlignment = NSTextAlignmentLeft;//默认左对齐&lt;/p&gt;
-
-&lt;p&gt;文本字体，大小 label.font = [UIFont boldSystemFontOfSize:20];//默认大小是17，加上bold代表要加粗&lt;/p&gt;
-
-&lt;p&gt;文本显示行数 label.numberOfLines = 0;//无法显示的用…代替&lt;/p&gt;
-
-&lt;p&gt;文本断行模式 label.lineBreakMode = NSLineBreakByWordWrapping;//默认以单词换行&lt;/p&gt;
-
-&lt;p&gt;文本阴影颜色 label.shadowColor = [UIColor redColor];&lt;/p&gt;
-
-&lt;p&gt;文本阴影偏移量 label.shadowOffSet = CGSizeMake(2,2);&lt;/p&gt;
-
-&lt;p&gt;UITextField 基本属性&lt;/p&gt;
-
-&lt;p&gt;文本显示 文本颜色 文本对齐方式 文本字体，大小同上&lt;/p&gt;
-
-&lt;p&gt;占位字符串 textField.placeholder = @“”;//用于提示用户所需要输入的内容&lt;/p&gt;
-
-&lt;p&gt;是否允许输入 textField.enabled  开始输入时是否清空文本框 textField.clearOnBeginEditing   都是BOOL值&lt;/p&gt;
-
-&lt;p&gt;是否密文输入 textField.secureTextEntry = YES;&lt;/p&gt;
-
-&lt;p&gt;弹出的键盘类型 textField.keyboardType = UIKeyboardTypeNumberPad;//数字键盘&lt;/p&gt;
-
-&lt;p&gt;键盘右下角return的类型 textField.returnKeyType = UIReturnKeyNext;&lt;/p&gt;
-
-&lt;p&gt;边框样式 textField.borderStyle = UITextBorderStyleRoundedRect;//圆角边框&lt;/p&gt;
-
-&lt;p&gt;清除按钮模式 textField.clearButtonMode = UITextFieldViewModeAlways;//总是显示清除按钮&lt;/p&gt;
-
-&lt;p&gt;撤销键盘  让appDelegate遵守UITextFieldDelegate协议&lt;/p&gt;
-
-&lt;p&gt;重写方法：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;(BOOL)textFieldShouldReturn:(UITextField *)textField {&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;[textField resignFirstResponder];&lt;/p&gt;
-
-&lt;p&gt;return YES;&lt;/p&gt;
-
-&lt;p&gt;}
-指定代理对象 textField.delegate = self;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/iOS开发/UI阶段/二、UI基本控件/image1.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;UIButton 基本属性&lt;/p&gt;
-
-&lt;p&gt;创建UIButton时用便利构造器&lt;/p&gt;
-
-&lt;p&gt;UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];//通常用Normal
-设置指定状态下的背景图片 状态：普通 高亮&lt;/p&gt;
-
-&lt;p&gt;[button setBackgroundImage:[UIImage imageName:@“image”] forState:UIControlStateNormal];
-设置指定状态下的标题&lt;/p&gt;
-
-&lt;p&gt;[button setTitle:@“标题” forState:UIControlStateNormal];&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/iOS开发/UI阶段/二、UI基本控件/image2.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;添加button的点击事件&lt;/p&gt;
-
-&lt;p&gt;[button addTarget:self action:@selector(方法名) forControlEvents:UIControlEventTouchUpInside];
-移除按钮的点击事件&lt;/p&gt;
-
-&lt;p&gt;[button removeTarget:self action:@selector(方法名) forControlEvents:UIControlEventTouchUpInside];
-UIImageView&lt;/p&gt;
-
-&lt;p&gt;//图⽚文件路径&lt;/p&gt;
-
-&lt;p&gt;NSString *path = [[NSBundle mainBundle] pathForResource:@”1” ofType:@”jpg”];&lt;/p&gt;
-
-&lt;p&gt;//创建⼀个UIImage对象,使用initWithContentOfFile:方法&lt;/p&gt;
-
-&lt;p&gt;UIImage *image = [UIImage imageWithContentsOfFile:path];&lt;/p&gt;
-
-&lt;p&gt;//创建一个UIImageView对象,使用initWithImage:方法&lt;/p&gt;
-
-&lt;p&gt;UIImageView *imageView = [[UIImageView alloc] initWithImage:image];&lt;/p&gt;
-
-&lt;p&gt;imageView.frame = CGRectMake(100,100,100,100);&lt;/p&gt;
-
-&lt;p&gt;[self.viewaddSubview:imageView];
-animationImages //设置一组动态图⽚&lt;/p&gt;
-
-&lt;p&gt;animationDuration //设置播放一组动态图片的时间&lt;/p&gt;
-
-&lt;p&gt;animationRepeatCount //设置重复次数&lt;/p&gt;
-
-&lt;p&gt;startAnimating //开始动画&lt;/p&gt;
-
-&lt;p&gt;stopAnimating //结束动画&lt;/p&gt;
-</description>
-        <pubDate>Wed, 24 Feb 2016 22:23:32 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/24/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%BA%8C-UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/jekyll/update/2016/02/24/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E4%BA%8C-UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>iOS_Object-C</category>
         
       </item>
     

@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第四节 触摸、手势"
 date:   2016-02-26 12:14:51
-categories: jekyll update
+categories: iOS_Object-C
 ---
 
 触摸

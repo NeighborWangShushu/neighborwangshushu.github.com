@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第九节 UITabBarController"
 date:   2016-03-03 13:12:24
-categories: jekyll update
+categories: iOS_Object-C
 ---
 
 创建标签视图控制器，并且指定其为window的根视图控制器

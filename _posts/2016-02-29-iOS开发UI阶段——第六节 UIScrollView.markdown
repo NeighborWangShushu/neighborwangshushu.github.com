@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第六节 UIScrollView"
 date:   2016-02-29 12:23:32
-categories: jekyll update
+categories: iOS_Object-C
 ---
 
 定义手机屏幕的宽和高为 kWidth 和 kHeight

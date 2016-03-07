@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第十节 UITableView"
 date:   2016-03-04 14:07:09
-categories: jekyll update
+categories: iOS_Object-C
 ---
 UITableView的属性
 
