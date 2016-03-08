@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第八节 界面通信"
 date:   2016-03-02 13:20:54
-categories: iOS_Object-C
+categories: iOS_Objective-C
 ---
 
 属性传值

@@ -1,0 +1,39 @@
+---
+layout: post
+title:  "iOS开发UI阶段——第十三节 XIB"
+date:   2016-03-08 14:44:41
+categories: iOS_Objective-C
+---
+代码获取使用XIB形成的视图
+
+{% highlight ruby %}
+//从mainBundle包中加载同名的试图控制器文件，默认加载的是RootViewController.nib文件参数可以写nil
+
+RootViewController *rootVC = [[RootViewController alloc]initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+
+//如果使用XIB绘制cell的话，一定要注意表视图必须注册cell类
+
+[self.tableView registerNib:[UINib nibWithNibName:@"MyTableViewCell"bundle:[NSBundle mainBundle]]forCellReuseIdentifier:kStr];
+{% endhighlight %}
+
+自定义高度
+
+{% highlight ruby %}
+self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+self.tableView.estimatedRowHeight = 800;//最大高度；
+
+//并且在创建cell的方法中不需要重新创建cell
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+
+StudentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuse forIndexPath:indexPath];
+
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+[cell sendValueByStudent:_dataArray[indexPath.row]];
+
+return cell;
+
+}
+{% endhighlight %}

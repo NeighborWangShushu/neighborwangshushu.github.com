@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>iOS开发UI阶段——第十三节 XIB</title>
+  <meta name="description" content="代码获取使用XIB形成的视图">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/08/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%89%E8%8A%82-XIB.html">
+  <link rel="alternate" type="application/atom+xml" title="WangShuShu Blog" href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> My surname really is Wang，I promise </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/NeighborWangShuShu" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.facebook.com/neighborwangshushu" title="Facebook">
+					<img width="19px" height="19px" src="/images/facebook.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/neighborwangshu" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="mailto:NeighborWangShuShu@Gmail.com" title="Email">
+					<img width="19px" height="19px" src="/images/email.png"/>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li> -->
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">iOS开发UI阶段——第十三节 XIB</h1>
+    <p class="post-meta">Mar 8, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>代码获取使用XIB形成的视图</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">从</span><span class="n">mainBundle</span><span class="err">包中加载同名的试图控制器文件，默认加载的是</span><span class="no">RootViewController</span><span class="p">.</span><span class="nf">nib</span><span class="err">文件参数可以写</span><span class="kp">nil</span>
+
+<span class="no">RootViewController</span> <span class="o">*</span><span class="n">rootVC</span> <span class="o">=</span> <span class="p">[[</span><span class="no">RootViewController</span> <span class="n">alloc</span><span class="p">]</span><span class="n">initWithNibName</span><span class="p">:</span><span class="err">@</span><span class="s2">"RootViewController"</span> <span class="n">bundle</span><span class="p">:[</span><span class="no">NSBundle</span> <span class="n">mainBundle</span><span class="p">]];</span>
+
+<span class="sr">//</span><span class="err">如果使用</span><span class="no">XIB</span><span class="err">绘制</span><span class="n">cell</span><span class="err">的话，一定要注意表视图必须注册</span><span class="n">cell</span><span class="err">类</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">tableView</span> <span class="n">registerNib</span><span class="p">:[</span><span class="no">UINib</span> <span class="n">nibWithNibName</span><span class="p">:</span><span class="err">@</span><span class="s2">"MyTableViewCell"</span><span class="n">bundle</span><span class="p">:[</span><span class="no">NSBundle</span> <span class="n">mainBundle</span><span class="p">]]</span><span class="n">forCellReuseIdentifier</span><span class="ss">:kStr</span><span class="p">];</span></code></pre></figure>
+
+<p>自定义高度</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="p">.</span><span class="nf">tableView</span><span class="p">.</span><span class="nf">rowHeight</span> <span class="o">=</span> <span class="no">UITableViewAutomaticDimension</span><span class="p">;</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nf">tableView</span><span class="p">.</span><span class="nf">estimatedRowHeight</span> <span class="o">=</span> <span class="mi">800</span><span class="p">;</span><span class="sr">//</span><span class="err">最大高度；</span>
+
+<span class="sr">//</span><span class="err">并且在创建</span><span class="n">cell</span><span class="err">的方法中不需要重新创建</span><span class="n">cell</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="no">UITableViewCell</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">cellForRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+
+<span class="no">StudentTableViewCell</span> <span class="o">*</span><span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="n">dequeueReusableCellWithIdentifier</span><span class="ss">:kReuse</span> <span class="n">forIndexPath</span><span class="ss">:indexPath</span><span class="p">];</span>
+
+<span class="n">cell</span><span class="p">.</span><span class="nf">selectionStyle</span> <span class="o">=</span> <span class="no">UITableViewCellSelectionStyleNone</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">cell</span> <span class="n">sendValueByStudent</span><span class="ss">:_dataArray</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="nf">row</span><span class="p">]];</span>
+
+<span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+
+<span class="p">}</span></code></pre></figure>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	NeighborWangShuShu@2016 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

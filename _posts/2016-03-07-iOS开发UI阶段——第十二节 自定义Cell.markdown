@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第十二节 自定义Cell"
 date:   2016-03-07 10:53:50
-categories: iOS_Object-C
+categories: iOS_Objective-C
 ---
 自定义cell的步骤
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第十一节 UITableView添加、删除、移动cell"
 date:   2016-03-05 11:22:18
-categories: iOS_Object-C
+categories: iOS_Objective-C
 ---
 添加删除数据
 

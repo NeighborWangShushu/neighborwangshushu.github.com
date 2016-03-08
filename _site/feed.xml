@@ -6,9 +6,50 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Mar 2016 18:55:16 +0800</pubDate>
-    <lastBuildDate>Mon, 07 Mar 2016 18:55:16 +0800</lastBuildDate>
+    <pubDate>Tue, 08 Mar 2016 22:52:42 +0800</pubDate>
+    <lastBuildDate>Tue, 08 Mar 2016 22:52:42 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>iOS开发UI阶段——第十三节 XIB</title>
+        <description>&lt;p&gt;代码获取使用XIB形成的视图&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;从&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mainBundle&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;包中加载同名的试图控制器文件，默认加载的是&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RootViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nib&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;文件参数可以写&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;RootViewController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootVC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RootViewController&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initWithNibName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;RootViewController&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSBundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mainBundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
+
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;如果使用&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;XIB&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;绘制&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的话，一定要注意表视图必须注册&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;类&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registerNib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UINib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nibWithNibName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MyTableViewCell&quot;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSBundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mainBundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forCellReuseIdentifier&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:kStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;自定义高度&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rowHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewAutomaticDimension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;estimatedRowHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;800&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;最大高度；&lt;/span&gt;
+
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;并且在创建&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的方法中不需要重新创建&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableViewCell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cellForRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;StudentTableViewCell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dequeueReusableCellWithIdentifier&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:kReuse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forIndexPath&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;selectionStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewCellSelectionStyleNone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sendValueByStudent&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:_dataArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Tue, 08 Mar 2016 22:44:41 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/08/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%89%E8%8A%82-XIB.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/08/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%89%E8%8A%82-XIB.html</guid>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
     
       <item>
         <title>iOS开发UI阶段——第十二节 自定义Cell</title>
@@ -27,11 +68,11 @@
 &lt;p&gt;6.内存管理&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Mar 2016 18:53:50 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/07/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82-%E8%87%AA%E5%AE%9A%E4%B9%89Cell.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/07/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82-%E8%87%AA%E5%AE%9A%E4%B9%89Cell.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/07/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82-%E8%87%AA%E5%AE%9A%E4%B9%89Cell.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/07/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%8A%82-%E8%87%AA%E5%AE%9A%E4%B9%89Cell.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -147,11 +188,11 @@
 &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didSelectRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Sat, 05 Mar 2016 19:22:18 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/05/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%80%E8%8A%82-UITableView%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E7%A7%BB%E5%8A%A8cell.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/05/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%80%E8%8A%82-UITableView%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E7%A7%BB%E5%8A%A8cell.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/05/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%80%E8%8A%82-UITableView%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E7%A7%BB%E5%8A%A8cell.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/05/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%80%E8%8A%82-UITableView%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E7%A7%BB%E5%8A%A8cell.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -272,11 +313,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;initWithTabBarSystemItem: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarSystemItemBookmarks&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;创建系统标签样式&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Thu, 03 Mar 2016 21:12:24 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -323,11 +364,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;p&gt;4.实现block&lt;/p&gt;
 </description>
         <pubDate>Wed, 02 Mar 2016 21:20:54 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/02/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AB%E8%8A%82-%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -392,11 +433,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;p&gt;[self.navigationController popToViewController:vc animated:YES];&lt;/p&gt;
 </description>
         <pubDate>Tue, 01 Mar 2016 20:08:01 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/01/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%83%E8%8A%82-UINavigationController.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -454,11 +495,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 
 </description>
         <pubDate>Mon, 29 Feb 2016 20:23:32 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/29/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%85%AD%E8%8A%82-UIScrollView.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -712,11 +753,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 
 </description>
         <pubDate>Sat, 27 Feb 2016 20:07:32 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</guid>
         
         
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     
@@ -855,77 +896,11 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Fri, 26 Feb 2016 20:14:51 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</guid>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</guid>
         
         
-        <category>iOS_Object-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS开发UI阶段——第三节 视图控制器</title>
-        <description>&lt;p&gt;视图退出新的视图控制器：&lt;/p&gt;
-
-&lt;p&gt;1.先引入新的试图控制器的头文件&lt;/p&gt;
-
-&lt;p&gt;2.找到需要与新的视图连接的button，在其实现方法中添加下列代码：&lt;/p&gt;
-
-&lt;p&gt;3.创建一个新的视图控制器对象:newVC&lt;/p&gt;
-
-&lt;p&gt;4.添加[self presentViewController:newVC animated:YES completion:nil];方法&lt;/p&gt;
-
-&lt;p&gt;退出新的视图控制器，返回跟原视图控制器：&lt;/p&gt;
-
-&lt;p&gt;在连接的button的方法中添加如下代码&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dismissViewControllerAnimate&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:YES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completion&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;屏幕旋转&lt;/p&gt;
-
-&lt;p&gt;设置屏幕的固定方向（无法旋转）在视图控制器中重写方法&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationMask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;supportedInterfaceOrientations&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationMaskLandscape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;只支持横屏&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;在屏幕旋转时处理事件，如回收键盘  在视图控制器中重写方法&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viewWillTransitionToSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CGSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;withTransitionCoordinator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coordinator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;textField&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resignFirstResponder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;屏幕旋转时调整视图的位置 在该视图类中重写方法（只要视图本身的bounds发生变化，此方法就会被执行）&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layoutSubviews&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;UIInterfaceOrientation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIApplication&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sharedApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;statusBarOrientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;获取屏幕方向&lt;/span&gt;
-
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;判断是否横向&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationLandscapeLeft&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIInterfaceOrientationLandscapeRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGRectMack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGRectMake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;err&quot;&gt;｝&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Thu, 25 Feb 2016 14:14:51 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_object-c/2016/02/25/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B8%89%E8%8A%82-%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8.html</guid>
-        
-        
-        <category>iOS_Object-C</category>
+        <category>iOS_Objective-C</category>
         
       </item>
     

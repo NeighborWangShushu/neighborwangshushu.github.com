@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第五节 UIControl及其子类"
 date:   2016-02-27 12:07:32
-categories: iOS_Object-C
+categories: iOS_Objective-C
 ---
 
 UIControl

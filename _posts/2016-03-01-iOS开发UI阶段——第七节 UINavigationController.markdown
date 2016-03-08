@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发UI阶段——第七节 UINavigationController"
 date:   2016-03-01 12:08:01
-categories: iOS_Object-C
+categories: iOS_Objective-C
 ---
 
 导航视图控制器也是一个视图控制器，TA管理了多个子视图控制器，是系统提供给我们的容器视图控制器
