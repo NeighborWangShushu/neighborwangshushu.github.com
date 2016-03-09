@@ -6,9 +6,64 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Mar 2016 22:57:03 +0800</pubDate>
-    <lastBuildDate>Tue, 08 Mar 2016 22:57:03 +0800</lastBuildDate>
+    <pubDate>Wed, 09 Mar 2016 23:07:58 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Mar 2016 23:07:58 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
+    
+      <item>
+        <title>iOS开发UI阶段——第十四节 可视化编程</title>
+        <description>&lt;p&gt;```objc
+//当storyboard中的视图控制器通过segue完成页面跳转时，此方法就会被执行&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;/*&lt;/p&gt;
+
+&lt;p&gt;segue有三个非常重要的属性&lt;/p&gt;
+
+&lt;p&gt;1.identifier，标识符，标识区分线（segue），可以选择性的跳转&lt;/p&gt;
+
+&lt;p&gt;2.sourceViewController，源视图控制器&lt;/p&gt;
+
+&lt;p&gt;3.destinationViewController，目标视图控制器&lt;/p&gt;
+
+&lt;p&gt;*/&lt;/p&gt;
+
+&lt;p&gt;if([segue.identifierisEqualToString:@”secondVC”]) {&lt;/p&gt;
+
+&lt;p&gt;SecondViewController*secondVC = segue.destinationViewController;&lt;/p&gt;
+
+&lt;p&gt;secondVC.string=self.usernameTf.text;&lt;/p&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(IBAction)regist:(UIButton*)sender {&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;//每一个视图控制器都有一个属性叫storyboard，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过storyboardID来找到加到其内部的视图控制器&lt;/p&gt;
+
+&lt;p&gt;//    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@”second”];&lt;/p&gt;
+
+&lt;p&gt;//    [self presentViewController:controller animated:YES completion:nil];&lt;/p&gt;
+
+&lt;p&gt;[selfperformSegueWithIdentifier:@”secondVC”sender:nil];&lt;/p&gt;
+
+&lt;p&gt;}
+```&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 Mar 2016 23:02:09 +0800</pubDate>
+        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/09/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E5%9B%9B%E8%8A%82-%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BC%96%E7%A8%8B.html</link>
+        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/09/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E5%9B%9B%E8%8A%82-%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BC%96%E7%A8%8B.html</guid>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
     
       <item>
         <title>iOS开发UI阶段——第十三节 XIB</title>
@@ -755,149 +810,6 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
         <pubDate>Sat, 27 Feb 2016 20:07:32 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</link>
         <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/27/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%BA%94%E8%8A%82-UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB.html</guid>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS开发UI阶段——第四节 触摸、手势</title>
-        <description>&lt;p&gt;触摸&lt;/p&gt;
-
-&lt;p&gt;视图响应触摸的三个时间阶段的方法&lt;/p&gt;
-
-&lt;p&gt;触摸开始的方法&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-触摸移动的方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-触摸结束的方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-获取触摸在屏幕上的手指对象&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;UITouch *touch = [touches anyObject];&lt;/p&gt;
-
-&lt;p&gt;获取手指之前在屏幕上的位置&lt;/p&gt;
-
-&lt;p&gt;CGPoint previousP = [touch previousLocationInView:self];&lt;/p&gt;
-
-&lt;p&gt;获取手指现在在屏幕上的位置&lt;/p&gt;
-
-&lt;p&gt;CGPoint currentP = [touch locationInView:self];&lt;/p&gt;
-
-&lt;p&gt;响应者链&lt;/p&gt;
-
-&lt;p&gt;触摸检测查询 先UIApplication -&amp;gt; window -&amp;gt; viewController -&amp;gt; view -&amp;gt; 触摸的子视图&lt;/p&gt;
-
-&lt;p&gt;事件处理的顺序与触摸检测查询顺序相反，如果没有响应者处理事件，触摸事件则会被丢弃&lt;/p&gt;
-
-&lt;p&gt;关闭用户交互则会阻断响应者链，无法完成检测&lt;/p&gt;
-
-&lt;p&gt;默认关闭用户交互的空间有 UILabel 和 UIImageView&lt;/p&gt;
-
-&lt;p&gt;开启用户交互：imageView . userInteractionEnabled = YES;&lt;/p&gt;
-
-&lt;p&gt;手势&lt;/p&gt;
-
-&lt;p&gt;以imageView为例&lt;/p&gt;
-
-&lt;p&gt;①.创建满足需求的手势，再创建时关联手势触发时的方法&lt;/p&gt;
-
-&lt;p&gt;tip:创建手势的代码：[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];&lt;/p&gt;
-
-&lt;p&gt;②.配置手势的相关属性&lt;/p&gt;
-
-&lt;p&gt;③.将手势添加到需要执行操作的视图上面&lt;/p&gt;
-
-&lt;p&gt;tip:添加手势的代码：[imageView addGestureRecognizer:tap];&lt;/p&gt;
-
-&lt;p&gt;④.实现手势方法，当触摸发生，手势识别器识别到相对应的触摸时，就会执行关联方法&lt;/p&gt;
-
-&lt;p&gt;tip:关联手势的代码：[UIImageView *imageView = (UIImageView *)longPress.view]; //返回值为UIView 所以要进行类型强转&lt;/p&gt;
-
-&lt;p&gt;轻拍手势 UITapGestureRecognizer&lt;/p&gt;
-
-&lt;p&gt;包含的属性：&lt;/p&gt;
-
-&lt;p&gt;1.触发手势的手指个数  tap.numberOfTouchesRequired = 1;&lt;/p&gt;
-
-&lt;p&gt;2.触发手势的轻拍次数  tap.numberOfTapsRequired = 2;&lt;/p&gt;
-
-&lt;p&gt;轻扫手势 UISwipeGestureRecognizer&lt;/p&gt;
-
-&lt;p&gt;包含的属性：指定轻扫的方向 swipe.direction = UISwipeGestureRecognizerDirectionUP/Down/Left/Right&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;可以同时指定方向相反的两个方向，中间用&lt;/td&gt;
-      &lt;td&gt;隔开；&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;长按手势 UILongPressGestureRecognizer&lt;/p&gt;
-
-&lt;p&gt;包含的属性：长按手势触发的最短时间，默认是0.5秒 longPress.minimumPressDuration = 3.0;&lt;/p&gt;
-
-&lt;p&gt;缩放手势UIPinchGestureRecognizer&lt;/p&gt;
-
-&lt;p&gt;旋转手势 UIRotationGestureRecognizer&lt;/p&gt;
-
-&lt;p&gt;平移手势 UIPanGestureRecognizer&lt;/p&gt;
-
-&lt;p&gt;这三个手势无属性 但是相关联的方法中要改变视图的transform相关的值&lt;/p&gt;
-
-&lt;p&gt;缩放实现方法：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pinchAction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIPinchGestureRecognizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pinch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;UIImageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIImageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pinch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGAffineTransformScale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pinch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pinch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;pinch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scale&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;重定义改变比例，防止改变比例会累加而导致变化过快&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;旋转实现方法：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotateAction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIRotationGestureRecognizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;UIImageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIImageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGAffineTransformRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rotation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rotation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rotation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;重定义改变比例，防止改变比例会累加而导致变化过快&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;平移实现方法：&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;panAction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIPanGestureRecognizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pan&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;UIImageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIImageView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pan&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;translationInView&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CGAffineTransformTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pan&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setTranslation&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:CGPointZero&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inView&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:imageView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;平移量归零&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Fri, 26 Feb 2016 20:14:51 +0800</pubDate>
-        <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</link>
-        <guid isPermaLink="true">https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/02/26/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%9B%9B%E8%8A%82-%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF.html</guid>
         
         
         <category>iOS_Objective-C</category>
