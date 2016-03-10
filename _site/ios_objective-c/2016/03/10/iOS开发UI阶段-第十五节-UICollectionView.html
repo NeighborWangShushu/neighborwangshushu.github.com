@@ -87,7 +87,7 @@
 
 <p>采用系统布局类UICollectViewLayout(布局基类)</p>
 
-<p><code class="highlighter-rouge">objc
+<p><code>objc
 UICollectionViewFlowLayout*layout = [[UICollectionViewFlowLayout alloc]init];
 </code></p>
 
@@ -104,12 +104,12 @@ UICollectionViewFlowLayout*layout = [[UICollectionViewFlowLayout alloc]init];
 <p>设置集合视图的滑动方向layout.scrollDirection=UICollectionViewScrollDirectionVertical;//竖向滚动</p>
 
 <p>创建集合视图
-<code class="highlighter-rouge">objc
+<code>objc
 UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layout];
 </code></p>
 
 <p>集合视图想要显示内容，必须将cell进行注册
-<code class="highlighter-rouge">objc
+<code>objc
 [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:string];
 </code>
 集合视图包含以下代理</p>
@@ -125,45 +125,45 @@ UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:[UIScr
 <p>UICollectionViewDataSource协议包含的方法（前两个必须实现）</p>
 
 <p>//设置每个分区包含的item个数
-<code class="highlighter-rouge">objc
+<code>objc
 - (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section;
 </code>
 //设置每个需要显示的cell
-<code class="highlighter-rouge">objc
+<code>objc
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath;
 </code>
 //设置包含的分区个数
-<code class="highlighter-rouge">objc
+<code>objc
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView;
 </code>
 //设置增广视图，即每个分区的头视图或者尾视图
-<code class="highlighter-rouge">objc
+<code>objc
 - (UICollectionReusableView*)collectionView:(UICollectionView*)collectionView viewForSupplementaryElementOfKind:(NSString*)kind atIndexPath:(NSIndexPath*)indexPath;
 </code>
 UICollectionViewDelegateFlowLayout协议包含的方法</p>
 
 <p>//返回每个item的尺寸大小
-<code class="highlighter-rouge">objc
+<code>objc
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath*)indexPath;
 </code>
 //返回视图与屏幕边缘的距离
-<code class="highlighter-rouge">objc
+<code>objc
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 </code>
 //返回最小的行间距
-<code class="highlighter-rouge">objc
+<code>objc
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;
 </code>
 //返回item与item之间的距离
-<code class="highlighter-rouge">objc
+<code>objc
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
 </code>
 //返回分区头视图的尺寸大小
-<code class="highlighter-rouge">objc
+<code>objc
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;
 </code>
 //返回分区尾视图的尺寸大小
-<code class="highlighter-rouge">objc
+<code>objc
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
 </code></p>
 

@@ -105,33 +105,33 @@
 
 <p>只有遵守了UIScrollViewDelegate协议才能执行UIScrollView的方法</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">只要是拖拽</span><span class="n">scrollView</span><span class="err">就会触发这个方法</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">//只要是拖拽scrollView就会触发这个方法
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">scrollViewDidScroll</span><span class="p">:(</span><span class="no">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView
 
-<span class="sr">//</span><span class="err">开始拖拽的时候会触发这个方法</span>
+//开始拖拽的时候会触发这个方法
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">scrollViewWillBeginDragging</span><span class="p">:(</span><span class="no">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+- (void)scrollViewWillBeginDragging:(UIScrollView*)scrollView
 
-<span class="sr">//</span><span class="err">当结束拖拽的时候会触发这个方法</span>
+//当结束拖拽的时候会触发这个方法
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">scrollViewDidEndDragging</span><span class="p">:(</span><span class="no">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="n">scrollViewwillDecelerate</span><span class="p">:(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">decelerate</span>
+- (void)scrollViewDidEndDragging:(UIScrollView*)scrollViewwillDecelerate:(BOOL)decelerate
 
-<span class="sr">//</span><span class="err">当滚动减速的时候会触发这个方法</span>
+//当滚动减速的时候会触发这个方法
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">scrollViewWillBeginDecelerating</span><span class="p">:(</span><span class="no">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+- (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView
 
-<span class="sr">//</span><span class="err">当滚动彻底停止的时候会触发这个方法</span>
+//当滚动彻底停止的时候会触发这个方法
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">scrollViewDidEndDecelerating</span><span class="p">:(</span><span class="no">UIScrollView</span> <span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 
-<span class="sr">//</span><span class="err">指定缩放视图</span>
+//指定缩放视图
 
-<span class="o">-</span> <span class="p">(</span><span class="no">UIView</span><span class="o">*</span><span class="p">)</span><span class="n">viewForZoomingInScrollView</span><span class="p">:(</span><span class="no">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+- (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
 
-<span class="sr">//</span><span class="err">正在缩放</span>
+//正在缩放
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">scrollViewDidZoom</span><span class="p">:(</span><span class="no">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="n">scrollView</span></code></pre></figure>
+- (void)scrollViewDidZoom:(UIScrollView*)scrollView</code></pre></figure>
 
 
   </article>

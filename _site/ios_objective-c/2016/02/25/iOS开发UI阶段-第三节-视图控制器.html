@@ -97,45 +97,45 @@
 
 <p>在连接的button的方法中添加如下代码</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="nb">self</span> <span class="n">dismissViewControllerAnimate</span><span class="ss">:YES</span> <span class="n">completion</span><span class="ss">:nil</span><span class="p">];</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">[self dismissViewControllerAnimate:YES completion:nil];</code></pre></figure>
 
 <p>屏幕旋转</p>
 
 <p>设置屏幕的固定方向（无法旋转）在视图控制器中重写方法</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span><span class="p">(</span><span class="no">UIInterfaceOrientationMask</span><span class="p">)</span><span class="n">supportedInterfaceOrientations</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">-(UIInterfaceOrientationMask)supportedInterfaceOrientations {
 
-<span class="k">return</span> <span class="no">UIInterfaceOrientationMaskLandscape</span><span class="p">;</span><span class="sr">//</span><span class="err">只支持横屏</span>
+return UIInterfaceOrientationMaskLandscape;//只支持横屏
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>在屏幕旋转时处理事件，如回收键盘  在视图控制器中重写方法</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">viewWillTransitionToSize</span><span class="p">:(</span><span class="no">CGSize</span><span class="p">)</span> <span class="n">withTransitionCoordinator</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">coordinator</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)viewWillTransitionToSize:(CGSize) withTransitionCoordinator:(id)coordinator {
 
-<span class="p">[</span><span class="nb">self</span><span class="o">.</span><span class="no">View</span><span class="p">.</span><span class="nf">textField</span> <span class="n">resignFirstResponder</span><span class="p">];</span>
+[self.View.textField resignFirstResponder];
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>屏幕旋转时调整视图的位置 在该视图类中重写方法（只要视图本身的bounds发生变化，此方法就会被执行）</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)layoutSubviews {
 
-<span class="no">UIInterfaceOrientation</span> <span class="n">orientation</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIApplication</span> <span class="n">sharedApplication</span><span class="p">].</span><span class="nf">statusBarOrientation</span><span class="p">;</span><span class="sr">//</span><span class="err">获取屏幕方向</span>
+UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;//获取屏幕方向
 
-<span class="sr">//</span><span class="err">判断是否横向</span>
+//判断是否横向
 
-<span class="k">if</span> <span class="p">(</span><span class="n">orientation</span> <span class="o">==</span> <span class="no">UIInterfaceOrientationLandscapeLeft</span> <span class="o">||</span> <span class="n">orientation</span> <span class="o">==</span> <span class="no">UIInterfaceOrientationLandscapeRight</span><span class="p">)</span> <span class="p">{</span>
+if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
 
-<span class="nb">self</span><span class="p">.</span><span class="nf">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMack</span><span class="p">(</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">);</span>
+self.button.frame = CGRectMack(  ,  ,  ,  );
 
-<span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
+}  else {
 
-<span class="nb">self</span><span class="p">.</span><span class="nf">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMake</span><span class="p">(</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">);</span>
+self.button.frame = CGRectMake(  ,  ,  ,  );
 
-<span class="p">}</span>
+}
 
-<span class="err">｝</span></code></pre></figure>
+｝</code></pre></figure>
 
 
   </article>

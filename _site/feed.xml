@@ -6,8 +6,8 @@
 </description>
     <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/</link>
     <atom:link href="https://github.com/NeighborWangShushu/neighborwangshushu.github.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Mar 2016 22:05:02 +0800</pubDate>
-    <lastBuildDate>Thu, 10 Mar 2016 22:05:02 +0800</lastBuildDate>
+    <pubDate>Thu, 10 Mar 2016 22:42:08 +0800</pubDate>
+    <lastBuildDate>Thu, 10 Mar 2016 22:42:08 +0800</lastBuildDate>
     <generator>Jekyll v3.1.0</generator>
     
       <item>
@@ -16,7 +16,7 @@
 
 &lt;p&gt;采用系统布局类UICollectViewLayout(布局基类)&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;p&gt;&lt;code&gt;objc
 UICollectionViewFlowLayout*layout = [[UICollectionViewFlowLayout alloc]init];
 &lt;/code&gt;&lt;/p&gt;
 
@@ -33,12 +33,12 @@ UICollectionViewFlowLayout*layout = [[UICollectionViewFlowLayout alloc]init];
 &lt;p&gt;设置集合视图的滑动方向layout.scrollDirection=UICollectionViewScrollDirectionVertical;//竖向滚动&lt;/p&gt;
 
 &lt;p&gt;创建集合视图
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layout];
 &lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;集合视图想要显示内容，必须将cell进行注册
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:string];
 &lt;/code&gt;
 集合视图包含以下代理&lt;/p&gt;
@@ -54,45 +54,45 @@ UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:[UIScr
 &lt;p&gt;UICollectionViewDataSource协议包含的方法（前两个必须实现）&lt;/p&gt;
 
 &lt;p&gt;//设置每个分区包含的item个数
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section;
 &lt;/code&gt;
 //设置每个需要显示的cell
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath;
 &lt;/code&gt;
 //设置包含的分区个数
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView;
 &lt;/code&gt;
 //设置增广视图，即每个分区的头视图或者尾视图
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (UICollectionReusableView*)collectionView:(UICollectionView*)collectionView viewForSupplementaryElementOfKind:(NSString*)kind atIndexPath:(NSIndexPath*)indexPath;
 &lt;/code&gt;
 UICollectionViewDelegateFlowLayout协议包含的方法&lt;/p&gt;
 
 &lt;p&gt;//返回每个item的尺寸大小
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath*)indexPath;
 &lt;/code&gt;
 //返回视图与屏幕边缘的距离
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 &lt;/code&gt;
 //返回最小的行间距
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section;
 &lt;/code&gt;
 //返回item与item之间的距离
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (CGFloat)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
 &lt;/code&gt;
 //返回分区头视图的尺寸大小
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;
 &lt;/code&gt;
 //返回分区尾视图的尺寸大小
-&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;code&gt;objc
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
 &lt;/code&gt;&lt;/p&gt;
 </description>
@@ -164,33 +164,33 @@ UICollectionViewDelegateFlowLayout协议包含的方法&lt;/p&gt;
         <title>iOS开发UI阶段——第十三节 XIB</title>
         <description>&lt;p&gt;代码获取使用XIB形成的视图&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;从&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mainBundle&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;包中加载同名的试图控制器文件，默认加载的是&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RootViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nib&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;文件参数可以写&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;//从mainBundle包中加载同名的试图控制器文件，默认加载的是RootViewController.nib文件参数可以写nil
 
-&lt;span class=&quot;no&quot;&gt;RootViewController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootVC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RootViewController&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initWithNibName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;RootViewController&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSBundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mainBundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
+RootViewController *rootVC = [[RootViewController alloc]initWithNibName:@&amp;quot;RootViewController&amp;quot; bundle:[NSBundle mainBundle]];
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;如果使用&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;XIB&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;绘制&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的话，一定要注意表视图必须注册&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;类&lt;/span&gt;
+//如果使用XIB绘制cell的话，一定要注意表视图必须注册cell类
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registerNib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UINib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nibWithNibName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MyTableViewCell&quot;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSBundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mainBundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forCellReuseIdentifier&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:kStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+[self.tableView registerNib:[UINib nibWithNibName:@&amp;quot;MyTableViewCell&amp;quot;bundle:[NSBundle mainBundle]]forCellReuseIdentifier:kStr];&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;自定义高度&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rowHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewAutomaticDimension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;self.tableView.rowHeight = UITableViewAutomaticDimension;
 
-&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;estimatedRowHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;800&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;最大高度；&lt;/span&gt;
+self.tableView.estimatedRowHeight = 800;//最大高度；
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;并且在创建&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;的方法中不需要重新创建&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;
+//并且在创建cell的方法中不需要重新创建cell
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableViewCell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cellForRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 
-&lt;span class=&quot;no&quot;&gt;StudentTableViewCell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dequeueReusableCellWithIdentifier&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:kReuse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forIndexPath&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+StudentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuse forIndexPath:indexPath];
 
-&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;selectionStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewCellSelectionStyleNone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sendValueByStudent&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:_dataArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
+[cell sendValueByStudent:_dataArray[indexPath.row]];
 
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+return cell;
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Tue, 08 Mar 2016 22:44:41 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/08/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%89%E8%8A%82-XIB.html</link>
@@ -232,110 +232,110 @@ UICollectionViewDelegateFlowLayout协议包含的方法&lt;/p&gt;
 
 &lt;p&gt;1.让将要执行删除、添加操作的表视图处于编辑状态&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setEditing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;animated&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;先执行父类中的这个方法&lt;/span&gt;
+//先执行父类中的这个方法
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;supersetEditing&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:editinganimated:animated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[supersetEditing:editinganimated:animated];
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;表视图执行此方法&lt;/span&gt;
+//表视图执行此方法
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableViewsetEditing&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:editinganimated:animated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[self.tableViewsetEditing:editinganimated:animated];
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;2.指定表视图中哪些行可以处于编辑状态默认是所有行都可以编辑&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;canEditRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath { }&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;3.指定编辑样式，到底是删除还是添加默认全部都是删除样式&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableViewCellEditingStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;editingStyleForRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(NSIndexPath*)indexPath {
 
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+if(indexPath.row&amp;gt;10) {
 
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewCellEditingStyleDelete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+return UITableViewCellEditingStyleDelete;
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+} else {
 
-&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewCellEditingStyleInsert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+return UITableViewCellEditingStyleInsert;
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+}
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;4.当点击删除、添加按钮式，需要做什么事情，怎样才能完成删除或者添加操作，全部在这个方法内部实现，是这四步的核心&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commitEditingStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableViewCellEditingStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editingStyle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath {
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beginUpdates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;表视图开始更新&lt;/span&gt;
+[tableView beginUpdates];//表视图开始更新
 
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editingStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewCellEditingStyleDelete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+if(editingStyle == UITableViewCellEditingStyleDelete) {
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;将该位置下的单元格删除&lt;/span&gt;
+//1.将该位置下的单元格删除
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deleteRowsAtIndexPaths&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;withRowAnimation&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UITableViewRowAnimationFade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[tableView deleteRowsAtIndexPaths:@[indexPath]withRowAnimation:UITableViewRowAnimationFade];
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;删除数据数组中与该单元格绑定的数据&lt;/span&gt;
+//2.删除数据数组中与该单元格绑定的数据
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataArray&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;removeObjectAtIndex&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[_dataArray  removeObjectAtIndex:indexPath.row];
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editingStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UITableViewCellEditingStyleInsert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+} else if (editingStyle == UITableViewCellEditingStyleInsert) {
 
-&lt;span class=&quot;no&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+Student*student =_dataArray[indexPath.row];
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;构建一个位置信息&lt;/span&gt;
+//构建一个位置信息
 
-&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indexPathForRow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;添加显示在第一行&lt;/span&gt;
+NSIndexPath *index = [NSIndexPath indexPathForRow:0inSection:0];//添加显示在第一行
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insertRowsAtIndexPaths&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;withRowAnimation&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:UITableViewRowAnimationTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[tableView insertRowsAtIndexPaths:@[index]withRowAnimation:UITableViewRowAnimationTop];
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataArray&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insertObject&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:student&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;atIndex&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[_dataArray insertObject:student atIndex:index.row];
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableViewendUpdates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;表视图结束更新&lt;/span&gt;
+}
+[tableViewendUpdates];//表视图结束更新
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;移动数据的操作&lt;/p&gt;
 
 &lt;p&gt;1.让将要执行删除、添加操作的表视图处于编辑状态&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setEditing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;animated&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;先执行父类中的这个方法&lt;/span&gt;
+//先执行父类中的这个方法
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;supersetEditing&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:editinganimated:animated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[supersetEditing:editinganimated:animated];
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;表视图执行此方法&lt;/span&gt;
+//表视图执行此方法
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setEditing&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:editing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animated&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:animated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[self.tableView setEditing:editing animated:animated];
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;2.指定哪些行可以移动默认是全部&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;canMoveRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath { }&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;3.移动完成之后要做什么事，怎么完成移动&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;moveRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sourceIndexPath&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;destinationIndexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;先记录原有位置下的模型数据&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;- (void)tableView:(UITableView*)tableView moveRowAtIndexPath:(NSIndexPath*)sourceIndexPath toIndexPath:(NSIndexPath*)destinationIndexPath {
+//先记录原有位置下的模型数据
 
-&lt;span class=&quot;no&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sourceIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+Student*student =_dataArray[sourceIndexPath.row];
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;在&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MRC&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;下必须&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;一次&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;否则删除数据时记录的&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;对象会被销毁&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;删除原位置下的模型数据&lt;/span&gt;
+[student retain];//在MRC下必须retain一次 否则删除数据时记录的student对象会被销毁
+//删除原位置下的模型数据
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataArray&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;removeObjectAtIndex&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:sourceIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;在新的位置将记录的模型数据添加到数据数组中&lt;/span&gt;
+[_dataArray removeObjectAtIndex:sourceIndexPath.row];
+//在新的位置将记录的模型数据添加到数据数组中
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataArray&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;insertObject&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:student&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;atIndex&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:destinationIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[_dataArray insertObject:student atIndex:destinationIndexPath.row];
 
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+[student release];
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITableView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didSelectRowAtIndexPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;NSIndexPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indexPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+}
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath { }&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Sat, 05 Mar 2016 19:22:18 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/05/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E5%8D%81%E4%B8%80%E8%8A%82-UITableView%E6%B7%BB%E5%8A%A0-%E5%88%A0%E9%99%A4-%E7%A7%BB%E5%8A%A8cell.html</link>
@@ -448,19 +448,19 @@ UITableViewDelegate协议&lt;/p&gt;
 
 &lt;p&gt;第一种标签创建方式：&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initWithTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@“”&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:image1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedImage&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:image2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第一个参数为显示文本，第二个参数为正常显示图片，第三个为选中状态的显示图片&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image1 selectedImage:image2];//第一个参数为显示文本，第二个参数为正常显示图片，第三个为选中状态的显示图片
 
-&lt;span class=&quot;n&quot;&gt;fourth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;创建完标签之后指定为某一个视图控制器的标签&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+fourth.tabBarItem = item;//创建完标签之后指定为某一个视图控制器的标签&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;第二种标签创建方式：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;objc
+&lt;p&gt;&lt;code&gt;objc
 UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag:101];
 &lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;第三种标签创建方式：&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;initWithTabBarSystemItem: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarSystemItemBookmarks&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;创建系统标签样式&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;UITabBarItem *item = [[UITabBarItem alloc] initWithTabBarSystemItem: UITabBarSystemItemBookmarks tag:101];//创建系统标签样式&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Thu, 03 Mar 2016 21:12:24 +0800</pubDate>
         <link>https://github.com/NeighborWangShushu/neighborwangshushu.github.com/ios_objective-c/2016/03/03/iOS%E5%BC%80%E5%8F%91UI%E9%98%B6%E6%AE%B5-%E7%AC%AC%E4%B9%9D%E8%8A%82-UITabBarController.html</link>
@@ -615,33 +615,33 @@ UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag
 
 &lt;p&gt;只有遵守了UIScrollViewDelegate协议才能执行UIScrollView的方法&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;只要是拖拽&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;就会触发这个方法&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;//只要是拖拽scrollView就会触发这个方法
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;开始拖拽的时候会触发这个方法&lt;/span&gt;
+//开始拖拽的时候会触发这个方法
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewWillBeginDragging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;
+- (void)scrollViewWillBeginDragging:(UIScrollView*)scrollView
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;当结束拖拽的时候会触发这个方法&lt;/span&gt;
+//当结束拖拽的时候会触发这个方法
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidEndDragging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewwillDecelerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decelerate&lt;/span&gt;
+- (void)scrollViewDidEndDragging:(UIScrollView*)scrollViewwillDecelerate:(BOOL)decelerate
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;当滚动减速的时候会触发这个方法&lt;/span&gt;
+//当滚动减速的时候会触发这个方法
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewWillBeginDecelerating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;
+- (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;当滚动彻底停止的时候会触发这个方法&lt;/span&gt;
+//当滚动彻底停止的时候会触发这个方法
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidEndDecelerating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;指定缩放视图&lt;/span&gt;
+//指定缩放视图
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viewForZoomingInScrollView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;
+- (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView
 
-&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;正在缩放&lt;/span&gt;
+//正在缩放
 
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidZoom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+- (void)scrollViewDidZoom:(UIScrollView*)scrollView&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
         <pubDate>Mon, 29 Feb 2016 20:23:32 +0800</pubDate>

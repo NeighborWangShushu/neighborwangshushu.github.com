@@ -14,3 +14,10 @@ github_username:  NeighborWangShuShu
 
 # Build settings
 markdown: kramdown
+highlighter: Pygments
+
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: true

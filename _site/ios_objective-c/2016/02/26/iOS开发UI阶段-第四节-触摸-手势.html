@@ -179,41 +179,41 @@
 
 <p>缩放实现方法：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">pinchAction</span><span class="p">:(</span><span class="no">UIPinchGestureRecognizer</span> <span class="o">*</span><span class="p">)</span><span class="n">pinch</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)pinchAction:(UIPinchGestureRecognizer *)pinch {
 
-<span class="no">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">(</span><span class="no">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">pinch</span><span class="p">.</span><span class="nf">view</span><span class="p">;</span>
+UIImageView *imageView = (UIImageView *)pinch.view;
 
-<span class="n">imageView</span><span class="p">.</span><span class="nf">transform</span> <span class="o">=</span> <span class="no">CGAffineTransformScale</span><span class="p">(</span><span class="n">imageView</span><span class="p">.</span><span class="nf">transform</span><span class="p">,</span> <span class="n">pinch</span><span class="p">.</span><span class="nf">scale</span><span class="p">.</span> <span class="nf">pinch</span><span class="p">.</span><span class="nf">scale</span><span class="p">);</span>
+imageView.transform = CGAffineTransformScale(imageView.transform, pinch.scale. pinch.scale);
 
-<span class="n">pinch</span><span class="p">.</span><span class="nf">scale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="sr">//</span><span class="err">重定义改变比例，防止改变比例会累加而导致变化过快</span>
+pinch.scale = 1;//重定义改变比例，防止改变比例会累加而导致变化过快
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>旋转实现方法：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">rotateAction</span><span class="p">:(</span><span class="no">UIRotationGestureRecognizer</span> <span class="o">*</span><span class="p">)</span><span class="n">rotate</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)rotateAction:(UIRotationGestureRecognizer *)rotate {
 
-<span class="no">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">(</span><span class="no">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">rotate</span><span class="p">.</span><span class="nf">view</span><span class="p">;</span>
+UIImageView *imageView = (UIImageView *)rotate.view;
 
-<span class="n">imageView</span><span class="p">.</span><span class="nf">transform</span> <span class="o">=</span> <span class="no">CGAffineTransformRotate</span><span class="p">(</span><span class="n">imageView</span><span class="p">.</span><span class="nf">transform</span><span class="p">,</span> <span class="n">rotate</span><span class="p">.</span><span class="nf">rotation</span><span class="p">.</span><span class="nf">rotate</span><span class="p">.</span><span class="nf">rotation</span><span class="p">);</span>
+imageView.transform = CGAffineTransformRotate(imageView.transform, rotate.rotation.rotate.rotation);
 
-<span class="n">rotate</span><span class="p">.</span><span class="nf">rotation</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="sr">//</span><span class="err">重定义改变比例，防止改变比例会累加而导致变化过快</span>
+rotate.rotation= 0;//重定义改变比例，防止改变比例会累加而导致变化过快
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>平移实现方法：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">panAction</span><span class="p">:(</span><span class="no">UIPanGestureRecognizer</span> <span class="o">*</span><span class="p">)</span><span class="n">pan</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)panAction:(UIPanGestureRecognizer *)pan {
 
-<span class="no">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">(</span><span class="no">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">pan</span><span class="p">.</span><span class="nf">view</span><span class="p">;</span>
+UIImageView *imageView = (UIImageView *)pan.view;
 
-<span class="no">CGPoint</span> <span class="nb">p</span> <span class="o">=</span> <span class="p">[</span><span class="n">pan</span> <span class="n">translationInView</span><span class="ss">:imageView</span><span class="p">];</span>
+CGPoint p = [pan translationInView:imageView];
 
-<span class="n">imageView</span><span class="p">.</span><span class="nf">transform</span> <span class="o">=</span> <span class="no">CGAffineTransformTranslate</span><span class="p">(</span><span class="n">imageView</span><span class="p">.</span><span class="nf">transform</span><span class="p">,</span> <span class="nb">p</span><span class="p">.</span><span class="nf">x</span><span class="p">.</span> <span class="nf">p</span><span class="p">.</span><span class="nf">y</span><span class="p">);</span>
+imageView.transform = CGAffineTransformTranslate(imageView.transform, p.x. p.y);
 
-<span class="p">[</span><span class="n">pan</span> <span class="n">setTranslation</span><span class="ss">:CGPointZero</span> <span class="n">inView</span><span class="ss">:imageView</span><span class="p">];</span><span class="sr">//</span><span class="err">平移量归零</span>
+[pan setTranslation:CGPointZero inView:imageView];//平移量归零
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
   </article>
 </div>

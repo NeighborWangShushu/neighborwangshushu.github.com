@@ -87,110 +87,110 @@
 
 <p>1.让将要执行删除、添加操作的表视图处于编辑状态</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">setEditing</span><span class="p">:(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">editing</span> <span class="n">animated</span><span class="p">:(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 
-<span class="sr">//</span><span class="err">先执行父类中的这个方法</span>
+//先执行父类中的这个方法
 
-<span class="p">[</span><span class="n">supersetEditing</span><span class="ss">:editinganimated:animated</span><span class="p">];</span>
+[supersetEditing:editinganimated:animated];
 
-<span class="sr">//</span><span class="err">表视图执行此方法</span>
+//表视图执行此方法
 
-<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">tableViewsetEditing</span><span class="ss">:editinganimated:animated</span><span class="p">];</span>
+[self.tableViewsetEditing:editinganimated:animated];
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>2.指定表视图中哪些行可以处于编辑状态默认是所有行都可以编辑</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">canEditRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath { }</code></pre></figure>
 
 <p>3.指定编辑样式，到底是删除还是添加默认全部都是删除样式</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="no">UITableViewCellEditingStyle</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">editingStyleForRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(NSIndexPath*)indexPath {
 
-<span class="k">if</span><span class="p">(</span><span class="n">indexPath</span><span class="p">.</span><span class="nf">row</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+if(indexPath.row&gt;10) {
 
-<span class="k">return</span> <span class="no">UITableViewCellEditingStyleDelete</span><span class="p">;</span>
+return UITableViewCellEditingStyleDelete;
 
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+} else {
 
-<span class="k">return</span> <span class="no">UITableViewCellEditingStyleInsert</span><span class="p">;</span>
+return UITableViewCellEditingStyleInsert;
 
-<span class="p">}</span>
+}
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>4.当点击删除、添加按钮式，需要做什么事情，怎样才能完成删除或者添加操作，全部在这个方法内部实现，是这四步的核心</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">commitEditingStyle</span><span class="p">:(</span><span class="no">UITableViewCellEditingStyle</span><span class="p">)</span><span class="n">editingStyle</span> <span class="n">forRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath {
 
-<span class="p">[</span><span class="n">tableView</span> <span class="n">beginUpdates</span><span class="p">];</span><span class="sr">//</span><span class="err">表视图开始更新</span>
+[tableView beginUpdates];//表视图开始更新
 
-<span class="k">if</span><span class="p">(</span><span class="n">editingStyle</span> <span class="o">==</span> <span class="no">UITableViewCellEditingStyleDelete</span><span class="p">)</span> <span class="p">{</span>
+if(editingStyle == UITableViewCellEditingStyleDelete) {
 
-<span class="sr">//</span><span class="mi">1</span><span class="o">.</span><span class="err">将该位置下的单元格删除</span>
+//1.将该位置下的单元格删除
 
-<span class="p">[</span><span class="n">tableView</span> <span class="n">deleteRowsAtIndexPaths</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="n">indexPath</span><span class="p">]</span><span class="n">withRowAnimation</span><span class="ss">:UITableViewRowAnimationFade</span><span class="p">];</span>
+[tableView deleteRowsAtIndexPaths:@[indexPath]withRowAnimation:UITableViewRowAnimationFade];
 
-<span class="sr">//</span><span class="mi">2</span><span class="o">.</span><span class="err">删除数据数组中与该单元格绑定的数据</span>
+//2.删除数据数组中与该单元格绑定的数据
 
-<span class="p">[</span><span class="n">_dataArray</span>  <span class="n">removeObjectAtIndex</span><span class="ss">:indexPath</span><span class="p">.</span><span class="nf">row</span><span class="p">];</span>
+[_dataArray  removeObjectAtIndex:indexPath.row];
 
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">editingStyle</span> <span class="o">==</span> <span class="no">UITableViewCellEditingStyleInsert</span><span class="p">)</span> <span class="p">{</span>
+} else if (editingStyle == UITableViewCellEditingStyleInsert) {
 
-<span class="no">Student</span><span class="o">*</span><span class="n">student</span> <span class="o">=</span><span class="n">_dataArray</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="nf">row</span><span class="p">];</span>
+Student*student =_dataArray[indexPath.row];
 
-<span class="sr">//</span><span class="err">构建一个位置信息</span>
+//构建一个位置信息
 
-<span class="no">NSIndexPath</span> <span class="o">*</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSIndexPath</span> <span class="n">indexPathForRow</span><span class="p">:</span><span class="mi">0</span><span class="n">inSection</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span><span class="sr">//</span><span class="err">添加显示在第一行</span>
+NSIndexPath *index = [NSIndexPath indexPathForRow:0inSection:0];//添加显示在第一行
 
-<span class="p">[</span><span class="n">tableView</span> <span class="n">insertRowsAtIndexPaths</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="n">withRowAnimation</span><span class="ss">:UITableViewRowAnimationTop</span><span class="p">];</span>
+[tableView insertRowsAtIndexPaths:@[index]withRowAnimation:UITableViewRowAnimationTop];
 
-<span class="p">[</span><span class="n">_dataArray</span> <span class="n">insertObject</span><span class="ss">:student</span> <span class="n">atIndex</span><span class="ss">:index</span><span class="p">.</span><span class="nf">row</span><span class="p">];</span>
+[_dataArray insertObject:student atIndex:index.row];
 
-<span class="p">}</span>
-<span class="p">[</span><span class="n">tableViewendUpdates</span><span class="p">];</span><span class="sr">//</span><span class="err">表视图结束更新</span>
+}
+[tableViewendUpdates];//表视图结束更新
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>移动数据的操作</p>
 
 <p>1.让将要执行删除、添加操作的表视图处于编辑状态</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">setEditing</span><span class="p">:(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">editing</span> <span class="n">animated</span><span class="p">:(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 
-<span class="sr">//</span><span class="err">先执行父类中的这个方法</span>
+//先执行父类中的这个方法
 
-<span class="p">[</span><span class="n">supersetEditing</span><span class="ss">:editinganimated:animated</span><span class="p">];</span>
+[supersetEditing:editinganimated:animated];
 
-<span class="sr">//</span><span class="err">表视图执行此方法</span>
+//表视图执行此方法
 
-<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">tableView</span> <span class="n">setEditing</span><span class="ss">:editing</span> <span class="n">animated</span><span class="ss">:animated</span><span class="p">];</span>
+[self.tableView setEditing:editing animated:animated];
 
-<span class="p">}</span></code></pre></figure>
+}</code></pre></figure>
 
 <p>2.指定哪些行可以移动默认是全部</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">canMoveRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (BOOL)tableView:(UITableView*)tableView canMoveRowAtIndexPath:(NSIndexPath*)indexPath { }</code></pre></figure>
 
 <p>3.移动完成之后要做什么事，怎么完成移动</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">moveRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">sourceIndexPath</span> <span class="n">toIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">destinationIndexPath</span> <span class="p">{</span>
-<span class="sr">//</span><span class="err">先记录原有位置下的模型数据</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">- (void)tableView:(UITableView*)tableView moveRowAtIndexPath:(NSIndexPath*)sourceIndexPath toIndexPath:(NSIndexPath*)destinationIndexPath {
+//先记录原有位置下的模型数据
 
-<span class="no">Student</span><span class="o">*</span><span class="n">student</span> <span class="o">=</span><span class="n">_dataArray</span><span class="p">[</span><span class="n">sourceIndexPath</span><span class="p">.</span><span class="nf">row</span><span class="p">];</span>
+Student*student =_dataArray[sourceIndexPath.row];
 
-<span class="p">[</span><span class="n">student</span> <span class="n">retain</span><span class="p">];</span><span class="sr">//</span><span class="err">在</span><span class="no">MRC</span><span class="err">下必须</span><span class="n">retain</span><span class="err">一次</span> <span class="err">否则删除数据时记录的</span><span class="n">student</span><span class="err">对象会被销毁</span>
-<span class="sr">//</span><span class="err">删除原位置下的模型数据</span>
+[student retain];//在MRC下必须retain一次 否则删除数据时记录的student对象会被销毁
+//删除原位置下的模型数据
 
-<span class="p">[</span><span class="n">_dataArray</span> <span class="n">removeObjectAtIndex</span><span class="ss">:sourceIndexPath</span><span class="p">.</span><span class="nf">row</span><span class="p">];</span>
-<span class="sr">//</span><span class="err">在新的位置将记录的模型数据添加到数据数组中</span>
+[_dataArray removeObjectAtIndex:sourceIndexPath.row];
+//在新的位置将记录的模型数据添加到数据数组中
 
-<span class="p">[</span><span class="n">_dataArray</span> <span class="n">insertObject</span><span class="ss">:student</span> <span class="n">atIndex</span><span class="ss">:destinationIndexPath</span><span class="p">.</span><span class="nf">row</span><span class="p">];</span>
+[_dataArray insertObject:student atIndex:destinationIndexPath.row];
 
-<span class="p">[</span><span class="n">student</span> <span class="n">release</span><span class="p">];</span>
+[student release];
 
-<span class="p">}</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">tableView</span><span class="p">:(</span><span class="no">UITableView</span><span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">didSelectRowAtIndexPath</span><span class="p">:(</span><span class="no">NSIndexPath</span><span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+}
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath { }</code></pre></figure>
 
   </article>
 </div>

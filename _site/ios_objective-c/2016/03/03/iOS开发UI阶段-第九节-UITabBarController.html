@@ -109,19 +109,19 @@
 
 <p>第一种标签创建方式：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UITabBarItem</span> <span class="o">*</span><span class="n">item</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UITabBarItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="p">:</span><span class="err">@“”</span> <span class="n">image</span><span class="ss">:image1</span> <span class="n">selectedImage</span><span class="ss">:image2</span><span class="p">];</span><span class="sr">//</span><span class="err">第一个参数为显示文本，第二个参数为正常显示图片，第三个为选中状态的显示图片</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image1 selectedImage:image2];//第一个参数为显示文本，第二个参数为正常显示图片，第三个为选中状态的显示图片
 
-<span class="n">fourth</span><span class="p">.</span><span class="nf">tabBarItem</span> <span class="o">=</span> <span class="n">item</span><span class="p">;</span><span class="sr">//</span><span class="err">创建完标签之后指定为某一个视图控制器的标签</span></code></pre></figure>
+fourth.tabBarItem = item;//创建完标签之后指定为某一个视图控制器的标签</code></pre></figure>
 
 <p>第二种标签创建方式：</p>
 
-<p><code class="highlighter-rouge">objc
+<p><code>objc
 UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@“” image:image tag:101];
 </code></p>
 
 <p>第三种标签创建方式：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UITabBarItem</span> <span class="o">*</span><span class="n">item</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UITabBarItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="ss">initWithTabBarSystemItem: </span><span class="no">UITabBarSystemItemBookmarks</span> <span class="n">tag</span><span class="p">:</span><span class="mi">101</span><span class="p">];</span><span class="sr">//</span><span class="err">创建系统标签样式</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">UITabBarItem *item = [[UITabBarItem alloc] initWithTabBarSystemItem: UITabBarSystemItemBookmarks tag:101];//创建系统标签样式</code></pre></figure>
 
   </article>
 </div>
