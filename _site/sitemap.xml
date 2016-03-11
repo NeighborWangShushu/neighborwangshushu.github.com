@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	
+	  <url>
+		<loc>http://localhost:4000/iOS_UI-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6/</loc>
+	  </url>
+	
+	  <url>
+		<loc>http://localhost:4000/welcome-to-jekyll/</loc>
+	  </url>
+	
+	  <url>
+		<loc>http://localhost:4000/how-to-use/</loc>
+	  </url>
+	
+</urlset>

@@ -1,23 +1,43 @@
-# Site settings
-title: WangShuShu Blog
-motto: My surname really is Wang，I promise
-email: NeighborWangShuShu@Gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+#Site settings
+description: A blog about lorem ipsum dolor sit amet
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://github.com/NeighborWangShushu/neighborwangshushu.github.com" # the base hostname & protocol for your site
-twitter_username: neighborwangshu
-facebook_username: neighborwangshushu
+url: "http://localhost:4000" # the base hostname & protocol for your site 
+
+# User settings
+username: NeighborWangShuShu
+user_description: 三次元のprogrammer
+user_title: My surname really is Wang，I promise
+email: NeighborWangShuShu@gmail.com
+twitter_username: NeighborWangShu
 github_username:  NeighborWangShuShu
+# gplus_username:  NeighborWangShuShu
+disqus_username: NeighborWangShuShu
+
 
 # Build settings
 markdown: kramdown
-highlighter: Pygments
+# highlighter: pygments
+permalink: /:title/
 
-kramdown:
-  # use Github Flavored Markdown
-  input: GFM
-  # do not replace newlines by <br>s
-  hard_wrap: true
+
+# html minify
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  profile: false
+
+# Links to include in menu navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+  - title: Series
+    url: /series
+  - title: Tags
+    url: /tags
+  - title: About Me
+    url: /about
+
+# exclude my node related stuff
+exclude: ['package.json', 'src', 'node_modules']
