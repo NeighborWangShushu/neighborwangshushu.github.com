@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>How to use</title>
-    <meta name="description" content="First steps to use this template">
+    <title>iOS_UI(一)UIKit框架</title>
+    <meta name="description" content="UIView">
 
     <!-- Google Authorship Markup -->
     <link rel="author" href="https://plus.google.com/+?rel=author">
@@ -14,25 +14,25 @@
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@NeighborWangShu">
-    <meta name="twitter:title" content="How to use">
-    <meta name="twitter:description" content="First steps to use this template">
+    <meta name="twitter:title" content="iOS_UI(一)UIKit框架">
+    <meta name="twitter:description" content="UIView">
     
     <meta property="twitter:image:src" content="https://neighborwangshushu.github.io/assets/img/">
     
 
     <!-- Social: Facebook / Open Graph -->
     <!-- <meta property="og:site" content="@"> -->
-    <meta property="og:url" content="https://neighborwangshushu.github.io/how-to-use/">
-    <meta property="og:title" content="How to use">
+    <meta property="og:url" content="https://neighborwangshushu.github.io/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/">
+    <meta property="og:title" content="iOS_UI(一)UIKit框架">
     
     <meta property="og:image" content="https://neighborwangshushu.github.io/assets/img/">
     
-    <meta property="og:description" content="First steps to use this template">
+    <meta property="og:description" content="UIView">
     <meta property="og:site_name" content="WangShushu Blog">
 
     <!-- Social: Google+ / Schema.org  -->
-    <meta itemprop="name" content="How to use"/>
-    <meta itemprop="description" content="First steps to use this template">
+    <meta itemprop="name" content="iOS_UI(一)UIKit框架"/>
+    <meta itemprop="description" content="UIView">
     <meta itemprop="image" content="https://neighborwangshushu.github.io/assets/img/blog-image.png"/>
 
     <!-- Favicon -->
@@ -58,7 +58,7 @@
     <meta name="theme-color" content="#0562DC">
 
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://neighborwangshushu.github.io/how-to-use/">
+    <link rel="canonical" href="https://neighborwangshushu.github.io/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/">
     <link rel="alternate" type="application/rss+xml" title="WangShushu Blog" href="https://neighborwangshushu.github.io/feed.xml" />
 </head>
 
@@ -68,10 +68,10 @@
         <header class="header-post" role="banner">
     <div class="content">
         
-            <time itemprop="datePublished" datetime="2015-08-03 11:32:44 +0800" class="date">03 Aug 2015</time>
+            <time itemprop="datePublished" datetime="2016-02-23 10:23:32 +0800" class="date">23 Feb 2016</time>
         
-        <h1 class="post-title" itemprop="name">How to use</h1>
-        <p itemprop="description" class="subtitle">First steps to use this template</p>
+        <h1 class="post-title" itemprop="name">iOS_UI(一)UIKit框架</h1>
+        <p itemprop="description" class="subtitle">UIView</p>
     </div>
      <a class="down" data-scroll href="#scroll"><svg class="icon icon-angle-down"><use xlink:href="#icon-angle-down"></use></svg></a>
      <div class="search-wrapper">
@@ -112,121 +112,35 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <p>This is a simple and minimalist template for Jekyll designed for developers that want to write blog posts but don’t want to care about frontend stuff.</p>
+                <p>一个视图默认其左上角就是这个视图的坐标系原点，每一个视图都有一个自己的坐标系，一个视图布局时，frame中的x，y是相对于父视图的坐标系原点的距离</p>
 
-<p>The Theme features:</p>
+<p>1.frame,center是相对于父视图而言的，改变视图本身的frame,center会直接影响自身在其父视图上的显示位置</p>
 
-<ul>
-  <li>Gulp</li>
-  <li>Stylus (Jeet, Rupture, Kouto Swiss)</li>
-  <li>Smoothscroll</li>
-  <li>Live Search</li>
-  <li>Offcanvas Menu</li>
-  <li>SVG icons</li>
-  <li>Shell Script to create posts</li>
-  <li>Tags page</li>
-  <li>Series page</li>
-  <li>About Me page</li>
-  <li>Feed RSS</li>
-  <li>Sitemap.xml</li>
-  <li>Color Customization</li>
-  <li>Info Customization</li>
-</ul>
+<p>2.bounds是相对于自身而言的，改变bounds的值会影响自身坐标系原点的位置，进而会影响子视图在其上的显示位置</p>
 
-<h2 id="basic-setup">Basic Setup</h2>
+<p>3.一个视图的bounds的默认值为（0，0，宽，高），因为bounds前面的两个值x，y代表的含义是视图本身左上角点距离其自身坐标系原点的距离。因为视图本身坐标系与左上角重合，所以是0</p>
 
-<ol>
-  <li><a href="http://jekyllrb.com">Install Jekyll</a></li>
-  <li>Fork the <a href="https://github.com/willianjusten/will-jekyll-template/fork">Will Jekyll Template</a></li>
-  <li>Clone the repo you just forked.</li>
-  <li>Edit <code class="highlighter-rouge">_config.yml</code> to personalize your site.</li>
-  <li>Check out the sample posts in <code class="highlighter-rouge">_posts</code> to see examples for assigning categories and tags, and other YAML data.</li>
-  <li>Read the documentation below for further customization pointers and documentation.</li>
-</ol>
-
-<h2 id="site-and-user-settings">Site and User Settings</h2>
-
-<p>You have to fill some informations on <code class="highlighter-rouge">_config.yml</code> to customize your site.</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Site settings</span>
-<span class="ss">description: </span><span class="no">A</span> <span class="n">blog</span> <span class="n">about</span> <span class="n">lorem</span> <span class="n">ipsum</span> <span class="n">dolor</span> <span class="n">sit</span> <span class="n">amet</span>
-<span class="ss">baseurl: </span><span class="s2">""</span> <span class="c1"># the subpath of your site, e.g. /blog/</span>
-<span class="ss">url: </span><span class="s2">"http://localhost:3000"</span> <span class="c1"># the base hostname &amp; protocol for your site </span>
-
-<span class="c1"># User settings</span>
-<span class="ss">username: </span><span class="no">Lorem</span> <span class="no">Ipsum</span>
-<span class="ss">user_description: </span><span class="no">Anon</span> <span class="no">Developer</span> <span class="n">at</span> <span class="no">Lorem</span> <span class="no">Ipsum</span> <span class="no">Dolor</span>
-<span class="ss">user_title: </span><span class="no">Anon</span> <span class="no">Developer</span>
-<span class="ss">email: </span><span class="n">anon</span><span class="vi">@anon</span><span class="p">.</span><span class="nf">com</span>
-<span class="ss">twitter_username: </span><span class="n">lorem_ipsum</span>
-<span class="ss">github_username:  </span><span class="n">lorem_ipsum</span>
-<span class="ss">gplus_username:  </span><span class="n">lorem_ipsum</span>
-<span class="ss">disqus_username: </span><span class="n">lorem_ipsum</span></code></pre></figure>
-
-<h2 id="color-customization">Color customization</h2>
-
-<p>All color variables are in <code class="highlighter-rouge">src/styl/variable</code>. To change the main color, just set the new value at <code class="highlighter-rouge">main</code> assignment. Another colors are for texts and the code background color.</p>
-
-<h2 id="creating-posts">Creating posts</h2>
-
-<p>You can use the <code class="highlighter-rouge">initpost.sh</code> to create your new posts. Just follow the command:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./initpost.sh -c Post Title</code></pre></figure>
-
-<p>The new file will be created at <code class="highlighter-rouge">_posts</code> with this format <code class="highlighter-rouge">date-title.md</code>.</p>
-
-<h2 id="front-matter">Front-matter</h2>
-
-<p>When you create a new post, you need to fill the post information in the front-matter, follow this example:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
-<span class="ss">layout: </span><span class="n">post</span>
-<span class="ss">title: </span><span class="s2">"How to use"</span>
-<span class="ss">date: </span><span class="mi">2015</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mo">03</span> <span class="mo">03</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">44</span>
-<span class="ss">image: </span><span class="s1">'/assets/img/post-image.png'</span>
-<span class="ss">description: </span><span class="s1">'First steps to use this template'</span>
-<span class="ss">tags:
-</span><span class="o">-</span> <span class="n">jekyll</span> 
-<span class="o">-</span> <span class="n">template</span> 
-<span class="ss">categories:
-</span><span class="o">-</span> <span class="no">I</span> <span class="n">love</span> <span class="no">Jekyll</span>
-<span class="ss">twitter_text: </span><span class="s1">'How to install and use this template'</span>
-<span class="o">---</span></code></pre></figure>
-
-<h2 id="running-the-blog-in-local">Running the blog in local</h2>
-
-<p>In order to compile the assets and run Jekyll on local you need to follow those steps:</p>
+<p>4.改变一个视图的bounds中的x，y值，不会造成自身位置的变化，因为父视图的bounds没有改变，自身的frame以及center没有改变，所以与父视图的关系没有任何变化，所以不会动</p>
 
 <ul>
-  <li>Install <a href="https://nodejs.org/">NodeJS</a></li>
-  <li>Run <code class="highlighter-rouge">npm install</code></li>
-  <li>Run <code class="highlighter-rouge">gulp</code></li>
+  <li>获取随机色的方法：</li>
 </ul>
 
-<h2 id="questions">Questions</h2>
-
-<p>Having a problem getting something to work or want to know why I setup something in a certain way? Ping me on Twitter <a href="https://twitter.com/willian_justen">@willian_justen</a> or file a <a href="https://github.com/willianjusten/will-jekyll-template/issues/new">GitHub Issue</a>.</p>
-
-<h2 id="license">License</h2>
-
-<p>This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme on your site without linking back to me or using a disclaimer.</p>
-
-<p>If you’d like to give me credit somewhere on your blog or tweet a shout out to <a href="https://twitter.com/willian_justen">@willian_justen</a>, that would be pretty sweet.</p>
-
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="no">UIColor</span> <span class="n">colorWithRed</span><span class="ss">:arc4random</span><span class="p">()</span><span class="o">%</span><span class="mi">256</span> <span class="o">/</span> <span class="mi">255</span><span class="o">.</span><span class="mi">0</span> <span class="n">green</span><span class="ss">:arc4random</span><span class="p">()</span><span class="o">%</span><span class="mi">256</span> <span class="o">/</span> <span class="mi">255</span><span class="o">.</span><span class="mi">0</span> <span class="n">blue</span><span class="ss">:arc4random</span><span class="p">()</span><span class="o">%</span><span class="mi">256</span> <span class="o">/</span> <span class="mi">255</span><span class="o">.</span><span class="mi">0</span> <span class="n">alpha</span><span class="p">:</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span></code></pre></figure>
 
             </article>
 
             <section class="share">
     <h3>Share</h3>
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;How to install and use this template&quot;%20https://neighborwangshushu.github.io/how-to-use/%20via%20&#64;NeighborWangShu&hashtags=jekyll,template,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20https://neighborwangshushu.github.io/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/%20via%20&#64;NeighborWangShu&hashtags=iOS,UI,Objective-C,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://neighborwangshushu.github.io/how-to-use/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://neighborwangshushu.github.io/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://neighborwangshushu.github.io/how-to-use/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://neighborwangshushu.github.io/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -254,8 +168,8 @@
     {
         disqus_loaded = true;
         var disqus_shortname = 'NeighborWangShuShu';
-        var disqus_title = 'How to use';
-        var disqus_url = '/how-to-use/';
+        var disqus_title = 'iOS_UI(一)UIKit框架';
+        var disqus_url = '/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);

@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	  <url>
-		<loc>http://localhost:4000/iOS_UI-%E4%B8%80-UIKit%E6%A1%86%E6%9E%B6/</loc>
+		<loc>https://neighborwangshushu.github.io/iOS_UI(%E4%B8%80)UIKIt%E6%A1%86%E6%9E%B6/</loc>
 	  </url>
 	
 	  <url>
-		<loc>http://localhost:4000/welcome-to-jekyll/</loc>
+		<loc>https://neighborwangshushu.github.io/welcome-to-jekyll/</loc>
 	  </url>
 	
 	  <url>
-		<loc>http://localhost:4000/how-to-use/</loc>
+		<loc>https://neighborwangshushu.github.io/how-to-use/</loc>
 	  </url>
 	
 </urlset>
