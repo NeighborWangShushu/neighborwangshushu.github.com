@@ -1,7 +1,8 @@
 #Site settings
+title: WangShushu Blog
 description: A blog about lorem ipsum dolor sit amet
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://localhost:4000" # the base hostname & protocol for your site 
+url: "http://github.com/NeighborWangShushu/neighborwangshushu.github.com" # the base hostname & protocol for your site 
 
 # User settings
 username: NeighborWangShuShu
