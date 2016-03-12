@@ -5,13 +5,14 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Mar 2016 23:12:33 +0800</pubDate>
-    <lastBuildDate>Fri, 11 Mar 2016 23:12:33 +0800</lastBuildDate>
+    <pubDate>Sat, 12 Mar 2016 10:56:49 +0800</pubDate>
+    <lastBuildDate>Sat, 12 Mar 2016 10:56:49 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>iOS_UI(一)UIKit框架</title>
-        <description>&lt;p&gt;一个视图默认其左上角就是这个视图的坐标系原点，每一个视图都有一个自己的坐标系，一个视图布局时，frame中的x，y是相对于父视图的坐标系原点的距离&lt;/p&gt;
+        <description>&lt;p&gt;视图—-UIView
+一个视图默认其左上角就是这个视图的坐标系原点，每一个视图都有一个自己的坐标系，一个视图布局时，frame中的x，y是相对于父视图的坐标系原点的距离&lt;/p&gt;
 
 &lt;p&gt;1.frame,center是相对于父视图而言的，改变视图本身的frame,center会直接影响自身在其父视图上的显示位置&lt;/p&gt;
 
