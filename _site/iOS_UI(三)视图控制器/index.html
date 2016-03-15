@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>iOS_UI(二)UI基本控件</title>
-    <meta name="description" content="UILabel UITextField UIButton UIImageView">
+    <title>iOS_UI(三)视图控制器</title>
+    <meta name="description" content="UIViewController">
 
     <!-- Google Authorship Markup -->
     <link rel="author" href="https://plus.google.com/+?rel=author">
@@ -14,25 +14,25 @@
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@NeighborWangShu">
-    <meta name="twitter:title" content="iOS_UI(二)UI基本控件">
-    <meta name="twitter:description" content="UILabel UITextField UIButton UIImageView">
+    <meta name="twitter:title" content="iOS_UI(三)视图控制器">
+    <meta name="twitter:description" content="UIViewController">
     
     <meta property="twitter:image:src" content="https://neighborwangshushu.github.io/assets/img/">
     
 
     <!-- Social: Facebook / Open Graph -->
     <!-- <meta property="og:site" content="@"> -->
-    <meta property="og:url" content="https://neighborwangshushu.github.io/iOS_UI(%E4%BA%8C)UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/">
-    <meta property="og:title" content="iOS_UI(二)UI基本控件">
+    <meta property="og:url" content="https://neighborwangshushu.github.io/iOS_UI(%E4%B8%89)%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8/">
+    <meta property="og:title" content="iOS_UI(三)视图控制器">
     
     <meta property="og:image" content="https://neighborwangshushu.github.io/assets/img/">
     
-    <meta property="og:description" content="UILabel UITextField UIButton UIImageView">
+    <meta property="og:description" content="UIViewController">
     <meta property="og:site_name" content="WangShushu Blog">
 
     <!-- Social: Google+ / Schema.org  -->
-    <meta itemprop="name" content="iOS_UI(二)UI基本控件"/>
-    <meta itemprop="description" content="UILabel UITextField UIButton UIImageView">
+    <meta itemprop="name" content="iOS_UI(三)视图控制器"/>
+    <meta itemprop="description" content="UIViewController">
     <meta itemprop="image" content="https://neighborwangshushu.github.io/assets/img/blog-image.png"/>
 
     <!-- Favicon -->
@@ -58,7 +58,7 @@
     <meta name="theme-color" content="#0562DC">
 
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://neighborwangshushu.github.io/iOS_UI(%E4%BA%8C)UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/">
+    <link rel="canonical" href="https://neighborwangshushu.github.io/iOS_UI(%E4%B8%89)%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8/">
     <link rel="alternate" type="application/rss+xml" title="WangShushu Blog" href="https://neighborwangshushu.github.io/feed.xml" />
 </head>
 
@@ -68,10 +68,10 @@
         <header class="header-post" role="banner">
     <div class="content">
         
-            <time itemprop="datePublished" datetime="2016-02-24 22:23:32 +0800" class="date">24 Feb 2016</time>
+            <time itemprop="datePublished" datetime="2016-02-25 14:14:51 +0800" class="date">25 Feb 2016</time>
         
-        <h1 class="post-title" itemprop="name">iOS_UI(二)UI基本控件</h1>
-        <p itemprop="description" class="subtitle">UILabel UITextField UIButton UIImageView</p>
+        <h1 class="post-title" itemprop="name">iOS_UI(三)视图控制器</h1>
+        <p itemprop="description" class="subtitle">UIViewController</p>
     </div>
      <a class="down" data-scroll href="#scroll"><svg class="icon icon-angle-down"><use xlink:href="#icon-angle-down"></use></svg></a>
      <div class="search-wrapper">
@@ -112,131 +112,74 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                <p>UILabel 基本属性</p>
+                <p>视图退出新的视图控制器：</p>
 
-<p>文本显示 <strong>label.text = @”text”;</strong></p>
+<p>1.先引入新的试图控制器的头文件</p>
 
-<p>文本颜色 <strong>label.textColor = [UIColor redColor];</strong></p>
+<p>2.找到需要与新的视图连接的button，在其实现方法中添加下列代码：</p>
 
-<p>文本对齐方式 <strong>label.textAlignment = NSTextAlignmentLeft;//默认左对齐</strong></p>
+<p>3.创建一个新的视图控制器对象:newVC</p>
 
-<p>文本字体，大小 <strong>label.font = [UIFont boldSystemFontOfSize:20];//默认大小是17，加上bold代表要加粗</strong></p>
+<p>4.添加[self presentViewController:newVC animated:YES completion:nil];方法</p>
 
-<p>文本显示行数 label.numberOfLines = 0;//无法显示的用…代替</p>
+<p>退出新的视图控制器，返回跟原视图控制器：</p>
 
-<p>文本断行模式 label.lineBreakMode = NSLineBreakByWordWrapping;//默认以单词换行</p>
+<p>在连接的button的方法中添加如下代码</p>
 
-<p>文本阴影颜色 label.shadowColor = [UIColor redColor];</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="nb">self</span> <span class="n">dismissViewControllerAnimate</span><span class="ss">:YES</span> <span class="n">completion</span><span class="ss">:nil</span><span class="p">];</span></code></pre></figure>
 
-<p>文本阴影偏移量 label.shadowOffSet = CGSizeMake(2,2);</p>
+<p>屏幕旋转</p>
 
-<p>UITextField 基本属性</p>
+<p>设置屏幕的固定方向（无法旋转）在视图控制器中重写方法</p>
 
-<p>文本显示 文本颜色 文本对齐方式 文本字体，大小同上</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span><span class="p">(</span><span class="no">UIInterfaceOrientationMask</span><span class="p">)</span><span class="n">supportedInterfaceOrientations</span> <span class="p">{</span>
 
-<p>占位字符串 <strong>textField.placeholder = @“”;//用于提示用户所需要输入的内容</strong></p>
-
-<p>是否允许输入 textField.enabled  开始输入时是否清空文本框 textField.clearOnBeginEditing   都是BOOL值</p>
-
-<p>是否密文输入 <strong>textField.secureTextEntry = YES;</strong></p>
-
-<p>弹出的键盘类型 <strong>textField.keyboardType = UIKeyboardTypeNumberPad;//数字键盘</strong></p>
-
-<p>键盘右下角return的类型 textField.returnKeyType = UIReturnKeyNext;</p>
-
-<p>边框样式 textField.borderStyle = UITextBorderStyleRoundedRect;//圆角边框</p>
-
-<p>清除按钮模式 textField.clearButtonMode = UITextFieldViewModeAlways;//总是显示清除按钮</p>
-
-<p>撤销键盘  <strong>让appDelegate遵守UITextFieldDelegate协议</strong></p>
-
-<p>重写方法：</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="no">BOOL</span><span class="p">)</span><span class="n">textFieldShouldReturn</span><span class="p">:(</span><span class="no">UITextField</span> <span class="o">*</span><span class="p">)</span><span class="n">textField</span> <span class="p">{</span>
-
-<span class="p">[</span><span class="n">textField</span> <span class="n">resignFirstResponder</span><span class="p">];</span>
-
-<span class="k">return</span> <span class="no">YES</span><span class="p">;</span>
+<span class="k">return</span> <span class="no">UIInterfaceOrientationMaskLandscape</span><span class="p">;</span><span class="sr">//</span><span class="err">只支持横屏</span>
 
 <span class="p">}</span></code></pre></figure>
 
-<p>指定代理对象 <strong>textField.delegate = self;</strong></p>
+<p>在屏幕旋转时处理事件，如回收键盘  在视图控制器中重写方法</p>
 
-<p><img src="/assets/img/iOS/UI/UI基本控件/image1.jpg" /></p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">viewWillTransitionToSize</span><span class="p">:(</span><span class="no">CGSize</span><span class="p">)</span> <span class="n">withTransitionCoordinator</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">coordinator</span> <span class="p">{</span>
 
-<p>UIButton 基本属性</p>
+<span class="p">[</span><span class="nb">self</span><span class="o">.</span><span class="no">View</span><span class="p">.</span><span class="nf">textField</span> <span class="n">resignFirstResponder</span><span class="p">];</span>
 
-<blockquote>
-  <p>创建UIButton时用便利构造器
-&gt;UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];//通常用Normal</p>
-</blockquote>
+<span class="p">}</span></code></pre></figure>
 
-<blockquote>
-  <p>设置指定状态下的背景图片 状态：普通 高亮
-&gt;[button setBackgroundImage:[UIImage imageName:@“image”] forState:UIControlStateNormal];</p>
-</blockquote>
+<p>屏幕旋转时调整视图的位置 在该视图类中重写方法（只要视图本身的bounds发生变化，此方法就会被执行）</p>
 
-<p>设置指定状态下的标题</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[button setTitle:@“标题” forState:UIControlStateNormal];
-</code></pre>
-</div>
+<span class="no">UIInterfaceOrientation</span> <span class="n">orientation</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIApplication</span> <span class="n">sharedApplication</span><span class="p">].</span><span class="nf">statusBarOrientation</span><span class="p">;</span><span class="sr">//</span><span class="err">获取屏幕方向</span>
 
-<p><img src="/assets/img/iOS/UI/UI基本控件/image2.jpg" /></p>
+<span class="sr">//</span><span class="err">判断是否横向</span>
 
-<p>添加button的点击事件</p>
+<span class="k">if</span> <span class="p">(</span><span class="n">orientation</span> <span class="o">==</span> <span class="no">UIInterfaceOrientationLandscapeLeft</span> <span class="o">||</span> <span class="n">orientation</span> <span class="o">==</span> <span class="no">UIInterfaceOrientationLandscapeRight</span><span class="p">)</span> <span class="p">{</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[button addTarget:self action:@selector(方法名) forControlEvents:UIControlEventTouchUpInside];
-</code></pre>
-</div>
+<span class="nb">self</span><span class="p">.</span><span class="nf">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMack</span><span class="p">(</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">);</span>
 
-<p>移除按钮的点击事件</p>
+<span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[button removeTarget:self action:@selector(方法名) forControlEvents:UIControlEventTouchUpInside];
-</code></pre>
-</div>
+<span class="nb">self</span><span class="p">.</span><span class="nf">button</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMake</span><span class="p">(</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">,</span>  <span class="p">);</span>
 
-<p>UIImageView</p>
+<span class="p">}</span>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">图⽚文件路径</span>
+<span class="err">｝</span></code></pre></figure>
 
-<span class="no">NSString</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[[</span><span class="no">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="n">pathForResource</span><span class="p">:</span><span class="err">@</span><span class="s2">"1"</span> <span class="n">ofType</span><span class="p">:</span><span class="err">@</span><span class="s2">"jpg"</span><span class="p">];</span>
-
-<span class="sr">//</span><span class="err">创建⼀个</span><span class="no">UIImage</span><span class="err">对象</span><span class="p">,</span><span class="err">使用</span><span class="n">initWithContentOfFile</span><span class="p">:</span><span class="err">方法</span>
-
-<span class="no">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIImage</span> <span class="n">imageWithContentsOfFile</span><span class="ss">:path</span><span class="p">];</span>
-
-<span class="sr">//</span><span class="err">创建一个</span><span class="no">UIImageView</span><span class="err">对象</span><span class="p">,</span><span class="err">使用</span><span class="n">initWithImage</span><span class="p">:</span><span class="err">方法</span>
-
-<span class="no">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[[</span><span class="no">UIImageView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithImage</span><span class="ss">:image</span><span class="p">];</span>
-
-<span class="n">imageView</span><span class="p">.</span><span class="nf">frame</span> <span class="o">=</span> <span class="no">CGRectMake</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
-
-<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">view</span><span class="p">.</span><span class="nf">addSubview</span><span class="ss">:imageView</span><span class="p">];</span></code></pre></figure>
-
-<p>animationImages //设置一组动态图⽚</p>
-
-<p>animationDuration //设置播放一组动态图片的时间</p>
-
-<p>animationRepeatCount //设置重复次数</p>
-
-<p>startAnimating //开始动画</p>
-
-<p>stopAnimating //结束动画</p>
 
             </article>
 
             <section class="share">
     <h3>Share</h3>
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20https://neighborwangshushu.github.io/iOS_UI(%E4%BA%8C)UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/%20via%20&#64;NeighborWangShu&hashtags=iOS,UI,Objective-C,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20https://neighborwangshushu.github.io/iOS_UI(%E4%B8%89)%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8/%20via%20&#64;NeighborWangShu&hashtags=iOS,UI,Objective-C,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://neighborwangshushu.github.io/iOS_UI(%E4%BA%8C)UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://neighborwangshushu.github.io/iOS_UI(%E4%B8%89)%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://neighborwangshushu.github.io/iOS_UI(%E4%BA%8C)UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://neighborwangshushu.github.io/iOS_UI(%E4%B8%89)%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -264,8 +207,8 @@
     {
         disqus_loaded = true;
         var disqus_shortname = 'NeighborWangShuShu';
-        var disqus_title = 'iOS_UI(二)UI基本控件';
-        var disqus_url = '/iOS_UI(%E4%BA%8C)UI%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/';
+        var disqus_title = 'iOS_UI(三)视图控制器';
+        var disqus_url = '/iOS_UI(%E4%B8%89)%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
