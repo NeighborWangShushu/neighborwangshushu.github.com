@@ -5,9 +5,102 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 16 Mar 2016 22:45:47 +0800</pubDate>
-    <lastBuildDate>Wed, 16 Mar 2016 22:45:47 +0800</lastBuildDate>
+    <pubDate>Wed, 16 Mar 2016 22:53:38 +0800</pubDate>
+    <lastBuildDate>Wed, 16 Mar 2016 22:53:38 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>iOS_UI(七)UINavigationController</title>
+        <description>&lt;p&gt;导航视图控制器也是一个视图控制器，TA管理了多个子视图控制器，是系统提供给我们的容器视图控制器&lt;/p&gt;
+
+&lt;p&gt;导航视图控制器至少管理了一个子视图控制器，这个视图控制器称为根视图控制器&lt;/p&gt;
+
+&lt;p&gt;如果我们的程序想要采用导航视图控制器进行布局，我们需要指定window的根视图控制器为导航视图控制器&lt;/p&gt;
+
+&lt;p&gt;每一个加到导航视图控制器内部的视图控制器自带一个属性叫navigationItem，可以配置当前页面导航条的显示内容，比如左按钮，标题，右按钮等&lt;/p&gt;
+
+&lt;p&gt;设置导航栏的整体属性  一般在指定导航视图控制器的根视图时设置&lt;/p&gt;
+
+&lt;p&gt;1.显隐属性 naVC.navigationBarHidden = YES;&lt;/p&gt;
+
+&lt;p&gt;2.导航栏样式 naVC.navigationBar.barStyle = UIBarStyleDefault;&lt;/p&gt;
+
+&lt;p&gt;3.导航栏的背景颜色 naVC.navigationBar.backgroundColor = [UIColor whiteColor];&lt;/p&gt;
+
+&lt;p&gt;4.导航栏的颜色 naVC.navigationBar.barTintColor = [UIColor whiteColor];&lt;/p&gt;
+
+&lt;p&gt;5.导航栏元素颜色 naVC.navigationBar.tintColor = [UIColor whiteColor];&lt;/p&gt;
+
+&lt;p&gt;设置导航栏标题 self.navigationItem.title = @“”;&lt;/p&gt;
+
+&lt;p&gt;设置导航栏上的标题视图 self.navigationItem.titleView = 视图控件；&lt;/p&gt;
+
+&lt;p&gt;创建左右按钮（四种初始化方法）&lt;/p&gt;
+
+&lt;p&gt;1.显示自定义图片 initWithImage:image  style:UIBarButtonItemStylePlain target:self action:SEL&lt;/p&gt;
+
+&lt;p&gt;2.使用系统自带图标样式&lt;/p&gt;
+
+&lt;p&gt;3.使用文本显示&lt;/p&gt;
+
+&lt;p&gt;4.使用自定义视图显示&lt;/p&gt;
+
+&lt;p&gt;指定左右按钮 self.navigationItem.leftBarButtonItem = left;&lt;/p&gt;
+
+&lt;p&gt;是否开启导航栏的半透明度关系到自身的原点位置，系统默认为YES，其原点为屏幕左上角点&lt;/p&gt;
+
+&lt;p&gt;关闭时导航栏左下角的点为坐标原点&lt;/p&gt;
+
+&lt;p&gt;self.navigationController.navigationBar.translucent=NO;&lt;/p&gt;
+
+&lt;p&gt;界面跳转&lt;/p&gt;
+
+&lt;p&gt;1.创建想要跳转到的视图控制器&lt;/p&gt;
+
+&lt;p&gt;2.导航视图控制器完成推出操作  [self.navigationController pushViewController:secondVC animated:YES];&lt;/p&gt;
+
+&lt;p&gt;返回界面&lt;/p&gt;
+
+&lt;p&gt;1.返回到上一级视图控制器 [self.navigationController popViewControllerAnimated:YES];&lt;/p&gt;
+
+&lt;p&gt;2.返回到根视图控制器  [self.navigationController popToRootViewControllerAnimated:YES];&lt;/p&gt;
+
+&lt;p&gt;3.返回到指定的视图控制器 UIViewController *vc = [self.navigationController.viewControllers objectAtIndex:1];&lt;/p&gt;
+
+&lt;p&gt;[self.navigationController popToViewController:vc animated:YES];&lt;/p&gt;
+</description>
+        <pubDate>Tue, 01 Mar 2016 20:08:01 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%85%AD)UINavigationController/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%85%AD)UINavigationController/</guid>
+        
+        <category>iOS</category>
+        
+        <category>UI</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
+    
+      <item>
+        <title>iOS_UI(六)UIScrollView</title>
+        <description>&lt;p&gt;定义手机屏幕的宽和高为 kWidth 和 kHeight&lt;/p&gt; &lt;p&gt;UIScrollView包含的主要属性&lt;/p&gt; &lt;p&gt;①、设置滚动区域(内容区域)的大小 scrollView.contentSize = CGSizeMake(kWidth * n, kHeight * n);//n &amp;gt;= 1才能滑动&lt;/p&gt; &lt;p&gt;②、设置滚动视图的偏移量 scrollView.contentOffset = CGPointMake(0, 0);&lt;/p&gt; &lt;p&gt;③、是否整页翻图 scrollView.pagingEnabled = YES; 默认是NO&lt;/p&gt; &lt;p&gt;④、是否显示滚动显示条 scrollView.showsHorizontalScrollIndicator = NO; //横向 默认是YES&lt;/p&gt; &lt;p&gt;scrollView.showsVerticalScrollIndicator = NO;//纵向默认是YES&lt;/p&gt; &lt;p&gt;⑤、是否开启滚动视图的回弹效果 scrollView.bounces = NO;//默认是YES&lt;/p&gt; &lt;p&gt;⑥、定义scrollView的缩放大小比例 scrollView.maximumZoomScale = 2;//最多放大两倍&lt;/p&gt; &lt;p&gt;scrollView.minimumZoomScale = 0.5;//最多缩小到0.5倍&lt;/p&gt; &lt;p&gt;只有遵守了UIScrollViewDelegate协议才能执行UIScrollView的方法&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;只要是拖拽&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;就会触发这个方法&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;开始拖拽的时候会触发这个方法&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewWillBeginDragging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;当结束拖拽的时候会触发这个方法&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidEndDragging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewwillDecelerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span...</description>
+        <pubDate>Mon, 29 Feb 2016 20:23:32 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%85%AD)UIScrollView/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%85%AD)UIScrollView/</guid>
+        
+        <category>iOS</category>
+        
+        <category>UI</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
     
       <item>
         <title>iOS_UI(五)UIControl及其子类</title>
