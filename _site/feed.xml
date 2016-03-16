@@ -5,9 +5,27 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Mar 2016 22:28:27 +0800</pubDate>
-    <lastBuildDate>Tue, 15 Mar 2016 22:28:27 +0800</lastBuildDate>
+    <pubDate>Wed, 16 Mar 2016 22:36:17 +0800</pubDate>
+    <lastBuildDate>Wed, 16 Mar 2016 22:36:17 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>iOS_UI(四)触摸、手势</title>
+        <description>&lt;p&gt;触摸&lt;/p&gt; &lt;p&gt;视图响应触摸的三个时间阶段的方法&lt;/p&gt; &lt;p&gt;触摸开始的方法 &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt; - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &lt;/code&gt; &lt;br /&gt; 触摸移动的方法 &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt; - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event &lt;/code&gt; &lt;br /&gt; 触摸结束的方法 &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt; - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event &lt;/code&gt; &lt;br /&gt; 获取触摸在屏幕上的手指对象&lt;/p&gt; &lt;p&gt;UITouch *touch = [touches anyObject];&lt;/p&gt; &lt;p&gt;获取手指之前在屏幕上的位置&lt;/p&gt; &lt;p&gt;CGPoint previousP = [touch previousLocationInView:self];&lt;/p&gt; &lt;p&gt;获取手指现在在屏幕上的位置&lt;/p&gt; &lt;p&gt;CGPoint currentP = [touch locationInView:self];&lt;/p&gt; &lt;p&gt;响应者链&lt;/p&gt; &lt;p&gt;触摸检测查询 先UIApplication -&amp;gt; window -&amp;gt; viewController -&amp;gt; view -&amp;gt; 触摸的子视图&lt;/p&gt; &lt;p&gt;事件处理的顺序与触摸检测查询顺序相反，如果没有响应者处理事件，触摸事件则会被丢弃&lt;/p&gt; &lt;p&gt;关闭用户交互则会阻断响应者链，无法完成检测&lt;/p&gt; &lt;p&gt;默认关闭用户交互的空间有 UILabel 和 UIImageView&lt;/p&gt; &lt;p&gt;开启用户交互：imageView . userInteractionEnabled = YES;&lt;/p&gt; &lt;p&gt;手势&lt;/p&gt; &lt;p&gt;以imageView为例&lt;/p&gt; &lt;p&gt;①.创建满足需求的手势，再创建时关联手势触发时的方法&lt;/p&gt; &lt;p&gt;tip:创建手势的代码：[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];&lt;/p&gt; &lt;p&gt;②.配置手势的相关属性&lt;/p&gt; &lt;p&gt;③.将手势添加到需要执行操作的视图上面&lt;/p&gt; &lt;p&gt;tip:添加手势的代码：[imageView addGestureRecognizer:tap];&lt;/p&gt; &lt;p&gt;④.实现手势方法，当触摸发生，手势识别器识别到相对应的触摸时，就会执行关联方法&lt;/p&gt; &lt;p&gt;tip:关联手势的代码：[UIImageView *imageView = (UIImageView *)longPress.view]; //返回值为UIView 所以要进行类型强转&lt;/p&gt;...</description>
+        <pubDate>Fri, 26 Feb 2016 20:14:51 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%9B%9B)%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%9B%9B)%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF/</guid>
+        
+        <category>iOS</category>
+        
+        <category>UI</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
     
       <item>
         <title>iOS_UI(三)视图控制器</title>

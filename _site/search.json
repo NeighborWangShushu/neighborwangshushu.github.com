@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "iOS_UI(四)触摸、手势",
+      "category" : "iOS_Objective-C",
+      "tags"     : "iOS, UI, and Objective-C",
+      "url"      : "/iOS_UI(%E5%9B%9B)%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF/",
+      "date"     : "26 Feb 2016"
+    } ,
+  
+    {
       "title"    : "iOS_UI(三)视图控制器",
       "category" : "iOS_Objective-C",
       "tags"     : "iOS, UI, and Objective-C",
