@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iOS进阶——SQLite数据库</title>
+    <meta name="description" content="SQLite">
+
+    <!-- Google Authorship Markup -->
+    <link rel="author" href="https://plus.google.com/+?rel=author">
+
+    <!-- Social: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NeighborWangShu">
+    <meta name="twitter:title" content="iOS进阶——SQLite数据库">
+    <meta name="twitter:description" content="SQLite">
+    
+    <meta property="twitter:image:src" content="https://neighborwangshushu.github.io/assets/img/">
+    
+
+    <!-- Social: Facebook / Open Graph -->
+    <!-- <meta property="og:site" content="@"> -->
+    <meta property="og:url" content="https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <meta property="og:title" content="iOS进阶——SQLite数据库">
+    
+    <meta property="og:image" content="https://neighborwangshushu.github.io/assets/img/">
+    
+    <meta property="og:description" content="SQLite">
+    <meta property="og:site_name" content="WangShushu Blog">
+
+    <!-- Social: Google+ / Schema.org  -->
+    <meta itemprop="name" content="iOS进阶——SQLite数据库"/>
+    <meta itemprop="description" content="SQLite">
+    <meta itemprop="image" content="https://neighborwangshushu.github.io/assets/img/blog-image.png"/>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/icons/favicon.ico" type="image/x-icon" />
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
+    <!-- Windows 8 Tile Icons -->
+    <meta name="application-name" content="NeighborWangShuShu Blog">
+    <meta name="msapplication-TileColor" content="#0562DC">
+    <meta name="msapplication-square70x70logo" content="smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="widetile.png" />
+    <meta name="msapplication-square310x310logo" content="largetile.png" />
+    <!-- Android Lolipop Theme Color -->
+    <meta name="theme-color" content="#0562DC">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link rel="alternate" type="application/rss+xml" title="WangShushu Blog" href="https://neighborwangshushu.github.io/feed.xml" />
+</head>
+
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-email" viewBox="0 0 1024 1024"><path class="path1" d="M950.857 859.429v-438.857q-18.286 20.571-39.429 37.714-153.143 117.714-243.429 193.143-29.143 24.571-47.429 38.286t-49.429 27.714-58.571 14h-1.143q-27.429 0-58.571-14t-49.429-27.714-47.429-38.286q-90.286-75.429-243.429-193.143-21.143-17.143-39.429-37.714v438.857q0 7.429 5.429 12.857t12.857 5.429h841.143q7.429 0 12.857-5.429t5.429-12.857zM950.857 258.857v-14t-0.286-7.429-1.714-7.143-3.143-5.143-5.143-4.286-8-1.429h-841.143q-7.429 0-12.857 5.429t-5.429 12.857q0 96 84 162.286 110.286 86.857 229.143 181.143 3.429 2.857 20 16.857t26.286 21.429 25.429 18 28.857 15.714 24.571 5.143h1.143q11.429 0 24.571-5.143t28.857-15.714 25.429-18 26.286-21.429 20-16.857q118.857-94.286 229.143-181.143 30.857-24.571 57.429-66t26.571-75.143zM1024 237.714v621.714q0 37.714-26.857 64.571t-64.571 26.857h-841.143q-37.714 0-64.571-26.857t-26.857-64.571v-621.714q0-37.714 26.857-64.571t64.571-26.857h841.143q37.714 0 64.571 26.857t26.857 64.571z"/></symbol><symbol id="icon-close" viewBox="0 0 805 1024"><path class="path1" d="M741.714 755.429q0 22.857-16 38.857l-77.714 77.714q-16 16-38.857 16t-38.857-16l-168-168-168 168q-16 16-38.857 16t-38.857-16l-77.714-77.714q-16-16-16-38.857t16-38.857l168-168-168-168q-16-16-16-38.857t16-38.857l77.714-77.714q16-16 38.857-16t38.857 16l168 168 168-168q16-16 38.857-16t38.857 16l77.714 77.714q16 16 16 38.857t-16 38.857l-168 168 168 168q16 16 16 38.857z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-rss" viewBox="0 0 805 1024"><path class="path1" d="M219.429 768q0 45.714-32 77.714t-77.714 32-77.714-32-32-77.714 32-77.714 77.714-32 77.714 32 32 77.714zM512 838.286q1.143 16-9.714 27.429-10.286 12-26.857 12h-77.143q-14.286 0-24.571-9.429t-11.429-23.714q-12.571-130.857-105.429-223.714t-223.714-105.429q-14.286-1.143-23.714-11.429t-9.429-24.571v-77.143q0-16.571 12-26.857 9.714-9.714 24.571-9.714h2.857q91.429 7.429 174.857 46t148 103.714q65.143 64.571 103.714 148t46 174.857zM804.571 839.429q1.143 15.429-10.286 26.857-10.286 11.429-26.286 11.429h-81.714q-14.857 0-25.429-10t-11.143-24.286q-6.857-122.857-57.714-233.429t-132.286-192-192-132.286-233.429-58.286q-14.286-0.571-24.286-11.143t-10-24.857v-81.714q0-16 11.429-26.286 10.286-10.286 25.143-10.286h1.714q149.714 7.429 286.571 68.571t243.143 168q106.857 106.286 168 243.143t68.571 286.571z"/></symbol><symbol id="icon-google-plus" viewBox="0 0 951 1024"><path class="path1" d="M420 454.857q0 20.571 18.286 40.286t44.286 38.857 51.714 42 44 59.429 18.286 81.143q0 51.429-27.429 98.857-41.143 69.714-120.571 102.571t-170.286 32.857q-75.429 0-140.857-23.714t-98-78.571q-21.143-34.286-21.143-74.857 0-46.286 25.429-85.714t67.714-65.714q74.857-46.857 230.857-57.143-18.286-24-27.143-42.286t-8.857-41.714q0-20.571 12-48.571-26.286 2.286-38.857 2.286-84.571 0-142.571-55.143t-58-139.714q0-46.857 20.571-90.857t56.571-74.857q44-37.714 104.286-56t124.286-18.286h238.857l-78.857 50.286h-74.857q42.286 36 64 76t21.714 91.429q0 41.143-14 74t-33.714 53.143-39.714 37.143-34 35.143-14 37.714zM336.571 400q21.714 0 44.571-9.429t37.714-24.857q30.286-32.571 30.286-90.857 0-33.143-9.714-71.429t-27.714-74-48.286-59.143-66.857-23.429q-24 0-47.143 11.143t-37.429 30q-26.857 33.714-26.857 91.429 0 26.286 5.714 55.714t18 58.857 29.714 52.857 42.857 38.286 55.143 14.857zM337.714 898.857q33.143 0 63.714-7.429t56.571-22.286 41.714-41.714 15.714-62.286q0-14.286-4-28t-8.286-24-15.429-23.714-16.857-20-22-19.714-20.857-16.571-23.714-17.143-20.857-14.857q-9.143-1.143-27.429-1.143-30.286 0-60 4t-61.429 14.286-55.429 26.286-39.143 42.571-15.429 60.286q0 40 20 70.571t52.286 47.429 68 25.143 72.857 8.286zM800.571 398.286h121.714v61.714h-121.714v125.143h-60v-125.143h-121.143v-61.714h121.143v-124h60v124z"/></symbol><symbol id="icon-angle-down" viewBox="0 0 658 1024"><path class="path1" d="M614.286 420.571q0 7.429-5.714 13.143l-266.286 266.286q-5.714 5.714-13.143 5.714t-13.143-5.714l-266.286-266.286q-5.714-5.714-5.714-13.143t5.714-13.143l28.571-28.571q5.714-5.714 13.143-5.714t13.143 5.714l224.571 224.571 224.571-224.571q5.714-5.714 13.143-5.714t13.143 5.714l28.571 28.571q5.714 5.714 5.714 13.143z"/></symbol><symbol id="icon-github-alt" viewBox="0 0 951 1024"><path class="path1" d="M365.714 694.857q0 22.857-7.143 46.857t-24.571 43.429-41.429 19.429-41.429-19.429-24.571-43.429-7.143-46.857 7.143-46.857 24.571-43.429 41.429-19.429 41.429 19.429 24.571 43.429 7.143 46.857zM731.429 694.857q0 22.857-7.143 46.857t-24.571 43.429-41.429 19.429-41.429-19.429-24.571-43.429-7.143-46.857 7.143-46.857 24.571-43.429 41.429-19.429 41.429 19.429 24.571 43.429 7.143 46.857zM822.857 694.857q0-68.571-39.429-116.571t-106.857-48q-23.429 0-111.429 12-40.571 6.286-89.714 6.286t-89.714-6.286q-86.857-12-111.429-12-67.429 0-106.857 48t-39.429 116.571q0 50.286 18.286 87.714t46.286 58.857 69.714 34.286 80 16.857 85.143 4h96q46.857 0 85.143-4t80-16.857 69.714-34.286 46.286-58.857 18.286-87.714zM950.857 594.286q0 118.286-34.857 189.143-21.714 44-60.286 76t-80.571 49.143-97.143 27.143-98 12.571-95.429 2.571q-44.571 0-81.143-1.714t-84.286-7.143-87.143-17.143-78.286-29.429-69.143-46.286-49.143-65.714q-35.429-70.286-35.429-189.143 0-135.429 77.714-226.286-15.429-46.857-15.429-97.143 0-66.286 29.143-124.571 61.714 0 108.571 22.571t108 70.571q84-20 176.571-20 84.571 0 160 18.286 60-46.857 106.857-69.143t108-22.286q29.143 58.286 29.143 124.571 0 49.714-15.429 96 77.714 91.429 77.714 227.429z"/></symbol></defs></svg>
+
+        <header class="header-post" role="banner">
+    <div class="content">
+        
+            <time itemprop="datePublished" datetime="2016-04-01 10:08:13 +0800" class="date">01 Apr 2016</time>
+        
+        <h1 class="post-title" itemprop="name">iOS进阶——SQLite数据库</h1>
+        <p itemprop="description" class="subtitle">SQLite</p>
+    </div>
+     <a class="down" data-scroll href="#scroll"><svg class="icon icon-angle-down"><use xlink:href="#icon-angle-down"></use></svg></a>
+     <div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" class="search-field" placeholder="Search...">
+        <svg class="icon-remove-sign"><use xlink:href="#icon-close"></use></svg>
+        <ul class="search-results search-list"></ul>
+    </div>
+</div>
+
+<div id="fade" class="overlay"></div>
+<a id="slide" class="slideButton fade">
+    <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+    <svg id="close" class="icon-menu"><use xlink:href="#icon-close"></use></svg>
+</a>
+<aside id="sidebar">
+<nav id="navigation">
+  <h2>MENU</h2>
+  <ul>
+    
+      <li><a href="https://neighborwangshushu.github.io/">Home</a></li>
+    
+      <li><a href="https://neighborwangshushu.github.io/series">Series</a></li>
+    
+      <li><a href="https://neighborwangshushu.github.io/tags">Tags</a></li>
+    
+      <li><a href="https://neighborwangshushu.github.io/about">About Me</a></li>
+    
+    <li><a class="feed" href="https://neighborwangshushu.github.io/feed.xml" title="Atom/RSS feed">Feed</a></li>
+  </ul>
+</nav>
+</aside>
+<a id="search" class="dosearch">
+    <svg class="icon-menu icon-search"><use xlink:href="#icon-search"></use></svg>
+</a>
+</header>
+
+        <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <article role="article" id="scroll" class="post-content" itemprop="articleBody">
+                <p>#一、数据库管理系统
+SQL语言概念
+SQL是一种<strong>结构化查询语言</strong>，TA是专为数据库建立的操作命令集，是一种功能齐全的<strong>数据库语言</strong></p>
+
+<ul>
+  <li>常见的数据库语言：
+<strong>MySQL、Oracle</strong></li>
+</ul>
+
+<hr />
+
+<p>数据库管理系统
+&gt; 数据库的特征：
+1. 以一定方式存储在一起
+2. 能为多个用户共享
+3. 具有尽可能少的冗余代码
+4. 与程序彼此独立的数据集合</p>
+
+<p>讲了这么多数据库相关的知识，那么到底什么是数据库呢
+* <strong>数据库</strong>（Database）是按照数据结构来组织、存储和管理数据的仓库</p>
+
+<p>数据库的分类
+<strong>关系型数据库（主流）</strong>、对象数据库、层次式数据库</p>
+
+<p>常用关系型数据库
+PC端：Oracle、MySQL、SQL Server、Access、DB2、Sybase
+<strong>嵌入式\移动客户端：SQLite</strong></p>
+
+<p>SQLite是一个轻量级的<strong>关系数据库</strong>。SQLite最初的设计目标是用于嵌入式系统，TA占用资源非常少，在嵌入式设备中，只需要几百K的内存就够了，目前应用于Android、iOS、Windows Phone等智能手机。iOS使用时SQLite，只需要加入libsqlite3.0.tbd依赖以及引入sqlite3.h头文件即可</p>
+
+<hr />
+
+<blockquote>
+  <p>数据库中有几个很重要的概念</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>表：是数据库中一个非常重要的对象，是其他对象的基础。根据信息的分类情况，一个数据库中可能包含若干个数据表</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>字段：表的“列”称为“字段”，每个字段包含某一专题的信息</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>记录：是指对应于数据表中一行信息的一组完整的相关信息</p>
+  </blockquote>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>SQL中很重要的一点，一定要记住，<strong><em>SQL对大小写不敏感</em></strong></p>
+</blockquote>
+
+<hr />
+
+<p>SQL语句后面的分号</p>
+
+<p>在数据库系统中分号是作为分隔每条SQL语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句
+需要我们注意的是，某些数据库会有要求在每条SQL命令的末尾加上分号，而SQLite则属于另一类，TA的语句末尾<strong>不使用分号</strong></p>
+
+<ul>
+  <li>PS：在我们学习Objective-C时每段语句的末尾都要求加上分号，但是SQLite不需要我们要区分开来</li>
+</ul>
+
+<hr />
+
+<p>SQLite数据库数据类型
+SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLite来说对字段不指定类型是完全有效的
+为了使SQLite和其他数据库间的兼容性最大化，SQLite支持“类型近似”的观点，列的类型近似指的是存储列上数据的推荐类型。
+&gt; SQLite近似类型规则
+  »1. 如果类型字符串中包含“int”，那么该字段的亲缘类型是INTEGER
+  »2. 如果类型字符串中包含“char”、“clob”或“text”，那么该字段的亲缘类型是TEXT，如VARCHAR
+  »3. 如果类型字符串中包含“blob”，那么该字段的亲缘类型是none
+  »4. 如果类型字符串中包含“real”、“floa”或“doub”，那么该字段的亲缘类型是real
+  »5. 其余情况下，字段的亲缘类型为NUMERIC</p>
+
+<hr />
+
+<p>SQLite字段约束条件
+* not null - 非空
+* unique - 唯一
+* primary key - 主键
+* foreign key - 外键
+* check - 条件检查，确保一列中的所有值满足一定条件
+* default - 默认
+* autoincreatement - 自增型变量</p>
+
+<hr />
+
+<p>SQL语句</p>
+
+<ul>
+  <li>SQL的语句我们可以分成两个部分来看，分别是：数据操作语言（DML）和数据定义语言（DDL）</li>
+</ul>
+
+<blockquote>
+  <p>查询和更新指令构成了SQL的DML部分：
+    » * 数据插入命令——insert
+    » * 数据库更新命令——update
+    » * 数据库删除命令——delete
+    » * 数据库检索命令——select</p>
+</blockquote>
+
+<blockquote>
+  <p>DDL部分是我们有能力创建活删除表格，我们也可以定义索引，规定表之间的链接，以及施加表间的约束
+    » * 创建数据库命令——create database
+    » * 修改数据库命令——alter database
+    » * 创建新表的命令——create table
+    » * 变更数据库中的表——alter table
+    » * 删除表——drop table
+    » * 创建索引——create index
+    » * 删除索引——drop index</p>
+</blockquote>
+
+<hr />
+
+<p>三、iOS的数据库技术的实现</p>
+
+<p>开始使用SQLite所需要的几个步骤</p>
+
+<p>需要的框架：libsqlite3.0.tbd
+1. 引入<sqlite3.h>头文件
+2. 打开数据库
+3. 执行SQL命令——创建表，增删改查等操作
+4. 关闭数据库</sqlite3.h></p>
+
+<hr />
+
+<p>打开与关闭数据库
+* 需要注意的是我们的iOS程序中,一般情况下只有一个数据库,我们可以在数据库中创建多张表来保存不同的信息,但是千万不要创建多个数据库,每个数据库中只有一张表,因为不断的连接,关闭数据库是很耗性能的</p>
+
+<p>创建一个DB类用来进行对数据库的操作</p>
+
+<p>打开数据库
+```objc
+#import “DB.h”</p>
+
+<p>@implementation DB</p>
+
+<p>// 创建数据库指针
+static sqlite3 *db = nil;</p>
+
+<p>// 打开数据库
++ (sqlite3 *)open {
+    
+    // 此方法的主要作用是打开数据库
+    // 返回值是一个数据库指针
+    // 因为这个数据库在很多的SQLite API（函数）中都会用到，我们声明一个类方法来获取，更加方便</p>
+
+<p>    // 懒加载
+    if (db != nil) {
+        return db;
+    }
+    
+    // 获取Documents路径
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) lastObject];
+    
+    // 生成数据库文件在沙盒中的路径
+    NSString *sqlPath = [docPath stringByAppendingPathComponent:@”studentDB.sqlite”];
+    
+    // 创建文件管理对象
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // 判断沙盒路径中是否存在数据库文件，如果不存在才执行拷贝操作，如果存在不在执行拷贝操作
+    if ([fileManager fileExistsAtPath:sqlPath] == NO) {
+        // 获取数据库文件在包中的路径
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@”studentDB” ofType:@”sqlite”];
+        
+        // 使用文件管理对象进行拷贝操作
+        // 第一个参数是拷贝文件的路径
+        // 第二个参数是将拷贝文件进行拷贝的目标路径
+        [fileManager copyItemAtPath:filePath toPath:sqlPath error:nil];
+        
+    }
+    
+    // 打开数据库需要使用一下函数
+    // 第一个参数是数据库的路径（因为需要的是C语言的字符串，而不是NSString所以必须进行转换）
+    // 第二个参数是指向指针的指针
+    sqlite3_open([sqlPath UTF8String], &amp;db);
+    
+    return db;
+}
+```</p>
+
+<p>关闭数据库
+<code class="highlighter-rouge">objc
+// 关闭数据库
++ (void)close {
+    
+    // 关闭数据库
+    sqlite3_close(db);
+    
+    // 将数据库的指针置空
+    db = nil;
+    
+}
+</code></p>
+
+<hr />
+
+<p>创建一个学生类</p>
+
+<p>创建表的方法
+```objc
+// 创建表方法
+- (void)createTable {
+    
+    // 将建表的sql语句放入NSString对象中
+    NSString *sql = @”create table if not exists stu (ID integer primary key, name text not null, gender text default ‘男’)”;
+    
+    // 打开数据库
+    sqlite3 *db = [DB open];
+    
+    // 执行sql语句
+    int result = sqlite3_exec(db, sql.UTF8String, nil, nil, nil);
+    
+    if (result == SQLITE_OK) {
+        NSLog(@”建表成功”);
+    } else {
+        NSLog(@”建表失败”);
+    }
+    
+    // 关闭数据库
+    [DB close];</p>
+
+<p>}
+```</p>
+
+<hr />
+
+<p>获取表中所有的学生
+<code class="highlighter-rouge">objc
+// 获取表中保存的所有学生
++ (NSArray *)allStudents {
+    
+    // 打开数据库
+    sqlite3 *db = [DB open];
+    
+    // 创建一个语句对象
+    sqlite3_stmt *stmt = nil;
+    
+    // 声明数组对象
+    NSMutableArray *mArr = nil;
+    
+    // 此函数的作用是生成一个语句对象，此时sql语句并没有执行，创建的语句对象，保存了关联的数据库，执行的sql语句，sql语句的长度等信息
+    int result = sqlite3_prepare_v2(db, "select * from Students", -1, &amp;stmt, nil);
+    if (result == SQLITE_OK) {
+        
+        // 为数组开辟空间
+        mArr = [NSMutableArray arrayWithCapacity:0];
+        
+        // SQLite_ROW仅用于查询语句，sqlite3_step()函数执行后的结果如果是SQLite_ROW，说明结果集里面还有数据，会自动跳到下一条结果，如果已经是最后一条数据，再次执行sqlite3_step()，会返回SQLite_DONE，结束整个查询
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            
+            // 获取记录中的字段值
+            // 第一个参数是语句对象，第二个参数是字段的下标，从0开始
+            int ID = sqlite3_column_int(stmt, 0);
+            const unsigned char *cName = sqlite3_column_text(stmt, 1);
+            const unsigned char *cGender = sqlite3_column_text(stmt, 2);
+            
+            // 将获取到的C语言字符串转换成OC字符串
+            NSString *name = [NSString stringWithUTF8String:(const char *)cName];
+            NSString *gender = [NSString stringWithUTF8String:(const char *)cGender];
+            Student *student = [Student studentWithID:ID name:name gender:gender];
+            
+            // 添加学生信息到数组中
+            [mArr addObject:student];
+        }
+    }
+    
+    // 关闭数据库
+    sqlite3_finalize(stmt);
+    
+    return mArr;
+    
+}
+</code></p>
+
+<hr />
+
+<p>查找对应ID的学生
+<code class="highlighter-rouge">objc
+// 根据指定的ID，查找相对应的学生
++ (Student *)findStudentByID:(int)ID {
+    
+    // 打开数据库
+    sqlite3 *db = [DB open];
+    
+    // 创建一个语句对象
+    sqlite3_stmt *stmt = nil;
+    
+    Student *student = nil;
+    
+    // 生成语句对象
+    int result = sqlite3_prepare_v2(db, "select * from Students where ID = ?", -1, &amp;stmt, nil);
+    
+    if (result == SQLITE_OK) {
+        
+        // 如果查询语句或者其他sql语句有条件，在准备语句对象的函数内部，sql语句中用？来代替条件，那么在执行语句之前，一定要绑定
+        // 1代表sql语句中的第一个问号，问号的下标是从1开始的
+        sqlite3_bind_int(stmt, 1, ID);
+        
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            
+            // 获取记录中的字段信息
+            const unsigned char *cName = sqlite3_column_text(stmt, 1);
+            const unsigned char *cGender = sqlite3_column_text(stmt, 2);
+            
+            // 将C语言字符串转换成OC字符串
+            NSString *name = [NSString stringWithUTF8String:(const char *)cName];
+            NSString *gender = [NSString stringWithUTF8String:(const char *)cGender];
+            
+            student = [Student studentWithID:ID name:name gender:gender];
+            
+        }
+    }
+    
+    // 先释放语句对象
+    sqlite3_finalize(stmt);
+    return student;
+    
+}
+</code></p>
+
+<hr />
+
+<p>向表中添加一条记录
+<code class="highlighter-rouge">objc
+// 插入一条记录
++ (void)insertStudentWithID:(int)ID name:(NSString *)name gender:(NSString *)gender {
+    
+    // 打开数据库
+    sqlite3 *db = [DB open];
+    
+    sqlite3_stmt *stmt = nil;
+    
+    int result = sqlite3_prepare_v2(db, "insert into Students values(?,?,?)", -1, &amp;stmt, nil);
+    
+    if (result == SQLITE_OK) {
+        // 绑定
+        sqlite3_bind_int(stmt, 1, ID);
+        sqlite3_bind_text(stmt, 2, [name UTF8String], -1, nil);
+        sqlite3_bind_text(stmt, 3, [gender UTF8String], -1, nil);
+        
+        // 插入与查询不一样，执行结果没有返回值
+        sqlite3_step(stmt);
+        
+    }
+    
+    // 释放语句对象
+    sqlite3_finalize(stmt);
+    
+}
+</code></p>
+
+<hr />
+
+<p>更新记录
+<code class="highlighter-rouge">objc
+// 更新指定ID下的姓名和性别
++ (void)updateStudentName:(NSString *)name gender:(NSString *)gender forID:(int)ID {
+    
+    // 打开数据库
+    sqlite3 *db = [DB open];
+    
+    sqlite3_stmt *stmt = nil;
+    
+    int result = sqlite3_prepare_v2(db, "update Student set name = ?, gender = ? where ID = ?", -1, &amp;stmt, nil);
+    if (result == SQLITE_OK) {
+        sqlite3_bind_text(stmt, 1, [name UTF8String], -1, nil);
+        sqlite3_bind_text(stmt, 2, [gender UTF8String], -1, nil);
+        sqlite3_bind_int(stmt, 3, ID);
+        
+        sqlite3_step(stmt);
+    }
+    sqlite3_finalize(stmt);
+}
+</code></p>
+
+<hr />
+
+<p>删除记录
+<code class="highlighter-rouge">objc
+// 根据指定ID删除学生
++ (void)deleteStudentByID:(int)ID {
+    
+    // 打开数据库
+    sqlite3 *db = [DB open];
+    
+    sqlite3_stmt *stmt = nil;
+    
+    int result = sqlite3_prepare_v2(db, "delete from Students where ID = ?", -1, &amp;stmt, nil);
+    
+    if (result == SQLITE_OK) {
+        sqlite3_bind_int(stmt, 1, ID);
+        sqlite3_step(stmt);
+    }
+    
+    sqlite3_finalize(stmt); 
+    
+}
+</code></p>
+
+            </article>
+
+            <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/%20via%20&#64;NeighborWangShu&hashtags=iOS,Objective-C,"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/"
+    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+        <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
+    </a>
+</section>
+            <section class="author" itemprop="author">
+    <div class="details" itemscope itemtype="http://schema.org/Person">
+        <img itemprop="image" class="img-rounded" src="/assets/img/blog-author.jpg" alt="">
+        <p class="def">Author</p>
+        <h3 class="name">
+            <a itemprop="name" href="https://plus.google.com/+/posts">NeighborWangShuShu</a>
+        </h3>
+        <p class="desc">三次元のprogrammer</p>
+        <a itemprop="email" class="email" href="mailto:NeighborWangShuShu@gmail.com">NeighborWangShuShu@gmail.com</a>
+    </div>
+</section>
+
+            <section class="comments">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'NeighborWangShuShu';
+        var disqus_title = 'iOS进阶——SQLite数据库';
+        var disqus_url = '/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+            <footer>
+    <p>NeighborWangShuShu@2016 Made with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <span class="love">❤</span> by <a href="http://willianjusten.com">Willian Justen</a></p>
+</footer>
+<script src="/assets/js/main.js"></script>
+        </section>
+    </body>
+</html>

@@ -5,9 +5,61 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Mar 2016 23:30:24 +0800</pubDate>
-    <lastBuildDate>Tue, 29 Mar 2016 23:30:24 +0800</lastBuildDate>
+    <pubDate>Fri, 01 Apr 2016 22:16:38 +0800</pubDate>
+    <lastBuildDate>Fri, 01 Apr 2016 22:16:38 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>iOS进阶——SQLite数据库</title>
+        <description>&lt;p&gt;#一、数据库管理系统 SQL语言概念 SQL是一种&lt;strong&gt;结构化查询语言&lt;/strong&gt;，TA是专为数据库建立的操作命令集，是一种功能齐全的&lt;strong&gt;数据库语言&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;常见的数据库语言： &lt;strong&gt;MySQL、Oracle&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;p&gt;数据库管理系统 &amp;gt; 数据库的特征： 1. 以一定方式存储在一起 2. 能为多个用户共享 3. 具有尽可能少的冗余代码 4. 与程序彼此独立的数据集合&lt;/p&gt; &lt;p&gt;讲了这么多数据库相关的知识，那么到底什么是数据库呢 * &lt;strong&gt;数据库&lt;/strong&gt;（Database）是按照数据结构来组织、存储和管理数据的仓库&lt;/p&gt; &lt;p&gt;数据库的分类 &lt;strong&gt;关系型数据库（主流）&lt;/strong&gt;、对象数据库、层次式数据库&lt;/p&gt; &lt;p&gt;常用关系型数据库 PC端：Oracle、MySQL、SQL Server、Access、DB2、Sybase &lt;strong&gt;嵌入式\移动客户端：SQLite&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;SQLite是一个轻量级的&lt;strong&gt;关系数据库&lt;/strong&gt;。SQLite最初的设计目标是用于嵌入式系统，TA占用资源非常少，在嵌入式设备中，只需要几百K的内存就够了，目前应用于Android、iOS、Windows Phone等智能手机。iOS使用时SQLite，只需要加入libsqlite3.0.tbd依赖以及引入sqlite3.h头文件即可&lt;/p&gt; &lt;hr /&gt; &lt;blockquote&gt; &lt;p&gt;数据库中有几个很重要的概念&lt;/p&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;表：是数据库中一个非常重要的对象，是其他对象的基础。根据信息的分类情况，一个数据库中可能包含若干个数据表&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;字段：表的“列”称为“字段”，每个字段包含某一专题的信息&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;记录：是指对应于数据表中一行信息的一组完整的相关信息&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;blockquote&gt; &lt;p&gt;SQL中很重要的一点，一定要记住，&lt;strong&gt;&lt;em&gt;SQL对大小写不敏感&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;p&gt;SQL语句后面的分号&lt;/p&gt; &lt;p&gt;在数据库系统中分号是作为分隔每条SQL语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句 需要我们注意的是，某些数据库会有要求在每条SQL命令的末尾加上分号，而SQLite则属于另一类，TA的语句末尾&lt;strong&gt;不使用分号&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;PS：在我们学习Objective-C时每段语句的末尾都要求加上分号，但是SQLite不需要我们要区分开来&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;p&gt;SQLite数据库数据类型 SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLite来说对字段不指定类型是完全有效的 为了使SQLite和其他数据库间的兼容性最大化，SQLite支持“类型近似”的观点，列的类型近似指的是存储列上数据的推荐类型。 &amp;gt; SQLite近似类型规则  »1. 如果类型字符串中包含“int”，那么该字段的亲缘类型是INTEGER  »2. 如果类型字符串中包含“char”、“clob”或“text”，那么该字段的亲缘类型是TEXT，如VARCHAR  »3. 如果类型字符串中包含“blob”，那么该字段的亲缘类型是none  »4. 如果类型字符串中包含“real”、“floa”或“doub”，那么该字段的亲缘类型是real  »5. 其余情况下，字段的亲缘类型为NUMERIC&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;SQLite字段约束条件 * not null - 非空 * unique - 唯一 * primary key - 主键 * foreign...</description>
+        <pubDate>Fri, 01 Apr 2016 10:08:13 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+        
+        <category>iOS</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
+    
+      <item>
+        <title>iOS_UI(十五)UICollectionView</title>
+        <description>&lt;p&gt;集合视图的创建必须指定布局，如果没有布局，则显示不了任何东西，所以在创建集合视图对象之前必须先创建一个布局对象&lt;/p&gt; &lt;p&gt;采用系统布局类UICollectViewLayout(布局基类)&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UICollectionViewFlowLayout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UICollectionViewFlowLayout&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;设置布局对象的相关属性&lt;/p&gt; &lt;p&gt;设置最小的行间距(默认是10)layout.minimumLineSpacing = 20;&lt;/p&gt; &lt;p&gt;设置item与item之间的间距layout.minimumInteritemSpacing = 10;&lt;/p&gt; &lt;p&gt;设置每个item的尺寸大小layout.itemSize = CGSizeMake((kWidth - 45) / 3, 100);&lt;/p&gt; &lt;p&gt;设置集合视图的分区间隔(上，左，下，右)layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);&lt;/p&gt; &lt;p&gt;设置集合视图的滑动方向layout.scrollDirection=UICollectionViewScrollDirectionVertical;//竖向滚动&lt;/p&gt; &lt;p&gt;创建集合视图&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UICollectionView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collectionView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UICollectionView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initWithFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScreen&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mainScreen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bounds&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collectionViewLayout&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;集合视图想要显示内容，必须将cell进行注册&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collectionView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registerClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UICollectionViewCell&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forCellWithReuseIdentifier&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;集合视图包含以下代理&lt;/p&gt; &lt;p&gt;UICollectionViewDataSource 数据源协议&lt;/p&gt; &lt;p&gt;UICollectionViewDelegate 代理协议 （其中的方法与UITableView的代理协议相似）&lt;/p&gt; &lt;p&gt;布局包含的代理&lt;/p&gt; &lt;p&gt;UICollectionViewDelegateFlowLayout&lt;/p&gt; &lt;p&gt;UICollectionViewDataSource协议包含的方法（前两个必须实现）&lt;/p&gt; &lt;p&gt;//设置每个分区包含的item个数&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot;...</description>
+        <pubDate>Thu, 10 Mar 2016 22:00:13 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%8D%81%E4%BA%94)UICollectionView/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%8D%81%E4%BA%94)UICollectionView/</guid>
+        
+        <category>iOS</category>
+        
+        <category>UI</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
+    
+      <item>
+        <title>iOS_UI(十四)可视化编程</title>
+        <description>&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;当&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;storyboard&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;中的视图控制器通过&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;segue&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;完成页面跳转时，此方法就会被执行&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prepareForSegue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIStoryboardSegue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;segue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/* segue有三个非常重要的属性 1.identifier，标识符，标识区分线（segue），可以选择性的跳转 2.sourceViewController，源视图控制器 3.destinationViewController，目标视图控制器 */&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;segue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;identifierisEqualToString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;secondVC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SecondViewController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secondVC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;segue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;destinationViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;secondVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;usernameTf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;IBAction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;每一个视图控制器都有一个属性叫&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;storyboard&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;storyboardID&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;来找到加到其内部的视图控制器&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UIViewController&lt;/span&gt;...</description>
+        <pubDate>Wed, 09 Mar 2016 23:02:09 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%8D%81%E5%9B%9B)%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BC%96%E7%A8%8B/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%8D%81%E5%9B%9B)%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BC%96%E7%A8%8B/</guid>
+        
+        <category>iOS</category>
+        
+        <category>UI</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
     
       <item>
         <title>iOS_UI(十三)XIB</title>
@@ -232,60 +284,6 @@
         <pubDate>Tue, 01 Mar 2016 20:08:01 +0800</pubDate>
         <link>https://neighborwangshushu.github.io/iOS_UI(%E4%B8%83)UINavigationController/</link>
         <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E4%B8%83)UINavigationController/</guid>
-        
-        <category>iOS</category>
-        
-        <category>UI</category>
-        
-        <category>Objective-C</category>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS_UI(六)UIScrollView</title>
-        <description>&lt;p&gt;定义手机屏幕的宽和高为 kWidth 和 kHeight&lt;/p&gt; &lt;p&gt;UIScrollView包含的主要属性&lt;/p&gt; &lt;p&gt;①、设置滚动区域(内容区域)的大小 scrollView.contentSize = CGSizeMake(kWidth * n, kHeight * n);//n &amp;gt;= 1才能滑动&lt;/p&gt; &lt;p&gt;②、设置滚动视图的偏移量 scrollView.contentOffset = CGPointMake(0, 0);&lt;/p&gt; &lt;p&gt;③、是否整页翻图 scrollView.pagingEnabled = YES; 默认是NO&lt;/p&gt; &lt;p&gt;④、是否显示滚动显示条 scrollView.showsHorizontalScrollIndicator = NO; //横向 默认是YES&lt;/p&gt; &lt;p&gt;scrollView.showsVerticalScrollIndicator = NO;//纵向默认是YES&lt;/p&gt; &lt;p&gt;⑤、是否开启滚动视图的回弹效果 scrollView.bounces = NO;//默认是YES&lt;/p&gt; &lt;p&gt;⑥、定义scrollView的缩放大小比例 scrollView.maximumZoomScale = 2;//最多放大两倍&lt;/p&gt; &lt;p&gt;scrollView.minimumZoomScale = 0.5;//最多缩小到0.5倍&lt;/p&gt; &lt;p&gt;只有遵守了UIScrollViewDelegate协议才能执行UIScrollView的方法&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;只要是拖拽&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;就会触发这个方法&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;开始拖拽的时候会触发这个方法&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewWillBeginDragging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollView&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;当结束拖拽的时候会触发这个方法&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewDidEndDragging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollViewwillDecelerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BOOL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span...</description>
-        <pubDate>Mon, 29 Feb 2016 20:23:32 +0800</pubDate>
-        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%85%AD)UIScrollView/</link>
-        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%85%AD)UIScrollView/</guid>
-        
-        <category>iOS</category>
-        
-        <category>UI</category>
-        
-        <category>Objective-C</category>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS_UI(五)UIControl及其子类</title>
-        <description>&lt;p&gt;UIControl&lt;/p&gt; &lt;p&gt;UIControl:有控制功能的视图的父类&lt;/p&gt; &lt;p&gt;只要跟控制有关的类都是继承自该类，同时我们通常不会直接用这个类，而用的都是该类的子类&lt;/p&gt; &lt;p&gt;常用方法&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addTarget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SEL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forControlEvents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIControlEvents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controlEvents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;添加一个事件&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;removeTarget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SEL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forControlEvents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIControlEvents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controlEvents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;移除一个事件&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;UISwitch&lt;/p&gt; &lt;p&gt;在创建过程中在frame里的size是没有意义的，因为系统开关控件大小是固定的&lt;/p&gt; &lt;p&gt;UISwitch相关属性&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UISwitch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firstSwitch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UISwitch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initWithFrame&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:CGRectMake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;创建&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UISwitch&lt;/span&gt; &lt;span...</description>
-        <pubDate>Sat, 27 Feb 2016 20:07:32 +0800</pubDate>
-        <link>https://neighborwangshushu.github.io/iOS_UI(%E4%BA%94)UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB/</link>
-        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E4%BA%94)UIControl%E5%8F%8A%E5%85%B6%E5%AD%90%E7%B1%BB/</guid>
-        
-        <category>iOS</category>
-        
-        <category>UI</category>
-        
-        <category>Objective-C</category>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS_UI(四)触摸、手势</title>
-        <description>&lt;p&gt;触摸&lt;/p&gt; &lt;p&gt;视图响应触摸的三个时间阶段的方法&lt;/p&gt; &lt;p&gt;触摸开始的方法 &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt; - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &lt;/code&gt; &lt;br /&gt; 触摸移动的方法 &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt; - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event &lt;/code&gt; &lt;br /&gt; 触摸结束的方法 &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt; - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event &lt;/code&gt; &lt;br /&gt; 获取触摸在屏幕上的手指对象&lt;/p&gt; &lt;p&gt;UITouch *touch = [touches anyObject];&lt;/p&gt; &lt;p&gt;获取手指之前在屏幕上的位置&lt;/p&gt; &lt;p&gt;CGPoint previousP = [touch previousLocationInView:self];&lt;/p&gt; &lt;p&gt;获取手指现在在屏幕上的位置&lt;/p&gt; &lt;p&gt;CGPoint currentP = [touch locationInView:self];&lt;/p&gt; &lt;p&gt;响应者链&lt;/p&gt; &lt;p&gt;触摸检测查询 先UIApplication -&amp;gt; window -&amp;gt; viewController -&amp;gt; view -&amp;gt; 触摸的子视图&lt;/p&gt; &lt;p&gt;事件处理的顺序与触摸检测查询顺序相反，如果没有响应者处理事件，触摸事件则会被丢弃&lt;/p&gt; &lt;p&gt;关闭用户交互则会阻断响应者链，无法完成检测&lt;/p&gt; &lt;p&gt;默认关闭用户交互的空间有 UILabel 和 UIImageView&lt;/p&gt; &lt;p&gt;开启用户交互：imageView . userInteractionEnabled = YES;&lt;/p&gt; &lt;p&gt;手势&lt;/p&gt; &lt;p&gt;以imageView为例&lt;/p&gt; &lt;p&gt;①.创建满足需求的手势，再创建时关联手势触发时的方法&lt;/p&gt; &lt;p&gt;tip:创建手势的代码：[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];&lt;/p&gt; &lt;p&gt;②.配置手势的相关属性&lt;/p&gt; &lt;p&gt;③.将手势添加到需要执行操作的视图上面&lt;/p&gt; &lt;p&gt;tip:添加手势的代码：[imageView addGestureRecognizer:tap];&lt;/p&gt; &lt;p&gt;④.实现手势方法，当触摸发生，手势识别器识别到相对应的触摸时，就会执行关联方法&lt;/p&gt; &lt;p&gt;tip:关联手势的代码：[UIImageView *imageView = (UIImageView *)longPress.view]; //返回值为UIView 所以要进行类型强转&lt;/p&gt;...</description>
-        <pubDate>Fri, 26 Feb 2016 20:14:51 +0800</pubDate>
-        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%9B%9B)%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF/</link>
-        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%9B%9B)%E8%A7%A6%E6%91%B8-%E6%89%8B%E5%8A%BF/</guid>
         
         <category>iOS</category>
         
