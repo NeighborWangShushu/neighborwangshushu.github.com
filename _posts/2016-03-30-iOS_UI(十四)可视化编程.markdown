@@ -16,6 +16,7 @@ twitter_text:
 
 * 当storyboard中的视图控制器通过segue完成页面跳转时，此方法就会被执行
 
+
     - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
 
 		if([segue.identifierisEqualToString:@"secondVC"]) {
@@ -27,6 +28,7 @@ twitter_text:
 		}
 
 	}
+
 * segue有三个非常重要的属性
 
  >1.identifier，标识符，标识区分线（segue），可以选择性的跳转
@@ -34,6 +36,7 @@ twitter_text:
  >2.sourceViewController，源视图控制器
 
  >3.destinationViewController，目标视图控制器
+
 
 	- (IBAction)regist:(UIButton*)sender {
 
