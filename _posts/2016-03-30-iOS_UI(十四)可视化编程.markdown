@@ -16,7 +16,7 @@ twitter_text:
 {% highlight ruby %}
 //当storyboard中的视图控制器通过segue完成页面跳转时，此方法就会被执行
 
-- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
+    - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
 
 /*
 
@@ -40,7 +40,7 @@ secondVC.string=self.usernameTf.text;
 
 }
 
-- (IBAction)regist:(UIButton*)sender {
+	- (IBAction)regist:(UIButton*)sender {
 
 //每一个视图控制器都有一个属性叫storyboard，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过storyboardID来找到加到其内部的视图控制器
 
