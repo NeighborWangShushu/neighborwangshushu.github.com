@@ -14,20 +14,23 @@ twitter_text:
 ---
 
 
-* 当storyboard中的视图控制器通过segue完成页面跳转时，此方法就会被执行
+- 当storyboard中的视图控制器通过segue完成页面跳转时，此方法就会被执行
 
+---
+{% highlight ruby %}
+- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
 
-    - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
+    if([segue.identifierisEqualToString:@"secondVC"]) {
 
-		if([segue.identifierisEqualToString:@"secondVC"]) {
+        SecondViewController*secondVC = segue.destinationViewController;
 
-			SecondViewController*secondVC = segue.destinationViewController;
+        secondVC.string=self.usernameTf.text;
 
-			secondVC.string=self.usernameTf.text;
+    }
 
-		}
+}
+{% endhighlight %}
 
-	}
 
 * segue有三个非常重要的属性
 
@@ -37,15 +40,17 @@ twitter_text:
 
  >3.destinationViewController，目标视图控制器
 
+---
+{% highlight ruby %}
+- (IBAction)regist:(UIButton*)sender {
 
-	- (IBAction)regist:(UIButton*)sender {
+//    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"second"];
 
-	//每一个视图控制器都有一个属性叫storyboard，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过storyboardID来找到加到其内部的视图控制器
+//    [self presentViewController:controller animated:YES completion:nil];
 
-	//    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"second"];
+    [self performSegueWithIdentifier:@"secondVC"sender:nil];
 
-	//    [self presentViewController:controller animated:YES completion:nil];
+}
+{% endhighlight %}
 
-		[selfperformSegueWithIdentifier:@"secondVC"sender:nil];
-
-	}
+* 每一个视图控制器都有一个属性叫storyboard，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过storyboardID来找到加到其内部的视图控制器

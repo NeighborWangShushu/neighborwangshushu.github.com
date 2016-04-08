@@ -68,7 +68,7 @@
         <header class="header-post" role="banner">
     <div class="content">
         
-            <time itemprop="datePublished" datetime="2015-03-09 23:02:09 +0800" class="date">09 Mar 2015</time>
+            <time itemprop="datePublished" datetime="2016-03-10 00:23:33 +0800" class="date">10 Mar 2016</time>
         
         <h1 class="post-title" itemprop="name">iOS_UI(十四)可视化编程</h1>
         <p itemprop="description" class="subtitle">storyboard</p>
@@ -112,44 +112,55 @@
         <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
-                
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">当</span><span class="n">storyboard</span><span class="err">中的视图控制器通过</span><span class="n">segue</span><span class="err">完成页面跳转时，此方法就会被执行</span>
+                <ul>
+  <li>当storyboard中的视图控制器通过segue完成页面跳转时，此方法就会被执行</li>
+</ul>
 
-    <span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">prepareForSegue</span><span class="p">:(</span><span class="no">UIStoryboardSegue</span><span class="o">*</span><span class="p">)</span><span class="n">segue</span> <span class="n">sender</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+<hr />
 
-<span class="sr">/*
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">prepareForSegue</span><span class="p">:(</span><span class="no">UIStoryboardSegue</span><span class="o">*</span><span class="p">)</span><span class="n">segue</span> <span class="n">sender</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
 
-segue有三个非常重要的属性
+    <span class="k">if</span><span class="p">([</span><span class="n">segue</span><span class="p">.</span><span class="nf">identifierisEqualToString</span><span class="p">:</span><span class="err">@</span><span class="s2">"secondVC"</span><span class="p">])</span> <span class="p">{</span>
 
-1.identifier，标识符，标识区分线（segue），可以选择性的跳转
+        <span class="no">SecondViewController</span><span class="o">*</span><span class="n">secondVC</span> <span class="o">=</span> <span class="n">segue</span><span class="p">.</span><span class="nf">destinationViewController</span><span class="p">;</span>
 
-2.sourceViewController，源视图控制器
+        <span class="n">secondVC</span><span class="p">.</span><span class="nf">string</span><span class="o">=</span><span class="nb">self</span><span class="p">.</span><span class="nf">usernameTf</span><span class="p">.</span><span class="nf">text</span><span class="p">;</span>
 
-3.destinationViewController，目标视图控制器
+    <span class="p">}</span>
 
-*/</span>
+<span class="p">}</span></code></pre></figure>
 
-<span class="k">if</span><span class="p">([</span><span class="n">segue</span><span class="p">.</span><span class="nf">identifierisEqualToString</span><span class="p">:</span><span class="err">@</span><span class="s2">"secondVC"</span><span class="p">])</span> <span class="p">{</span>
+<ul>
+  <li>segue有三个非常重要的属性</li>
+</ul>
 
-<span class="no">SecondViewController</span><span class="o">*</span><span class="n">secondVC</span> <span class="o">=</span> <span class="n">segue</span><span class="p">.</span><span class="nf">destinationViewController</span><span class="p">;</span>
+<blockquote>
+  <p>1.identifier，标识符，标识区分线（segue），可以选择性的跳转</p>
+</blockquote>
 
-<span class="n">secondVC</span><span class="p">.</span><span class="nf">string</span><span class="o">=</span><span class="nb">self</span><span class="p">.</span><span class="nf">usernameTf</span><span class="p">.</span><span class="nf">text</span><span class="p">;</span>
+<blockquote>
+  <p>2.sourceViewController，源视图控制器</p>
+</blockquote>
 
-<span class="p">}</span>
+<blockquote>
+  <p>3.destinationViewController，目标视图控制器</p>
+</blockquote>
 
-<span class="p">}</span>
+<hr />
 
-	<span class="o">-</span> <span class="p">(</span><span class="no">IBAction</span><span class="p">)</span><span class="n">regist</span><span class="p">:(</span><span class="no">UIButton</span><span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
-
-<span class="sr">//</span><span class="err">每一个视图控制器都有一个属性叫</span><span class="n">storyboard</span><span class="err">，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过</span><span class="n">storyboardID</span><span class="err">来找到加到其内部的视图控制器</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">-</span> <span class="p">(</span><span class="no">IBAction</span><span class="p">)</span><span class="n">regist</span><span class="p">:(</span><span class="no">UIButton</span><span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
 
 <span class="sr">//</span>    <span class="no">UIViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="nf">storyboard</span> <span class="n">instantiateViewControllerWithIdentifier</span><span class="p">:</span><span class="err">@</span><span class="s2">"second"</span><span class="p">];</span>
 
 <span class="sr">//</span>    <span class="p">[</span><span class="nb">self</span> <span class="n">presentViewController</span><span class="ss">:controller</span> <span class="n">animated</span><span class="ss">:YES</span> <span class="n">completion</span><span class="ss">:nil</span><span class="p">];</span>
 
-<span class="p">[</span><span class="n">selfperformSegueWithIdentifier</span><span class="p">:</span><span class="err">@</span><span class="s2">"secondVC"</span><span class="n">sender</span><span class="ss">:nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="n">performSegueWithIdentifier</span><span class="p">:</span><span class="err">@</span><span class="s2">"secondVC"</span><span class="n">sender</span><span class="ss">:nil</span><span class="p">];</span>
 
 <span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li>每一个视图控制器都有一个属性叫storyboard，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过storyboardID来找到加到其内部的视图控制器</li>
+</ul>
 
             </article>
 
