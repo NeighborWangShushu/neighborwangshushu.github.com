@@ -115,7 +115,7 @@
                 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">当</span><span class="n">storyboard</span><span class="err">中的视图控制器通过</span><span class="n">segue</span><span class="err">完成页面跳转时，此方法就会被执行</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">prepareForSegue</span><span class="p">:(</span><span class="no">UIStoryboardSegue</span><span class="o">*</span><span class="p">)</span><span class="n">segue</span> <span class="n">sender</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+    <span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">prepareForSegue</span><span class="p">:(</span><span class="no">UIStoryboardSegue</span><span class="o">*</span><span class="p">)</span><span class="n">segue</span> <span class="n">sender</span><span class="p">:(</span><span class="nb">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
 
 <span class="sr">/*
 
@@ -139,7 +139,7 @@ segue有三个非常重要的属性
 
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="no">IBAction</span><span class="p">)</span><span class="n">regist</span><span class="p">:(</span><span class="no">UIButton</span><span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+	<span class="o">-</span> <span class="p">(</span><span class="no">IBAction</span><span class="p">)</span><span class="n">regist</span><span class="p">:(</span><span class="no">UIButton</span><span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
 
 <span class="sr">//</span><span class="err">每一个视图控制器都有一个属性叫</span><span class="n">storyboard</span><span class="err">，可以找到当前视图控制交由哪个故事板管理，并且故事板可以通过</span><span class="n">storyboardID</span><span class="err">来找到加到其内部的视图控制器</span>
 
