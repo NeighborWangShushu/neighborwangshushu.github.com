@@ -78,13 +78,13 @@ SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLit
 ***
 
 SQLite字段约束条件
-* not null - 非空
-* unique - 唯一
-* primary key - 主键
-* foreign key - 外键
-* check - 条件检查，确保一列中的所有值满足一定条件
-* default - 默认
-* autoincreatement - 自增型变量
+ * not null - 非空
+ * unique - 唯一
+ * primary key - 主键
+ * foreign key - 外键
+ * check - 条件检查，确保一列中的所有值满足一定条件
+ * default - 默认
+ * autoincreatement - 自增型变量
 
 ***
 
