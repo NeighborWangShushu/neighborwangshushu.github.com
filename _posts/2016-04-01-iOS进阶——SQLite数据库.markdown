@@ -78,6 +78,7 @@ SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLit
 ***
 
 SQLite字段约束条件
+
  * not null - 非空
  * unique - 唯一
  * primary key - 主键
@@ -93,19 +94,21 @@ SQL语句
 * SQL的语句我们可以分成两个部分来看，分别是：数据操作语言（DML）和数据定义语言（DDL）
 
 > 查询和更新指令构成了SQL的DML部分：
-    >> * 数据插入命令——insert
-    >> * 数据库更新命令——update
-    >> * 数据库删除命令——delete
-    >> * 数据库检索命令——select
+
+ * 数据插入命令——insert
+ * 数据库更新命令——update
+ * 数据库删除命令——delete
+ * 数据库检索命令——select
 
 > DDL部分是我们有能力创建活删除表格，我们也可以定义索引，规定表之间的链接，以及施加表间的约束
-    >> * 创建数据库命令——create database
-    >> * 修改数据库命令——alter database
-    >> * 创建新表的命令——create table
-    >> * 变更数据库中的表——alter table
-    >> * 删除表——drop table
-    >> * 创建索引——create index
-    >> * 删除索引——drop index
+
+* 创建数据库命令——create database
+* 修改数据库命令——alter database
+* 创建新表的命令——create table
+* 变更数据库中的表——alter table
+* 删除表——drop table
+* 创建索引——create index
+* 删除索引——drop index
 
 
 *** 
@@ -114,8 +117,9 @@ SQL语句
 
 开始使用SQLite所需要的几个步骤
 
-需要的框架：libsqlite3.0.tbd
-1. 引入<sqlite3.h>头文件
+>需要的框架：libsqlite3.0.tbd
+
+1. 引入sqlite3.h头文件
 2. 打开数据库
 3. 执行SQL命令——创建表，增删改查等操作
 4. 关闭数据库
@@ -129,7 +133,8 @@ SQL语句
 创建一个DB类用来进行对数据库的操作
 
 打开数据库
-```objc
+
+{% highlight ruby %}
 #import "DB.h"
 
 @implementation DB
@@ -177,10 +182,11 @@ static sqlite3 *db = nil;
     
     return db;
 }
-```
+{% endhighlight %}
 
 关闭数据库
-```objc
+
+{% highlight ruby %}
 // 关闭数据库
 + (void)close {
     
@@ -191,14 +197,15 @@ static sqlite3 *db = nil;
     db = nil;
     
 }
-```
+{% endhighlight %}
 
 ***
 
 创建一个学生类
 
 创建表的方法
-```objc
+
+{% highlight ruby %}
 // 创建表方法
 - (void)createTable {
     
@@ -221,12 +228,13 @@ static sqlite3 *db = nil;
     [DB close];
 
 }
-```
+{% endhighlight %}
 
 ***
 
 获取表中所有的学生
-```objc
+
+{% highlight ruby %}
 // 获取表中保存的所有学生
 + (NSArray *)allStudents {
     
@@ -271,12 +279,13 @@ static sqlite3 *db = nil;
     return mArr;
     
 }
-```
+{% endhighlight %}
 
 ***
 
 查找对应ID的学生
-```objc
+
+{% highlight ruby %}
 // 根据指定的ID，查找相对应的学生
 + (Student *)findStudentByID:(int)ID {
     
@@ -317,12 +326,13 @@ static sqlite3 *db = nil;
     return student;
     
 }
-```
+{% endhighlight %}
 
 ***
 
 向表中添加一条记录
-```objc
+
+{% highlight ruby %}
 // 插入一条记录
 + (void)insertStudentWithID:(int)ID name:(NSString *)name gender:(NSString *)gender {
     
@@ -348,12 +358,13 @@ static sqlite3 *db = nil;
     sqlite3_finalize(stmt);
     
 }
-```
+{% endhighlight %}
 
 ***
 
 更新记录
-```objc
+
+{% highlight ruby %}
 // 更新指定ID下的姓名和性别
 + (void)updateStudentName:(NSString *)name gender:(NSString *)gender forID:(int)ID {
     
@@ -372,12 +383,13 @@ static sqlite3 *db = nil;
     }
     sqlite3_finalize(stmt);
 }
-```
+{% endhighlight %}
 
 ***
 
 删除记录
-```objc
+
+{% highlight ruby %}
 // 根据指定ID删除学生
 + (void)deleteStudentByID:(int)ID {
     
@@ -396,4 +408,4 @@ static sqlite3 *db = nil;
     sqlite3_finalize(stmt); 
     
 }
-```
+{% endhighlight %}

@@ -197,14 +197,17 @@ SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLit
 
 <hr />
 
-<p>SQLite字段约束条件
-* not null - 非空
-* unique - 唯一
-* primary key - 主键
-* foreign key - 外键
-* check - 条件检查，确保一列中的所有值满足一定条件
-* default - 默认
-* autoincreatement - 自增型变量</p>
+<p>SQLite字段约束条件</p>
+
+<ul>
+  <li>not null - 非空</li>
+  <li>unique - 唯一</li>
+  <li>primary key - 主键</li>
+  <li>foreign key - 外键</li>
+  <li>check - 条件检查，确保一列中的所有值满足一定条件</li>
+  <li>default - 默认</li>
+  <li>autoincreatement - 自增型变量</li>
+</ul>
 
 <hr />
 
@@ -215,23 +218,29 @@ SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLit
 </ul>
 
 <blockquote>
-  <p>查询和更新指令构成了SQL的DML部分：
-    » * 数据插入命令——insert
-    » * 数据库更新命令——update
-    » * 数据库删除命令——delete
-    » * 数据库检索命令——select</p>
+  <p>查询和更新指令构成了SQL的DML部分：</p>
 </blockquote>
 
+<ul>
+  <li>数据插入命令——insert</li>
+  <li>数据库更新命令——update</li>
+  <li>数据库删除命令——delete</li>
+  <li>数据库检索命令——select</li>
+</ul>
+
 <blockquote>
-  <p>DDL部分是我们有能力创建活删除表格，我们也可以定义索引，规定表之间的链接，以及施加表间的约束
-    » * 创建数据库命令——create database
-    » * 修改数据库命令——alter database
-    » * 创建新表的命令——create table
-    » * 变更数据库中的表——alter table
-    » * 删除表——drop table
-    » * 创建索引——create index
-    » * 删除索引——drop index</p>
+  <p>DDL部分是我们有能力创建活删除表格，我们也可以定义索引，规定表之间的链接，以及施加表间的约束</p>
 </blockquote>
+
+<ul>
+  <li>创建数据库命令——create database</li>
+  <li>修改数据库命令——alter database</li>
+  <li>创建新表的命令——create table</li>
+  <li>变更数据库中的表——alter table</li>
+  <li>删除表——drop table</li>
+  <li>创建索引——create index</li>
+  <li>删除索引——drop index</li>
+</ul>
 
 <hr />
 
@@ -239,11 +248,16 @@ SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLit
 
 <p>开始使用SQLite所需要的几个步骤</p>
 
-<p>需要的框架：libsqlite3.0.tbd
-1. 引入<sqlite3.h>头文件
-2. 打开数据库
-3. 执行SQL命令——创建表，增删改查等操作
-4. 关闭数据库</sqlite3.h></p>
+<blockquote>
+  <p>需要的框架：libsqlite3.0.tbd</p>
+</blockquote>
+
+<ol>
+  <li>引入sqlite3.h头文件</li>
+  <li>打开数据库</li>
+  <li>执行SQL命令——创建表，增删改查等操作</li>
+  <li>关闭数据库</li>
+</ol>
 
 <hr />
 
@@ -252,182 +266,178 @@ SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLit
 
 <p>创建一个DB类用来进行对数据库的操作</p>
 
-<p>打开数据库
-```objc
-#import “DB.h”</p>
+<p>打开数据库</p>
 
-<p>@implementation DB</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#import "DB.h"</span>
 
-<p>// 创建数据库指针
-static sqlite3 *db = nil;</p>
+<span class="vi">@implementation</span> <span class="no">DB</span>
 
-<p>// 打开数据库
-+ (sqlite3 *)open {
-    
-    // 此方法的主要作用是打开数据库
-    // 返回值是一个数据库指针
-    // 因为这个数据库在很多的SQLite API（函数）中都会用到，我们声明一个类方法来获取，更加方便</p>
+<span class="sr">//</span> <span class="err">创建数据库指针</span>
+<span class="n">static</span> <span class="n">sqlite3</span> <span class="o">*</span><span class="n">db</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
 
-<p>    // 懒加载
-    if (db != nil) {
-        return db;
-    }
-    
-    // 获取Documents路径
+<span class="sr">//</span> <span class="err">打开数据库</span>
+<span class="o">+</span> <span class="p">(</span><span class="n">sqlite3</span> <span class="o">*</span><span class="p">)</span><span class="nb">open</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 此方法的主要作用是打开数据库
+    /</span><span class="o">/</span> <span class="err">返回值是一个数据库指针</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 因为这个数据库在很多的SQLite API（函数）中都会用到，我们声明一个类方法来获取，更加方便
+
+    /</span><span class="o">/</span> <span class="err">懒加载</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="p">(</span><span class="n">db</span> <span class="o">!=</span> <span class="kp">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="n">db</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">}</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 获取Documents路径
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) lastObject];
     
-    // 生成数据库文件在沙盒中的路径
-    NSString *sqlPath = [docPath stringByAppendingPathComponent:@”studentDB.sqlite”];
-    
-    // 创建文件管理对象
+    /</span><span class="o">/</span> <span class="err">生成数据库文件在沙盒中的路径</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">sqlPath</span> <span class="o">=</span> <span class="p">[</span><span class="n">docPath</span> <span class="n">stringByAppendingPathComponent</span><span class="p">:</span><span class="err">@</span><span class="s2">"studentDB.sqlite"</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建文件管理对象
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    // 判断沙盒路径中是否存在数据库文件，如果不存在才执行拷贝操作，如果存在不在执行拷贝操作
-    if ([fileManager fileExistsAtPath:sqlPath] == NO) {
-        // 获取数据库文件在包中的路径
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@”studentDB” ofType:@”sqlite”];
+    /</span><span class="o">/</span> <span class="err">判断沙盒路径中是否存在数据库文件，如果不存在才执行拷贝操作，如果存在不在执行拷贝操作</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="p">([</span><span class="n">fileManager</span> <span class="n">fileExistsAtPath</span><span class="ss">:sqlPath</span><span class="p">]</span> <span class="o">==</span> <span class="no">NO</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 获取数据库文件在包中的路径
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"studentDB" ofType:@"sqlite"];
         
-        // 使用文件管理对象进行拷贝操作
-        // 第一个参数是拷贝文件的路径
-        // 第二个参数是将拷贝文件进行拷贝的目标路径
-        [fileManager copyItemAtPath:filePath toPath:sqlPath error:nil];
-        
-    }
-    
-    // 打开数据库需要使用一下函数
-    // 第一个参数是数据库的路径（因为需要的是C语言的字符串，而不是NSString所以必须进行转换）
-    // 第二个参数是指向指针的指针
+        /</span><span class="o">/</span> <span class="err">使用文件管理对象进行拷贝操作</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 第一个参数是拷贝文件的路径
+        /</span><span class="o">/</span> <span class="err">第二个参数是将拷贝文件进行拷贝的目标路径</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">copyItemAtPath</span><span class="ss">:filePath</span> <span class="n">toPath</span><span class="ss">:sqlPath</span> <span class="n">error</span><span class="ss">:nil</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">}</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 打开数据库需要使用一下函数
+    /</span><span class="o">/</span> <span class="err">第一个参数是数据库的路径（因为需要的是</span><span class="no">C</span><span class="err">语言的字符串，而不是</span><span class="no">NSString</span><span class="err">所以必须进行转换）</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 第二个参数是指向指针的指针
     sqlite3_open([sqlPath UTF8String], &amp;db);
     
     return db;
-}
-```</p>
+}</span></code></pre></figure>
 
-<p>关闭数据库
-<code class="highlighter-rouge">objc
-// 关闭数据库
-+ (void)close {
-    
-    // 关闭数据库
+<p>关闭数据库</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">关闭数据库</span>
+<span class="o">+</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">close</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 关闭数据库
     sqlite3_close(db);
     
-    // 将数据库的指针置空
-    db = nil;
-    
-}
-</code></p>
+    /</span><span class="o">/</span> <span class="err">将数据库的指针置空</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">db</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="p">}</span></code></pre></figure>
 
 <hr />
 
 <p>创建一个学生类</p>
 
-<p>创建表的方法
-```objc
-// 创建表方法
-- (void)createTable {
+<p>创建表的方法</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">创建表方法</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">createTable</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 将建表的sql语句放入NSString对象中
+    NSString *sql = @"create table if not exists stu (ID integer primary key, name text not null, gender text default '男')";
     
-    // 将建表的sql语句放入NSString对象中
-    NSString *sql = @”create table if not exists stu (ID integer primary key, name text not null, gender text default ‘男’)”;
-    
-    // 打开数据库
-    sqlite3 *db = [DB open];
-    
-    // 执行sql语句
+    /</span><span class="o">/</span> <span class="err">打开数据库</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3</span> <span class="o">*</span><span class="n">db</span> <span class="o">=</span> <span class="p">[</span><span class="no">DB</span> <span class="nb">open</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 执行sql语句
     int result = sqlite3_exec(db, sql.UTF8String, nil, nil, nil);
     
     if (result == SQLITE_OK) {
-        NSLog(@”建表成功”);
+        NSLog(@"建表成功");
     } else {
-        NSLog(@”建表失败”);
+        NSLog(@"建表失败");
     }
     
-    // 关闭数据库
-    [DB close];</p>
+    /</span><span class="o">/</span> <span class="err">关闭数据库</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="no">DB</span> <span class="n">close</span><span class="p">];</span>
 
-<p>}
-```</p>
+<span class="p">}</span></code></pre></figure>
 
 <hr />
 
-<p>获取表中所有的学生
-<code class="highlighter-rouge">objc
-// 获取表中保存的所有学生
-+ (NSArray *)allStudents {
-    
-    // 打开数据库
+<p>获取表中所有的学生</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">获取表中保存的所有学生</span>
+<span class="o">+</span> <span class="p">(</span><span class="no">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">allStudents</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 打开数据库
     sqlite3 *db = [DB open];
     
-    // 创建一个语句对象
-    sqlite3_stmt *stmt = nil;
-    
-    // 声明数组对象
+    /</span><span class="o">/</span> <span class="err">创建一个语句对象</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_stmt</span> <span class="o">*</span><span class="n">stmt</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 声明数组对象
     NSMutableArray *mArr = nil;
     
-    // 此函数的作用是生成一个语句对象，此时sql语句并没有执行，创建的语句对象，保存了关联的数据库，执行的sql语句，sql语句的长度等信息
-    int result = sqlite3_prepare_v2(db, "select * from Students", -1, &amp;stmt, nil);
-    if (result == SQLITE_OK) {
-        
-        // 为数组开辟空间
+    /</span><span class="o">/</span> <span class="err">此函数的作用是生成一个语句对象，此时</span><span class="n">sql</span><span class="err">语句并没有执行，创建的语句对象，保存了关联的数据库，执行的</span><span class="n">sql</span><span class="err">语句，</span><span class="n">sql</span><span class="err">语句的长度等信息</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sqlite3_prepare_v2</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="s2">"select * from Students"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stmt</span><span class="p">,</span> <span class="kp">nil</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="no">SQLITE_OK</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 为数组开辟空间
         mArr = [NSMutableArray arrayWithCapacity:0];
         
-        // SQLite_ROW仅用于查询语句，sqlite3_step()函数执行后的结果如果是SQLite_ROW，说明结果集里面还有数据，会自动跳到下一条结果，如果已经是最后一条数据，再次执行sqlite3_step()，会返回SQLite_DONE，结束整个查询
-        while (sqlite3_step(stmt) == SQLITE_ROW) {
-            
-            // 获取记录中的字段值
-            // 第一个参数是语句对象，第二个参数是字段的下标，从0开始
-            int ID = sqlite3_column_int(stmt, 0);
-            const unsigned char *cName = sqlite3_column_text(stmt, 1);
-            const unsigned char *cGender = sqlite3_column_text(stmt, 2);
-            
-            // 将获取到的C语言字符串转换成OC字符串
+        /</span><span class="o">/</span> <span class="no">SQLite_ROW</span><span class="err">仅用于查询语句，</span><span class="n">sqlite3_step</span><span class="p">()</span><span class="err">函数执行后的结果如果是</span><span class="no">SQLite_ROW</span><span class="err">，说明结果集里面还有数据，会自动跳到下一条结果，如果已经是最后一条数据，再次执行</span><span class="n">sqlite3_step</span><span class="p">()</span><span class="err">，会返回</span><span class="no">SQLite_DONE</span><span class="err">，结束整个查询</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="k">while</span> <span class="p">(</span><span class="n">sqlite3_step</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span> <span class="o">==</span> <span class="no">SQLITE_ROW</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 获取记录中的字段值
+            /</span><span class="o">/</span> <span class="err">第一个参数是语句对象，第二个参数是字段的下标，从</span><span class="mi">0</span><span class="err">开始</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">int</span> <span class="no">ID</span> <span class="o">=</span> <span class="n">sqlite3_column_int</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">const</span> <span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">cName</span> <span class="o">=</span> <span class="n">sqlite3_column_text</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">const</span> <span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">cGender</span> <span class="o">=</span> <span class="n">sqlite3_column_text</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="err">  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 将获取到的C语言字符串转换成OC字符串
             NSString *name = [NSString stringWithUTF8String:(const char *)cName];
             NSString *gender = [NSString stringWithUTF8String:(const char *)cGender];
             Student *student = [Student studentWithID:ID name:name gender:gender];
             
-            // 添加学生信息到数组中
-            [mArr addObject:student];
-        }
-    }
-    
-    // 关闭数据库
+            /</span><span class="o">/</span> <span class="err">添加学生信息到数组中</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">mArr</span> <span class="n">addObject</span><span class="ss">:student</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">}</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 关闭数据库
     sqlite3_finalize(stmt);
     
     return mArr;
     
-}
-</code></p>
+}</span></code></pre></figure>
 
 <hr />
 
-<p>查找对应ID的学生
-<code class="highlighter-rouge">objc
-// 根据指定的ID，查找相对应的学生
-+ (Student *)findStudentByID:(int)ID {
-    
-    // 打开数据库
+<p>查找对应ID的学生</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">根据指定的</span><span class="no">ID</span><span class="err">，查找相对应的学生</span>
+<span class="o">+</span> <span class="p">(</span><span class="no">Student</span> <span class="o">*</span><span class="p">)</span><span class="n">findStudentByID</span><span class="p">:(</span><span class="n">int</span><span class="p">)</span><span class="no">ID</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 打开数据库
     sqlite3 *db = [DB open];
     
-    // 创建一个语句对象
-    sqlite3_stmt *stmt = nil;
-    
-    Student *student = nil;
-    
-    // 生成语句对象
+    /</span><span class="o">/</span> <span class="err">创建一个语句对象</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_stmt</span> <span class="o">*</span><span class="n">stmt</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">Student</span> <span class="o">*</span><span class="n">student</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">;</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 生成语句对象
     int result = sqlite3_prepare_v2(db, "select * from Students where ID = ?", -1, &amp;stmt, nil);
     
     if (result == SQLITE_OK) {
         
-        // 如果查询语句或者其他sql语句有条件，在准备语句对象的函数内部，sql语句中用？来代替条件，那么在执行语句之前，一定要绑定
-        // 1代表sql语句中的第一个问号，问号的下标是从1开始的
+        /</span><span class="o">/</span> <span class="err">如果查询语句或者其他</span><span class="n">sql</span><span class="err">语句有条件，在准备语句对象的函数内部，</span><span class="n">sql</span><span class="err">语句中用？来代替条件，那么在执行语句之前，一定要绑定</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 1代表sql语句中的第一个问号，问号的下标是从1开始的
         sqlite3_bind_int(stmt, 1, ID);
         
         if (sqlite3_step(stmt) == SQLITE_ROW) {
             
-            // 获取记录中的字段信息
-            const unsigned char *cName = sqlite3_column_text(stmt, 1);
-            const unsigned char *cGender = sqlite3_column_text(stmt, 2);
-            
-            // 将C语言字符串转换成OC字符串
+            /</span><span class="o">/</span> <span class="err">获取记录中的字段信息</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">const</span> <span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">cName</span> <span class="o">=</span> <span class="n">sqlite3_column_text</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">const</span> <span class="n">unsigned</span> <span class="n">char</span> <span class="o">*</span><span class="n">cGender</span> <span class="o">=</span> <span class="n">sqlite3_column_text</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="err">  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 将C语言字符串转换成OC字符串
             NSString *name = [NSString stringWithUTF8String:(const char *)cName];
             NSString *gender = [NSString stringWithUTF8String:(const char *)cGender];
             
@@ -436,21 +446,20 @@ static sqlite3 *db = nil;</p>
         }
     }
     
-    // 先释放语句对象
-    sqlite3_finalize(stmt);
-    return student;
-    
-}
-</code></p>
+    /</span><span class="o">/</span> <span class="err">先释放语句对象</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_finalize</span><span class="p">(</span><span class="n">stmt</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="n">student</span><span class="p">;</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="p">}</span></code></pre></figure>
 
 <hr />
 
-<p>向表中添加一条记录
-<code class="highlighter-rouge">objc
-// 插入一条记录
-+ (void)insertStudentWithID:(int)ID name:(NSString *)name gender:(NSString *)gender {
-    
-    // 打开数据库
+<p>向表中添加一条记录</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">插入一条记录</span>
+<span class="o">+</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">insertStudentWithID</span><span class="p">:(</span><span class="n">int</span><span class="p">)</span><span class="no">ID</span> <span class="nb">name</span><span class="p">:(</span><span class="no">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nb">name</span> <span class="n">gender</span><span class="p">:(</span><span class="no">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">gender</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 打开数据库
     sqlite3 *db = [DB open];
     
     sqlite3_stmt *stmt = nil;
@@ -458,30 +467,29 @@ static sqlite3 *db = nil;</p>
     int result = sqlite3_prepare_v2(db, "insert into Students values(?,?,?)", -1, &amp;stmt, nil);
     
     if (result == SQLITE_OK) {
-        // 绑定
-        sqlite3_bind_int(stmt, 1, ID);
-        sqlite3_bind_text(stmt, 2, [name UTF8String], -1, nil);
-        sqlite3_bind_text(stmt, 3, [gender UTF8String], -1, nil);
-        
-        // 插入与查询不一样，执行结果没有返回值
+        /</span><span class="o">/</span> <span class="err">绑定</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_bind_int</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">ID</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_bind_text</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="nb">name</span> <span class="no">UTF8String</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kp">nil</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_bind_text</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="n">gender</span> <span class="no">UTF8String</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kp">nil</span><span class="p">);</span>
+<span class="err">  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 插入与查询不一样，执行结果没有返回值
         sqlite3_step(stmt);
         
     }
     
-    // 释放语句对象
-    sqlite3_finalize(stmt);
-    
-}
-</code></p>
+    /</span><span class="o">/</span> <span class="err">释放语句对象</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">sqlite3_finalize</span><span class="p">(</span><span class="n">stmt</span><span class="p">);</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="p">}</span></code></pre></figure>
 
 <hr />
 
-<p>更新记录
-<code class="highlighter-rouge">objc
-// 更新指定ID下的姓名和性别
-+ (void)updateStudentName:(NSString *)name gender:(NSString *)gender forID:(int)ID {
-    
-    // 打开数据库
+<p>更新记录</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">更新指定</span><span class="no">ID</span><span class="err">下的姓名和性别</span>
+<span class="o">+</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">updateStudentName</span><span class="p">:(</span><span class="no">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nb">name</span> <span class="n">gender</span><span class="p">:(</span><span class="no">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">gender</span> <span class="n">forID</span><span class="p">:(</span><span class="n">int</span><span class="p">)</span><span class="no">ID</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 打开数据库
     sqlite3 *db = [DB open];
     
     sqlite3_stmt *stmt = nil;
@@ -495,17 +503,16 @@ static sqlite3 *db = nil;</p>
         sqlite3_step(stmt);
     }
     sqlite3_finalize(stmt);
-}
-</code></p>
+}</span></code></pre></figure>
 
 <hr />
 
-<p>删除记录
-<code class="highlighter-rouge">objc
-// 根据指定ID删除学生
-+ (void)deleteStudentByID:(int)ID {
-    
-    // 打开数据库
+<p>删除记录</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">根据指定</span><span class="no">ID</span><span class="err">删除学生</span>
+<span class="o">+</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">deleteStudentByID</span><span class="p">:(</span><span class="n">int</span><span class="p">)</span><span class="no">ID</span> <span class="p">{</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 打开数据库
     sqlite3 *db = [DB open];
     
     sqlite3_stmt *stmt = nil;
@@ -519,8 +526,8 @@ static sqlite3 *db = nil;</p>
     
     sqlite3_finalize(stmt); 
     
-}
-</code></p>
+}</span></code></pre></figure>
+
 
             </article>
 
