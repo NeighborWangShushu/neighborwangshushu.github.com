@@ -5,13 +5,29 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 16 Apr 2016 21:42:26 +0800</pubDate>
-    <lastBuildDate>Sat, 16 Apr 2016 21:42:26 +0800</lastBuildDate>
+    <pubDate>Mon, 18 Apr 2016 21:59:37 +0800</pubDate>
+    <lastBuildDate>Mon, 18 Apr 2016 21:59:37 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
+        <title>iOS进阶——数据处理之文件读写</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;一、沙盒机制&lt;/h1&gt; &lt;p&gt;沙盒的概念：沙盒是每一个iOS应用程序都会自动创建的一个文件系统目录(文件夹)，而且沙盒还具有&lt;strong&gt;&lt;em&gt;独立、封闭、安全&lt;/em&gt;&lt;/strong&gt;的特点。&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;沙盒机制 1. iOS中的沙盒不仅仅是一个文件目录，TA其实更是一种安全体系 2. TA规定了应用程序只能在为该应用程序创建的文件夹（也就是沙盒）内访问文件，不可以访问其他沙盒内的内容（iOS已经部分开放访问） 3. 所有的非代码文件都保存在沙盒中，图片、音频、视频、属性列表（plist）、sqlite数据库以及文本文件等。&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;沙盒机制的特点 1. 每个应用程序的活动范围都限定在自己的沙盒里 2. 不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容（iOS8已经部分开放访问） 3. 应用程序想外请求或者接手数据都需要经过权限认证&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;沙盒文件系统目录 获取某个模拟器下某个应用程序沙盒的所在位置 &amp;gt;/Users/用户名/Library/Developer/CoreSimulator/Devices/&lt;strong&gt;&lt;em&gt;6892D97C-37CD-4788-9EAF-DD65C0C5480C&lt;/em&gt;&lt;/strong&gt;/data/Containers/Data/Application/&lt;strong&gt;&lt;em&gt;85F0B633-0C22-4511-BCD8-3C531D9C9750&lt;/em&gt;&lt;/strong&gt; * PS1：上面的文件路径就是一个应用程序的沙盒所在位置，也就是沙盒的根目录 * PS2：第一个粗体显示的路径是设备（模拟器）的路径，第二个粗体显示的路径表示这个应用程序沙盒的路径&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;打开某个应用程序的沙盒 1. &lt;strong&gt;三击&lt;/strong&gt;你的沙盒路径（选中区域前后有多余的文字，并不会干扰接下来的操作，Mac系统会自动识别其中的文件路径） 2. 点击鼠标右键选择Services 3. 在Services的子选项中选择Reveal in Finder * PS：连续点击三次鼠标左键，选中光标所在位置的行，双击选中光标所在位置的单词&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;应用程序的沙盒目录 应用程序的沙盒目录下拥有三个很特殊的文件夹分别是Documents、Library（拥有Caches和Preferences目录）、tmp。&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;&lt;strong&gt;Documents&lt;/strong&gt;：保存应用程序运行时生成的需要持久化数据，iTunes会自动备份该目录 苹果公司建议将程序中建立的活在程序浏览到的文件数据保存在该目录下，iTunes备份和恢复的时候会包括此目录&lt;/p&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;p&gt;&lt;strong&gt;Library&lt;/strong&gt;：存储程序的默认设置和其他状态信息，iTunes会自动备份该文件目录 &amp;gt;1. Library/Caches：存放缓存文件，iTunes不会备份此目录，此目录下文件不会在应用退出时删除，通常存放体积比较大，但并不是很重要的资源 &amp;gt;2. Library/Preferences：保存应用的所有偏好设置，iOS的Setting（设置）应用会在该目录中查找应用的设置信息，iTunes会自动备份该目录。——PS：如果你想对偏好设置进行相应的操作，应该使用NSUserDefaults类来取得和设置应用程序的偏好，而不是直接创建偏好设置文件&lt;/p&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;p&gt;&lt;strong&gt;tmp&lt;/strong&gt;：保存应用程序运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除，应用没有运行时，系统也有可能会清除该目录下的文件，iTunes不会同步该目录，你的iPhone重启时，该目录下的文件会被删除&lt;/p&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;p&gt;获取沙盒内文件的路径 ```objc // 获取Documents目录 NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];&lt;/p&gt; &lt;p&gt;// 获取tmp目录 NSString *tmpPath = NSTemporaryDirectory();&lt;/p&gt; &lt;p&gt;// 获取Library目录 NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];&lt;/p&gt; &lt;p&gt;// 获取Library/Caches目录 NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];&lt;/p&gt; &lt;p&gt;// 获取Library/Preferences目录...</description>
+        <pubDate>Mon, 18 Apr 2016 21:52:22 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/</guid>
+        
+        <category>iOS</category>
+        
+        <category>Objective-C</category>
+        
+        
+        <category>iOS_Objective-C</category>
+        
+      </item>
+    
+      <item>
         <title>iOS进阶——SQLite数据库</title>
-        <description>&lt;p&gt;#一、数据库管理系统 SQL语言概念 SQL是一种&lt;strong&gt;结构化查询语言&lt;/strong&gt;，TA是专为数据库建立的操作命令集，是一种功能齐全的&lt;strong&gt;数据库语言&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;常见的数据库语言： &lt;strong&gt;MySQL、Oracle&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;p&gt;数据库管理系统 &amp;gt; 数据库的特征： 1. 以一定方式存储在一起 2. 能为多个用户共享 3. 具有尽可能少的冗余代码 4. 与程序彼此独立的数据集合&lt;/p&gt; &lt;p&gt;讲了这么多数据库相关的知识，那么到底什么是数据库呢 * &lt;strong&gt;数据库&lt;/strong&gt;（Database）是按照数据结构来组织、存储和管理数据的仓库&lt;/p&gt; &lt;p&gt;数据库的分类 &lt;strong&gt;关系型数据库（主流）&lt;/strong&gt;、对象数据库、层次式数据库&lt;/p&gt; &lt;p&gt;常用关系型数据库 PC端：Oracle、MySQL、SQL Server、Access、DB2、Sybase &lt;strong&gt;嵌入式\移动客户端：SQLite&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;SQLite是一个轻量级的&lt;strong&gt;关系数据库&lt;/strong&gt;。SQLite最初的设计目标是用于嵌入式系统，TA占用资源非常少，在嵌入式设备中，只需要几百K的内存就够了，目前应用于Android、iOS、Windows Phone等智能手机。iOS使用时SQLite，只需要加入libsqlite3.0.tbd依赖以及引入sqlite3.h头文件即可&lt;/p&gt; &lt;hr /&gt; &lt;blockquote&gt; &lt;p&gt;数据库中有几个很重要的概念&lt;/p&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;表：是数据库中一个非常重要的对象，是其他对象的基础。根据信息的分类情况，一个数据库中可能包含若干个数据表&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;字段：表的“列”称为“字段”，每个字段包含某一专题的信息&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;记录：是指对应于数据表中一行信息的一组完整的相关信息&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;blockquote&gt; &lt;p&gt;SQL中很重要的一点，一定要记住，&lt;strong&gt;&lt;em&gt;SQL对大小写不敏感&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;p&gt;SQL语句后面的分号&lt;/p&gt; &lt;p&gt;在数据库系统中分号是作为分隔每条SQL语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句 需要我们注意的是，某些数据库会有要求在每条SQL命令的末尾加上分号，而SQLite则属于另一类，TA的语句末尾&lt;strong&gt;不使用分号&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;PS：在我们学习Objective-C时每段语句的末尾都要求加上分号，但是SQLite不需要我们要区分开来&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;p&gt;SQLite数据库数据类型 SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLite来说对字段不指定类型是完全有效的 为了使SQLite和其他数据库间的兼容性最大化，SQLite支持“类型近似”的观点，列的类型近似指的是存储列上数据的推荐类型。 &amp;gt; SQLite近似类型规则  »1. 如果类型字符串中包含“int”，那么该字段的亲缘类型是INTEGER  »2. 如果类型字符串中包含“char”、“clob”或“text”，那么该字段的亲缘类型是TEXT，如VARCHAR  »3. 如果类型字符串中包含“blob”，那么该字段的亲缘类型是none  »4. 如果类型字符串中包含“real”、“floa”或“doub”，那么该字段的亲缘类型是real  »5. 其余情况下，字段的亲缘类型为NUMERIC&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;SQLite字段约束条件&lt;/p&gt; &lt;ul&gt; &lt;li&gt;not null - 非空&lt;/li&gt; &lt;li&gt;unique - 唯一&lt;/li&gt; &lt;li&gt;primary key - 主键&lt;/li&gt; &lt;li&gt;foreign key - 外键&lt;/li&gt;...</description>
+        <description>&lt;h1 id=&quot;section&quot;&gt;一、数据库管理系统&lt;/h1&gt; &lt;p&gt;SQL语言概念 SQL是一种&lt;strong&gt;结构化查询语言&lt;/strong&gt;，TA是专为数据库建立的操作命令集，是一种功能齐全的&lt;strong&gt;数据库语言&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;常见的数据库语言： &lt;strong&gt;MySQL、Oracle&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;p&gt;数据库管理系统 &amp;gt; 数据库的特征： 1. 以一定方式存储在一起 2. 能为多个用户共享 3. 具有尽可能少的冗余代码 4. 与程序彼此独立的数据集合&lt;/p&gt; &lt;p&gt;讲了这么多数据库相关的知识，那么到底什么是数据库呢 * &lt;strong&gt;数据库&lt;/strong&gt;（Database）是按照数据结构来组织、存储和管理数据的仓库&lt;/p&gt; &lt;p&gt;数据库的分类 &lt;strong&gt;关系型数据库（主流）&lt;/strong&gt;、对象数据库、层次式数据库&lt;/p&gt; &lt;p&gt;常用关系型数据库 PC端：Oracle、MySQL、SQL Server、Access、DB2、Sybase &lt;strong&gt;嵌入式\移动客户端：SQLite&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;SQLite是一个轻量级的&lt;strong&gt;关系数据库&lt;/strong&gt;。SQLite最初的设计目标是用于嵌入式系统，TA占用资源非常少，在嵌入式设备中，只需要几百K的内存就够了，目前应用于Android、iOS、Windows Phone等智能手机。iOS使用时SQLite，只需要加入libsqlite3.0.tbd依赖以及引入sqlite3.h头文件即可&lt;/p&gt; &lt;hr /&gt; &lt;blockquote&gt; &lt;p&gt;数据库中有几个很重要的概念&lt;/p&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;表：是数据库中一个非常重要的对象，是其他对象的基础。根据信息的分类情况，一个数据库中可能包含若干个数据表&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;字段：表的“列”称为“字段”，每个字段包含某一专题的信息&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;记录：是指对应于数据表中一行信息的一组完整的相关信息&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;blockquote&gt; &lt;p&gt;SQL中很重要的一点，一定要记住，&lt;strong&gt;&lt;em&gt;SQL对大小写不敏感&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;/blockquote&gt; &lt;hr /&gt; &lt;p&gt;SQL语句后面的分号&lt;/p&gt; &lt;p&gt;在数据库系统中分号是作为分隔每条SQL语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句 需要我们注意的是，某些数据库会有要求在每条SQL命令的末尾加上分号，而SQLite则属于另一类，TA的语句末尾&lt;strong&gt;不使用分号&lt;/strong&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;PS：在我们学习Objective-C时每段语句的末尾都要求加上分号，但是SQLite不需要我们要区分开来&lt;/li&gt; &lt;/ul&gt; &lt;hr /&gt; &lt;p&gt;SQLite数据库数据类型 SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLite来说对字段不指定类型是完全有效的 为了使SQLite和其他数据库间的兼容性最大化，SQLite支持“类型近似”的观点，列的类型近似指的是存储列上数据的推荐类型。 &amp;gt; SQLite近似类型规则  »1. 如果类型字符串中包含“int”，那么该字段的亲缘类型是INTEGER  »2. 如果类型字符串中包含“char”、“clob”或“text”，那么该字段的亲缘类型是TEXT，如VARCHAR  »3. 如果类型字符串中包含“blob”，那么该字段的亲缘类型是none  »4. 如果类型字符串中包含“real”、“floa”或“doub”，那么该字段的亲缘类型是real  »5. 其余情况下，字段的亲缘类型为NUMERIC&lt;/p&gt; &lt;hr /&gt; &lt;p&gt;SQLite字段约束条件&lt;/p&gt; &lt;ul&gt; &lt;li&gt;not null - 非空&lt;/li&gt; &lt;li&gt;unique - 唯一&lt;/li&gt; &lt;li&gt;primary key - 主键&lt;/li&gt; &lt;li&gt;foreign key -...</description>
         <pubDate>Fri, 01 Apr 2016 10:08:13 +0800</pubDate>
         <link>https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
         <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-SQLite%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
@@ -209,81 +225,6 @@
         <pubDate>Wed, 02 Mar 2016 21:20:54 +0800</pubDate>
         <link>https://neighborwangshushu.github.io/iOS_UI(%E5%85%AB)%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1/</link>
         <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%85%AB)%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1/</guid>
-        
-        <category>iOS</category>
-        
-        <category>UI</category>
-        
-        <category>Objective-C</category>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS_UI(七)UINavigationController</title>
-        <description>&lt;p&gt;导航视图控制器也是一个视图控制器，TA管理了多个子视图控制器，是系统提供给我们的容器视图控制器&lt;/p&gt;
-
-&lt;p&gt;导航视图控制器至少管理了一个子视图控制器，这个视图控制器称为根视图控制器&lt;/p&gt;
-
-&lt;p&gt;如果我们的程序想要采用导航视图控制器进行布局，我们需要指定window的根视图控制器为导航视图控制器&lt;/p&gt;
-
-&lt;p&gt;每一个加到导航视图控制器内部的视图控制器自带一个属性叫navigationItem，可以配置当前页面导航条的显示内容，比如左按钮，标题，右按钮等&lt;/p&gt;
-
-&lt;p&gt;设置导航栏的整体属性  一般在指定导航视图控制器的根视图时设置&lt;/p&gt;
-
-&lt;p&gt;1.显隐属性 naVC.navigationBarHidden = YES;&lt;/p&gt;
-
-&lt;p&gt;2.导航栏样式 naVC.navigationBar.barStyle = UIBarStyleDefault;&lt;/p&gt;
-
-&lt;p&gt;3.导航栏的背景颜色 naVC.navigationBar.backgroundColor = [UIColor whiteColor];&lt;/p&gt;
-
-&lt;p&gt;4.导航栏的颜色 naVC.navigationBar.barTintColor = [UIColor whiteColor];&lt;/p&gt;
-
-&lt;p&gt;5.导航栏元素颜色 naVC.navigationBar.tintColor = [UIColor whiteColor];&lt;/p&gt;
-
-&lt;p&gt;设置导航栏标题 self.navigationItem.title = @“”;&lt;/p&gt;
-
-&lt;p&gt;设置导航栏上的标题视图 self.navigationItem.titleView = 视图控件；&lt;/p&gt;
-
-&lt;p&gt;创建左右按钮（四种初始化方法）&lt;/p&gt;
-
-&lt;p&gt;1.显示自定义图片 initWithImage:image  style:UIBarButtonItemStylePlain target:self action:SEL&lt;/p&gt;
-
-&lt;p&gt;2.使用系统自带图标样式&lt;/p&gt;
-
-&lt;p&gt;3.使用文本显示&lt;/p&gt;
-
-&lt;p&gt;4.使用自定义视图显示&lt;/p&gt;
-
-&lt;p&gt;指定左右按钮 self.navigationItem.leftBarButtonItem = left;&lt;/p&gt;
-
-&lt;p&gt;是否开启导航栏的半透明度关系到自身的原点位置，系统默认为YES，其原点为屏幕左上角点&lt;/p&gt;
-
-&lt;p&gt;关闭时导航栏左下角的点为坐标原点&lt;/p&gt;
-
-&lt;p&gt;self.navigationController.navigationBar.translucent=NO;&lt;/p&gt;
-
-&lt;p&gt;界面跳转&lt;/p&gt;
-
-&lt;p&gt;1.创建想要跳转到的视图控制器&lt;/p&gt;
-
-&lt;p&gt;2.导航视图控制器完成推出操作  [self.navigationController pushViewController:secondVC animated:YES];&lt;/p&gt;
-
-&lt;p&gt;返回界面&lt;/p&gt;
-
-&lt;p&gt;1.返回到上一级视图控制器 [self.navigationController popViewControllerAnimated:YES];&lt;/p&gt;
-
-&lt;p&gt;2.返回到根视图控制器  [self.navigationController popToRootViewControllerAnimated:YES];&lt;/p&gt;
-
-&lt;p&gt;3.返回到指定的视图控制器 UIViewController *vc = [self.navigationController.viewControllers objectAtIndex:1];&lt;/p&gt;
-
-&lt;p&gt;[self.navigationController popToViewController:vc animated:YES];&lt;/p&gt;
-</description>
-        <pubDate>Tue, 01 Mar 2016 20:08:01 +0800</pubDate>
-        <link>https://neighborwangshushu.github.io/iOS_UI(%E4%B8%83)UINavigationController/</link>
-        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E4%B8%83)UINavigationController/</guid>
         
         <category>iOS</category>
         

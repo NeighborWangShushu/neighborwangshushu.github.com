@@ -12,7 +12,8 @@ categories:
 twitter_text:
 ---
 
-#一、沙盒机制#
+# 一、沙盒机制 #
+
 沙盒的概念：沙盒是每一个iOS应用程序都会自动创建的一个文件系统目录(文件夹)，而且沙盒还具有***独立、封闭、安全***的特点。
 
 ***
@@ -339,4 +340,4 @@ NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithDat
 Person *p2 = [unArchiver decodeObjectForKey:@"p1"];
 // 反归档结束
 [unArchiver finshDeoding];
-```
+```51

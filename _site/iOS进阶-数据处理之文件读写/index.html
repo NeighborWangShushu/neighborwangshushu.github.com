@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iOS进阶——数据处理之文件读写</title>
+    <meta name="description" content="sandbox">
+
+    <!-- Google Authorship Markup -->
+    <link rel="author" href="https://plus.google.com/+?rel=author">
+
+    <!-- Social: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NeighborWangShu">
+    <meta name="twitter:title" content="iOS进阶——数据处理之文件读写">
+    <meta name="twitter:description" content="sandbox">
+    
+    <meta property="twitter:image:src" content="https://neighborwangshushu.github.io/assets/img/">
+    
+
+    <!-- Social: Facebook / Open Graph -->
+    <!-- <meta property="og:site" content="@"> -->
+    <meta property="og:url" content="https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/">
+    <meta property="og:title" content="iOS进阶——数据处理之文件读写">
+    
+    <meta property="og:image" content="https://neighborwangshushu.github.io/assets/img/">
+    
+    <meta property="og:description" content="sandbox">
+    <meta property="og:site_name" content="WangShushu Blog">
+
+    <!-- Social: Google+ / Schema.org  -->
+    <meta itemprop="name" content="iOS进阶——数据处理之文件读写"/>
+    <meta itemprop="description" content="sandbox">
+    <meta itemprop="image" content="https://neighborwangshushu.github.io/assets/img/blog-image.png"/>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/icons/favicon.ico" type="image/x-icon" />
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
+    <!-- Windows 8 Tile Icons -->
+    <meta name="application-name" content="NeighborWangShuShu Blog">
+    <meta name="msapplication-TileColor" content="#0562DC">
+    <meta name="msapplication-square70x70logo" content="smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="widetile.png" />
+    <meta name="msapplication-square310x310logo" content="largetile.png" />
+    <!-- Android Lolipop Theme Color -->
+    <meta name="theme-color" content="#0562DC">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/">
+    <link rel="alternate" type="application/rss+xml" title="WangShushu Blog" href="https://neighborwangshushu.github.io/feed.xml" />
+</head>
+
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-email" viewBox="0 0 1024 1024"><path class="path1" d="M950.857 859.429v-438.857q-18.286 20.571-39.429 37.714-153.143 117.714-243.429 193.143-29.143 24.571-47.429 38.286t-49.429 27.714-58.571 14h-1.143q-27.429 0-58.571-14t-49.429-27.714-47.429-38.286q-90.286-75.429-243.429-193.143-21.143-17.143-39.429-37.714v438.857q0 7.429 5.429 12.857t12.857 5.429h841.143q7.429 0 12.857-5.429t5.429-12.857zM950.857 258.857v-14t-0.286-7.429-1.714-7.143-3.143-5.143-5.143-4.286-8-1.429h-841.143q-7.429 0-12.857 5.429t-5.429 12.857q0 96 84 162.286 110.286 86.857 229.143 181.143 3.429 2.857 20 16.857t26.286 21.429 25.429 18 28.857 15.714 24.571 5.143h1.143q11.429 0 24.571-5.143t28.857-15.714 25.429-18 26.286-21.429 20-16.857q118.857-94.286 229.143-181.143 30.857-24.571 57.429-66t26.571-75.143zM1024 237.714v621.714q0 37.714-26.857 64.571t-64.571 26.857h-841.143q-37.714 0-64.571-26.857t-26.857-64.571v-621.714q0-37.714 26.857-64.571t64.571-26.857h841.143q37.714 0 64.571 26.857t26.857 64.571z"/></symbol><symbol id="icon-close" viewBox="0 0 805 1024"><path class="path1" d="M741.714 755.429q0 22.857-16 38.857l-77.714 77.714q-16 16-38.857 16t-38.857-16l-168-168-168 168q-16 16-38.857 16t-38.857-16l-77.714-77.714q-16-16-16-38.857t16-38.857l168-168-168-168q-16-16-16-38.857t16-38.857l77.714-77.714q16-16 38.857-16t38.857 16l168 168 168-168q16-16 38.857-16t38.857 16l77.714 77.714q16 16 16 38.857t-16 38.857l-168 168 168 168q16 16 16 38.857z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-rss" viewBox="0 0 805 1024"><path class="path1" d="M219.429 768q0 45.714-32 77.714t-77.714 32-77.714-32-32-77.714 32-77.714 77.714-32 77.714 32 32 77.714zM512 838.286q1.143 16-9.714 27.429-10.286 12-26.857 12h-77.143q-14.286 0-24.571-9.429t-11.429-23.714q-12.571-130.857-105.429-223.714t-223.714-105.429q-14.286-1.143-23.714-11.429t-9.429-24.571v-77.143q0-16.571 12-26.857 9.714-9.714 24.571-9.714h2.857q91.429 7.429 174.857 46t148 103.714q65.143 64.571 103.714 148t46 174.857zM804.571 839.429q1.143 15.429-10.286 26.857-10.286 11.429-26.286 11.429h-81.714q-14.857 0-25.429-10t-11.143-24.286q-6.857-122.857-57.714-233.429t-132.286-192-192-132.286-233.429-58.286q-14.286-0.571-24.286-11.143t-10-24.857v-81.714q0-16 11.429-26.286 10.286-10.286 25.143-10.286h1.714q149.714 7.429 286.571 68.571t243.143 168q106.857 106.286 168 243.143t68.571 286.571z"/></symbol><symbol id="icon-google-plus" viewBox="0 0 951 1024"><path class="path1" d="M420 454.857q0 20.571 18.286 40.286t44.286 38.857 51.714 42 44 59.429 18.286 81.143q0 51.429-27.429 98.857-41.143 69.714-120.571 102.571t-170.286 32.857q-75.429 0-140.857-23.714t-98-78.571q-21.143-34.286-21.143-74.857 0-46.286 25.429-85.714t67.714-65.714q74.857-46.857 230.857-57.143-18.286-24-27.143-42.286t-8.857-41.714q0-20.571 12-48.571-26.286 2.286-38.857 2.286-84.571 0-142.571-55.143t-58-139.714q0-46.857 20.571-90.857t56.571-74.857q44-37.714 104.286-56t124.286-18.286h238.857l-78.857 50.286h-74.857q42.286 36 64 76t21.714 91.429q0 41.143-14 74t-33.714 53.143-39.714 37.143-34 35.143-14 37.714zM336.571 400q21.714 0 44.571-9.429t37.714-24.857q30.286-32.571 30.286-90.857 0-33.143-9.714-71.429t-27.714-74-48.286-59.143-66.857-23.429q-24 0-47.143 11.143t-37.429 30q-26.857 33.714-26.857 91.429 0 26.286 5.714 55.714t18 58.857 29.714 52.857 42.857 38.286 55.143 14.857zM337.714 898.857q33.143 0 63.714-7.429t56.571-22.286 41.714-41.714 15.714-62.286q0-14.286-4-28t-8.286-24-15.429-23.714-16.857-20-22-19.714-20.857-16.571-23.714-17.143-20.857-14.857q-9.143-1.143-27.429-1.143-30.286 0-60 4t-61.429 14.286-55.429 26.286-39.143 42.571-15.429 60.286q0 40 20 70.571t52.286 47.429 68 25.143 72.857 8.286zM800.571 398.286h121.714v61.714h-121.714v125.143h-60v-125.143h-121.143v-61.714h121.143v-124h60v124z"/></symbol><symbol id="icon-angle-down" viewBox="0 0 658 1024"><path class="path1" d="M614.286 420.571q0 7.429-5.714 13.143l-266.286 266.286q-5.714 5.714-13.143 5.714t-13.143-5.714l-266.286-266.286q-5.714-5.714-5.714-13.143t5.714-13.143l28.571-28.571q5.714-5.714 13.143-5.714t13.143 5.714l224.571 224.571 224.571-224.571q5.714-5.714 13.143-5.714t13.143 5.714l28.571 28.571q5.714 5.714 5.714 13.143z"/></symbol><symbol id="icon-github-alt" viewBox="0 0 951 1024"><path class="path1" d="M365.714 694.857q0 22.857-7.143 46.857t-24.571 43.429-41.429 19.429-41.429-19.429-24.571-43.429-7.143-46.857 7.143-46.857 24.571-43.429 41.429-19.429 41.429 19.429 24.571 43.429 7.143 46.857zM731.429 694.857q0 22.857-7.143 46.857t-24.571 43.429-41.429 19.429-41.429-19.429-24.571-43.429-7.143-46.857 7.143-46.857 24.571-43.429 41.429-19.429 41.429 19.429 24.571 43.429 7.143 46.857zM822.857 694.857q0-68.571-39.429-116.571t-106.857-48q-23.429 0-111.429 12-40.571 6.286-89.714 6.286t-89.714-6.286q-86.857-12-111.429-12-67.429 0-106.857 48t-39.429 116.571q0 50.286 18.286 87.714t46.286 58.857 69.714 34.286 80 16.857 85.143 4h96q46.857 0 85.143-4t80-16.857 69.714-34.286 46.286-58.857 18.286-87.714zM950.857 594.286q0 118.286-34.857 189.143-21.714 44-60.286 76t-80.571 49.143-97.143 27.143-98 12.571-95.429 2.571q-44.571 0-81.143-1.714t-84.286-7.143-87.143-17.143-78.286-29.429-69.143-46.286-49.143-65.714q-35.429-70.286-35.429-189.143 0-135.429 77.714-226.286-15.429-46.857-15.429-97.143 0-66.286 29.143-124.571 61.714 0 108.571 22.571t108 70.571q84-20 176.571-20 84.571 0 160 18.286 60-46.857 106.857-69.143t108-22.286q29.143 58.286 29.143 124.571 0 49.714-15.429 96 77.714 91.429 77.714 227.429z"/></symbol></defs></svg>
+
+        <header class="header-post" role="banner">
+    <div class="content">
+        
+            <time itemprop="datePublished" datetime="2016-04-18 21:52:22 +0800" class="date">18 Apr 2016</time>
+        
+        <h1 class="post-title" itemprop="name">iOS进阶——数据处理之文件读写</h1>
+        <p itemprop="description" class="subtitle">sandbox</p>
+    </div>
+     <a class="down" data-scroll href="#scroll"><svg class="icon icon-angle-down"><use xlink:href="#icon-angle-down"></use></svg></a>
+     <div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" class="search-field" placeholder="Search...">
+        <svg class="icon-remove-sign"><use xlink:href="#icon-close"></use></svg>
+        <ul class="search-results search-list"></ul>
+    </div>
+</div>
+
+<div id="fade" class="overlay"></div>
+<a id="slide" class="slideButton fade">
+    <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+    <svg id="close" class="icon-menu"><use xlink:href="#icon-close"></use></svg>
+</a>
+<aside id="sidebar">
+<nav id="navigation">
+  <h2>MENU</h2>
+  <ul>
+    
+      <li><a href="https://neighborwangshushu.github.io/">Home</a></li>
+    
+      <li><a href="https://neighborwangshushu.github.io/series">Series</a></li>
+    
+      <li><a href="https://neighborwangshushu.github.io/tags">Tags</a></li>
+    
+      <li><a href="https://neighborwangshushu.github.io/about">About Me</a></li>
+    
+    <li><a class="feed" href="https://neighborwangshushu.github.io/feed.xml" title="Atom/RSS feed">Feed</a></li>
+  </ul>
+</nav>
+</aside>
+<a id="search" class="dosearch">
+    <svg class="icon-menu icon-search"><use xlink:href="#icon-search"></use></svg>
+</a>
+</header>
+
+        <section class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <article role="article" id="scroll" class="post-content" itemprop="articleBody">
+                <h1 id="section">一、沙盒机制</h1>
+
+<p>沙盒的概念：沙盒是每一个iOS应用程序都会自动创建的一个文件系统目录(文件夹)，而且沙盒还具有<strong><em>独立、封闭、安全</em></strong>的特点。</p>
+
+<hr />
+
+<p>沙盒机制
+1. iOS中的沙盒不仅仅是一个文件目录，TA其实更是一种安全体系
+2. TA规定了应用程序只能在为该应用程序创建的文件夹（也就是沙盒）内访问文件，不可以访问其他沙盒内的内容（iOS已经部分开放访问）
+3. 所有的非代码文件都保存在沙盒中，图片、音频、视频、属性列表（plist）、sqlite数据库以及文本文件等。</p>
+
+<hr />
+
+<p>沙盒机制的特点
+1. 每个应用程序的活动范围都限定在自己的沙盒里
+2. 不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容（iOS8已经部分开放访问）
+3. 应用程序想外请求或者接手数据都需要经过权限认证</p>
+
+<hr />
+
+<p>沙盒文件系统目录
+获取某个模拟器下某个应用程序沙盒的所在位置
+&gt;/Users/用户名/Library/Developer/CoreSimulator/Devices/<strong><em>6892D97C-37CD-4788-9EAF-DD65C0C5480C</em></strong>/data/Containers/Data/Application/<strong><em>85F0B633-0C22-4511-BCD8-3C531D9C9750</em></strong>
+* PS1：上面的文件路径就是一个应用程序的沙盒所在位置，也就是沙盒的根目录
+* PS2：第一个粗体显示的路径是设备（模拟器）的路径，第二个粗体显示的路径表示这个应用程序沙盒的路径</p>
+
+<hr />
+
+<p>打开某个应用程序的沙盒
+1. <strong>三击</strong>你的沙盒路径（选中区域前后有多余的文字，并不会干扰接下来的操作，Mac系统会自动识别其中的文件路径）
+2. 点击鼠标右键选择Services
+3. 在Services的子选项中选择Reveal in Finder
+ * PS：连续点击三次鼠标左键，选中光标所在位置的行，双击选中光标所在位置的单词</p>
+
+<hr />
+
+<p>应用程序的沙盒目录
+应用程序的沙盒目录下拥有三个很特殊的文件夹分别是Documents、Library（拥有Caches和Preferences目录）、tmp。</p>
+
+<blockquote>
+  <p><strong>Documents</strong>：保存应用程序运行时生成的需要持久化数据，iTunes会自动备份该目录
+苹果公司建议将程序中建立的活在程序浏览到的文件数据保存在该目录下，iTunes备份和恢复的时候会包括此目录</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Library</strong>：存储程序的默认设置和其他状态信息，iTunes会自动备份该文件目录
+&gt;1. Library/Caches：存放缓存文件，iTunes不会备份此目录，此目录下文件不会在应用退出时删除，通常存放体积比较大，但并不是很重要的资源
+&gt;2. Library/Preferences：保存应用的所有偏好设置，iOS的Setting（设置）应用会在该目录中查找应用的设置信息，iTunes会自动备份该目录。——PS：如果你想对偏好设置进行相应的操作，应该使用NSUserDefaults类来取得和设置应用程序的偏好，而不是直接创建偏好设置文件</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>tmp</strong>：保存应用程序运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除，应用没有运行时，系统也有可能会清除该目录下的文件，iTunes不会同步该目录，你的iPhone重启时，该目录下的文件会被删除</p>
+</blockquote>
+
+<hr />
+<p>获取沙盒内文件的路径
+```objc
+// 获取Documents目录
+NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];</p>
+
+<p>// 获取tmp目录
+NSString *tmpPath = NSTemporaryDirectory();</p>
+
+<p>// 获取Library目录
+NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];</p>
+
+<p>// 获取Library/Caches目录
+NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</p>
+
+<p>// 获取Library/Preferences目录
+NSString *prePath = [NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSUserDomainMask, YES) lastObject];
+//通常情况下，Preferences由系统维护，我们很少去操作TA</p>
+
+<p>// 获取应用程序包的路径
+NSString *path = [NSBundle mainBundle].resourcePath;
+```</p>
+
+<hr />
+
+<p>#二、简单对象的读写（I/O）操作#</p>
+
+<p>简单对象
+iOS中提供四种类型可以直接进行文件存取：
+&gt;####NSString（字符串）
+####NSArray（数组）
+####NSDictionary（字典）
+####NSData（数据）
+* <code class="highlighter-rouge">包括上述类型的子类</code></p>
+
+<p>NSString的写入与读取
+```objc
+    // 字符串写入沙盒
+    // 在Documents下面创建一个文本路径，假设文本名称为objc.txt
+    NSString *txtPath = [docPath stringByAppendingPathComponent:@”objc.txt”]; // 此时仅存在路径，文件并没有真实存在
+    NSString *string = @”Objective-C”;</p>
+
+<p>    // 字符串写入时执行的方法
+    [string writeToFile:txtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@”txtPath is %@”, txtPath);</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 字符串读取的方法     NSString *resultStr = [NSString stringWithContentsOfFile:txtPath encoding:NSUTF8StringEncoding error:nil];     NSLog(@"resultStr is %@", resultStr); ```
+</code></pre>
+</div>
+
+<p>NSArray的写入与读取
+```objc
+    // 数组写入文件
+    // 创建一个存储数组的文件路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@”language.txt”];
+    NSArray *array = @[@”C语言”, @”JAVA”,@”Objective-C”, @”Swift”, @”PHP”, @”C++”, @”C#”];
+    // 数组写入文件执行的方法
+    [array writeToFile:filePath atomically:YES];
+    NSLog(@”filePath is %@”, filePath);
+    
+    // 从文件中读取数据数组的方法
+    NSArray *resultArr = [NSArray arrayWithContentsOfFile:filePath];
+    NSLog(@”%@”, resultArr[1]);</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+NSDictionary的写入与读取
+```objc
+    // 字典写入文件
+    // 创建一个存储字典的文件路径
+    NSString *fileDicPath = [docPath stringByAppendingPathComponent:@"love.txt"];
+    NSDictionary *dic = @{@"职业":@"程序员", @"梦想":@"代码无BUG"};
+    
+    // 字典写入时执行的方法
+    [dic writeToFile:fileDicPath atomically:YES];
+    NSLog(@"fileDicPath is %@", fileDicPath);
+    
+    // 从文件中读取数据字典的方法
+    NSDictionary *resultDic = [NSDictionary dictionaryWithContentsOfFile:fileDicPath];
+    NSLog(@"%@", resultDic[@"梦想"]);
+</code></pre>
+</div>
+
+<p>NSData的写入与读取
+<code class="highlighter-rouge">objc
+    // NSData写入文件
+    // 创建一个存放NSData数据的路径
+    NSString *fileDataPath = [docPath stringByAppendingPathComponent:@"icon"];
+    
+    // 得到一个UIImage对象
+    UIImage *image = [UIImage imageNamed:@"icon.jpg"];
+    
+    // 将UIImage对象转换成NSData对象
+    NSData *data = UIImageJPEGRepresentation(image, 0);
+    [data writeToFile:fileDataPath atomically:YES];
+    NSLog(@"fileDataPath is %@", fileDataPath);
+    
+    // 从文件读取存储的NSData数据
+    NSData *resultData = [NSData dataWithContentsOfFile:fileDataPath];
+    // 将得到的NSData数据转换成原有的图片对象
+    UIImage *resultImage = [UIImage imageWithData:resultData];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    imageView.image = resultImage;
+    [self.view addSubview:imageView];
+</code></p>
+
+<hr />
+
+<p>#三、文件管理器与文件对接器#</p>
+
+<p>文件管理器与文件连接器之间的区别
+* 文件管理器主要是对文件进行操作（创建、删除、改名等）以及文件信息的获取
+* 文件连接器主要是对文件内容进行读取与写入操作</p>
+
+<hr />
+
+<p>文件管理器</p>
+
+<p>使用文件管理器创建文件夹
+<code class="highlighter-rouge">objc
+    // 获取到Caches文件夹路径
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    
+    // 获取创建文件夹的路径
+    NSString *dirPath = [cachePath stringByAppendingPathComponent:@"testDirectroy"];
+    
+    // 创建文件管理对象
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // 创建文件夹
+    [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSLog(@"%@", dirPath);
+</code></p>
+
+<p>通过文件管理器创建文件以及获取文件信息
+```objc
+    // 得到Documents路径
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    
+    // 创建一个文件路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@”objc.txt”];
+    
+    // 创建文件首先需要一个文件管理对象
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // 创建文件
+    [fileManager createFileAtPath:filePath contents:[@”Objective-C” dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+    NSLog(@”%@”,filePath);
+    
+    // 获取某个文件或者某个文件夹的大小
+    NSDictionary *dic = [fileManager attributesOfItemAtPath:filePath error:nil];
+    NSLog(@”%@”, dic);
+    NSNumber *number = [dic objectForKey:NSFileSize];
+    NSInteger size = number.intValue;</p>
+
+<p>    NSLog(@”%@”, number);
+```</p>
+
+<p>文件移动
+```objc
+    // 创建文件夹
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *pathPath = [docPath stringByAppendingPathComponent:@”path”];</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 创建文件     NSString *path = [pathPath stringByAppendingPathComponent:@"test.txt"];     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];     NSString *dirPath = [cachePath stringByAppendingPathComponent:@"testDirectroy"];     NSString *desPath = [dirPath stringByAppendingPathComponent:@"test.txt"];
+
+// 创建文件管理器对象，进行文件移动操作     NSFileManager *fileManager = [NSFileManager defaultManager];
+
+// 移动文件     [fileManager moveItemAtPath:path toPath:desPath error:nil]; // 移动文件的核心代码
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+***
+
+文件对接器
+```objc
+/**
+ *  练习要求：从一个文件中指定的位置开始追加内容
+ 提示:
+ 1、在documents目录下创建一个test.txt文件,文件中的内容为"abcdefg"
+ 2、从文件偏移量为3那个位置开始追加内容"1234"
+ */
+
+    // 获取Documents文件夹路径
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    
+    // 创建文件路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"test.txt"];
+    
+    // 使用文件管理对象创建文件
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createFileAtPath:filePath contents:[@"abcdefg" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+    
+    // 创建文件对接对象
+    NSFileHandle *handle = [NSFileHandle fileHandleForUpdatingAtPath:filePath]; // 文件对接对象此时针对文件既可以读取又可以写入
+    
+    // 将偏移量挪到3的位置
+    [handle seekToFileOffset:3];
+    
+    // 写入数据
+    [handle writeData:[@"1234" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // 执行完操作之后不要忘记关闭文件
+    [handle closeFile];
+</code></pre>
+</div>
+
+<hr />
+
+<p>#四、复杂对象的读写（I/O）操作#</p>
+
+<p>复杂对象指的是在Foundation框架内不存在的数据类，如自定以的Person类，像这种自定义的类是无法在程序内部通过writeToFile：这个方法写入到文件内
+既然复杂对象无法使用内部方法进行数据持久化，那么只能通过将复杂对象转换成NSData，然后在通过上面的方法写入文件，而这种转换的步骤就被称为<strong>归档</strong>，从文件中读取NSData数据，将NSData转换为复杂对象，这个步骤就是<strong>反归档</strong>
+&gt;记住
+»* 复杂对象写入文件的过程（复杂对象-&gt;归档-&gt;NSData-&gt;writeToFile）
+»* 从文件中读取出复杂对象过程（读取文件-&gt;NSData-&gt;反归档-&gt;复杂对象）</p>
+
+<blockquote>
+  <ol>
+    <li>首先，复杂对象所属的类要遵守<nscoding></nscoding></li>
+    <li>其次，实现协议中的两个方法：
+      <ul>
+        <li>-(void)encodeWithCoder:(NSCoder *)aCoder; 序列化</li>
+        <li>-(id)initWithCoder:(NSCoder *)aDecoder; 反序列化</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<ol>
+  <li>首先，遵守NSCoding协议 
+<code class="highlighter-rouge"><span class="n">objc</span> 
+<span class="k">@interface</span> <span class="nc">Person</span><span class="p">:</span><span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">NSCoding</span><span class="o">&gt;</span> 
+   <span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">name</span> 
+   <span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">)</span> <span class="n">integer</span> <span class="n">age</span><span class="p">;</span> 
+<span class="k">@end</span> 
+</code></li>
+  <li>其次，实现协议中的两个方法：</li>
+</ol>
+
+<p>```objc
+// 对person对象进行归档时，此方法执行。
+// 对person中想要进行归档的所有属性，进行序列化操作。
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+  [aCoder encodeObject:self.name forKey:@”name”];
+  [aCoder encodeInteger:self.age forKey:@”age”];
+}
+// 对person对象进行反归档时，该方法执行。
+// 创建一个新的person对象，所有属性都是通过反序列化得到的。
+-(id)initWithCoder:(NSCoder *)aDecoder 
+{
+  self = [super init];
+  if (self) {
+    self.name = [aDecoder decodeObjectForKey:@”name”];
+    self.age = [aDecoder decodeIntegerForKey:@”age”];
+  }
+  return self;
+}</p>
+
+<p>// 准备一个NSMutableData, 用于保存归档后的对象
+NSMutableData *data = [NSMutableData data];
+// 创建归档工具
+NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingMutableData:data];
+// 归档
+[archiver encodeObject:p] forKey:@”p1”];
+// 结束
+[archiver finishEncoding];
+// 拼音写入沙盒路径
+NSString *caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+NSString *filePath = [caches stringByAppendingPathComPonent:@”person”];
+// 写入沙盒
+[data writeToFile:filePath atomically:YES];</p>
+
+<p>// 反归档
+// 从filePath文件路径读取
+NSData *data = [NSData dataWithContentsOfFile:filePath];
+// 反归档工具
+NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+// 反归档成对象
+Person *p2 = [unArchiver decodeObjectForKey:@”p1”];
+// 反归档结束
+[unArchiver finshDeoding];
+```51</p>
+
+            </article>
+
+            <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;&quot;%20https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/%20via%20&#64;NeighborWangShu&hashtags=iOS,Objective-C,"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://neighborwangshushu.github.io/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/"
+    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+        <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
+    </a>
+</section>
+            <section class="author" itemprop="author">
+    <div class="details" itemscope itemtype="http://schema.org/Person">
+        <img itemprop="image" class="img-rounded" src="/assets/img/blog-author.jpg" alt="">
+        <p class="def">Author</p>
+        <h3 class="name">
+            <a itemprop="name" href="https://plus.google.com/+/posts">NeighborWangShuShu</a>
+        </h3>
+        <p class="desc">三次元のprogrammer</p>
+        <a itemprop="email" class="email" href="mailto:NeighborWangShuShu@gmail.com">NeighborWangShuShu@gmail.com</a>
+    </div>
+</section>
+
+            <section class="comments">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'NeighborWangShuShu';
+        var disqus_title = 'iOS进阶——数据处理之文件读写';
+        var disqus_url = '/iOS%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+            <footer>
+    <p>NeighborWangShuShu@2016 Made with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <span class="love">❤</span> by <a href="http://willianjusten.com">Willian Justen</a></p>
+</footer>
+<script src="/assets/js/main.js"></script>
+        </section>
+    </body>
+</html>
