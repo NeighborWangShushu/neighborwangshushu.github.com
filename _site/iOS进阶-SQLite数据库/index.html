@@ -124,12 +124,18 @@ SQL是一种<strong>结构化查询语言</strong>，TA是专为数据库建立�
 
 <hr />
 
-<p>数据库管理系统
-&gt; 数据库的特征：
-1. 以一定方式存储在一起
-2. 能为多个用户共享
-3. 具有尽可能少的冗余代码
-4. 与程序彼此独立的数据集合</p>
+<p>数据库管理系统</p>
+
+<blockquote>
+  <p>数据库的特征：</p>
+</blockquote>
+
+<ul>
+  <li>以一定方式存储在一起</li>
+  <li>能为多个用户共享</li>
+  <li>具有尽可能少的冗余代码</li>
+  <li>与程序彼此独立的数据集合</li>
+</ul>
 
 <p>讲了这么多数据库相关的知识，那么到底什么是数据库呢
 * <strong>数据库</strong>（Database）是按照数据结构来组织、存储和管理数据的仓库</p>
@@ -145,26 +151,18 @@ PC端：Oracle、MySQL、SQL Server、Access、DB2、Sybase
 
 <hr />
 
+<p><strong>数据库中有几个很重要的概念</strong></p>
+
 <blockquote>
-  <p>数据库中有几个很重要的概念</p>
+  <p>表：是数据库中一个非常重要的对象，是其他对象的基础。根据信息的分类情况，一个数据库中可能包含若干个数据表</p>
 </blockquote>
 
 <blockquote>
-  <blockquote>
-    <p>表：是数据库中一个非常重要的对象，是其他对象的基础。根据信息的分类情况，一个数据库中可能包含若干个数据表</p>
-  </blockquote>
+  <p>字段：表的“列”称为“字段”，每个字段包含某一专题的信息</p>
 </blockquote>
 
 <blockquote>
-  <blockquote>
-    <p>字段：表的“列”称为“字段”，每个字段包含某一专题的信息</p>
-  </blockquote>
-</blockquote>
-
-<blockquote>
-  <blockquote>
-    <p>记录：是指对应于数据表中一行信息的一组完整的相关信息</p>
-  </blockquote>
+  <p>记录：是指对应于数据表中一行信息的一组完整的相关信息</p>
 </blockquote>
 
 <hr />
@@ -188,13 +186,19 @@ PC端：Oracle、MySQL、SQL Server、Access、DB2、Sybase
 
 <p>SQLite数据库数据类型
 SQLite是无类型的数据库，可以保存任何类型的数据，对于SQLite来说对字段不指定类型是完全有效的
-为了使SQLite和其他数据库间的兼容性最大化，SQLite支持“类型近似”的观点，列的类型近似指的是存储列上数据的推荐类型。
-&gt; SQLite近似类型规则
-  »1. 如果类型字符串中包含“int”，那么该字段的亲缘类型是INTEGER
-  »2. 如果类型字符串中包含“char”、“clob”或“text”，那么该字段的亲缘类型是TEXT，如VARCHAR
-  »3. 如果类型字符串中包含“blob”，那么该字段的亲缘类型是none
-  »4. 如果类型字符串中包含“real”、“floa”或“doub”，那么该字段的亲缘类型是real
-  »5. 其余情况下，字段的亲缘类型为NUMERIC</p>
+为了使SQLite和其他数据库间的兼容性最大化，SQLite支持“类型近似”的观点，列的类型近似指的是存储列上数据的推荐类型。</p>
+
+<p><strong>SQLite近似类型规则</strong></p>
+
+<blockquote>
+  <ol>
+    <li>如果类型字符串中包含“int”，那么该字段的亲缘类型是INTEGER</li>
+    <li>如果类型字符串中包含“char”、“clob”或“text”，那么该字段的亲缘类型是TEXT，如VARCHAR</li>
+    <li>如果类型字符串中包含“blob”，那么该字段的亲缘类型是none</li>
+    <li>如果类型字符串中包含“real”、“floa”或“doub”，那么该字段的亲缘类型是real</li>
+    <li>其余情况下，字段的亲缘类型为NUMERIC</li>
+  </ol>
+</blockquote>
 
 <hr />
 
