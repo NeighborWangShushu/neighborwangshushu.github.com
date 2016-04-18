@@ -18,37 +18,44 @@ twitter_text:
 
 ***
 
-沙盒机制
-1. iOS中的沙盒不仅仅是一个文件目录，TA其实更是一种安全体系
-2. TA规定了应用程序只能在为该应用程序创建的文件夹（也就是沙盒）内访问文件，不可以访问其他沙盒内的内容（iOS已经部分开放访问）
-3. 所有的非代码文件都保存在沙盒中，图片、音频、视频、属性列表（plist）、sqlite数据库以及文本文件等。
+**沙盒机制**
+
+> 1. iOS中的沙盒不仅仅是一个文件目录，TA其实更是一种安全体系
+> 2. TA规定了应用程序只能在为该应用程序创建的文件夹（也就是沙盒）内访问文件，不可以访问其他沙盒内的内容（iOS已经部分开放访问）
+> 3. 所有的非代码文件都保存在沙盒中，图片、音频、视频、属性列表（plist）、sqlite数据库以及文本文件等。
 
 ***
 
-沙盒机制的特点
-1. 每个应用程序的活动范围都限定在自己的沙盒里
-2. 不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容（iOS8已经部分开放访问）
-3. 应用程序想外请求或者接手数据都需要经过权限认证
+**沙盒机制的特点**
+
+> 1. 每个应用程序的活动范围都限定在自己的沙盒里
+> 2. 不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容（iOS8已经部分开放访问）
+> 3. 应用程序想外请求或者接手数据都需要经过权限认证
 
 ***
 
-沙盒文件系统目录
+**沙盒文件系统目录**
+
 获取某个模拟器下某个应用程序沙盒的所在位置
 >/Users/用户名/Library/Developer/CoreSimulator/Devices/***6892D97C-37CD-4788-9EAF-DD65C0C5480C***/data/Containers/Data/Application/***85F0B633-0C22-4511-BCD8-3C531D9C9750***
-* PS1：上面的文件路径就是一个应用程序的沙盒所在位置，也就是沙盒的根目录
-* PS2：第一个粗体显示的路径是设备（模拟器）的路径，第二个粗体显示的路径表示这个应用程序沙盒的路径
+
+> * PS1：上面的文件路径就是一个应用程序的沙盒所在位置，也就是沙盒的根目录
+> * PS2：第一个粗体显示的路径是设备（模拟器）的路径，第二个粗体显示的路径表示这个应用程序沙盒的路径
 
 ***
 
-打开某个应用程序的沙盒
-1. **三击**你的沙盒路径（选中区域前后有多余的文字，并不会干扰接下来的操作，Mac系统会自动识别其中的文件路径）
-2. 点击鼠标右键选择Services
-3. 在Services的子选项中选择Reveal in Finder
- * PS：连续点击三次鼠标左键，选中光标所在位置的行，双击选中光标所在位置的单词
+**打开某个应用程序的沙盒**
+
+> 1. **三击**你的沙盒路径（选中区域前后有多余的文字，并不会干扰接下来的操作，Mac系统会自动识别其中的文件路径）
+> 2. 点击鼠标右键选择Services
+> 3. 在Services的子选项中选择Reveal in Finder
+
+> * PS：连续点击三次鼠标左键，选中光标所在位置的行，双击选中光标所在位置的单词
 
 ***
 
-应用程序的沙盒目录
+**应用程序的沙盒目录**
+
 应用程序的沙盒目录下拥有三个很特殊的文件夹分别是Documents、Library（拥有Caches和Preferences目录）、tmp。
 
 >**Documents**：保存应用程序运行时生成的需要持久化数据，iTunes会自动备份该目录
@@ -62,7 +69,8 @@ twitter_text:
 
 ***
 获取沙盒内文件的路径
-```objc
+
+{% highlight ruby %}
 // 获取Documents目录
 NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 
@@ -81,22 +89,32 @@ NSString *prePath = [NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirect
 
 // 获取应用程序包的路径
 NSString *path = [NSBundle mainBundle].resourcePath;
-```
+{% endhighlight %}
 
 ***
 
-#二、简单对象的读写（I/O）操作#
+# 二、简单对象的读写（I/O）操作 #
 
-简单对象
+
+**简单对象**
+
 iOS中提供四种类型可以直接进行文件存取：
->####NSString（字符串）
-####NSArray（数组）
-####NSDictionary（字典）
-####NSData（数据）
+
+#### NSString（字符串）####
+
+#### NSArray（数组）####
+
+#### NSDictionary（字典）####
+
+#### NSData（数据）####
+
 * ``包括上述类型的子类``
 
+***
+
 NSString的写入与读取
-```objc
+
+{% highlight ruby %}
     // 字符串写入沙盒
     // 在Documents下面创建一个文本路径，假设文本名称为objc.txt
     NSString *txtPath = [docPath stringByAppendingPathComponent:@"objc.txt"]; // 此时仅存在路径，文件并没有真实存在
@@ -109,10 +127,13 @@ NSString的写入与读取
     // 字符串读取的方法
     NSString *resultStr = [NSString stringWithContentsOfFile:txtPath encoding:NSUTF8StringEncoding error:nil];
     NSLog(@"resultStr is %@", resultStr);
-```
+{% endhighlight %}
+
+***
 
 NSArray的写入与读取
-```objc
+
+{% highlight ruby %}
     // 数组写入文件
     // 创建一个存储数组的文件路径
     NSString *filePath = [docPath stringByAppendingPathComponent:@"language.txt"];
@@ -124,11 +145,13 @@ NSArray的写入与读取
     // 从文件中读取数据数组的方法
     NSArray *resultArr = [NSArray arrayWithContentsOfFile:filePath];
     NSLog(@"%@", resultArr[1]);
+{% endhighlight %}
 
-```
+***
 
 NSDictionary的写入与读取
-```objc
+
+{% highlight ruby %}
     // 字典写入文件
     // 创建一个存储字典的文件路径
     NSString *fileDicPath = [docPath stringByAppendingPathComponent:@"love.txt"];
@@ -141,10 +164,13 @@ NSDictionary的写入与读取
     // 从文件中读取数据字典的方法
     NSDictionary *resultDic = [NSDictionary dictionaryWithContentsOfFile:fileDicPath];
     NSLog(@"%@", resultDic[@"梦想"]);
-```
+{% endhighlight %}
+
+***
 
 NSData的写入与读取
-```objc
+
+{% highlight ruby %}
     // NSData写入文件
     // 创建一个存放NSData数据的路径
     NSString *fileDataPath = [docPath stringByAppendingPathComponent:@"icon"];
@@ -164,22 +190,24 @@ NSData的写入与读取
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageView.image = resultImage;
     [self.view addSubview:imageView];
-```
+{% endhighlight %}
 
 ***
 
-#三、文件管理器与文件对接器#
+# 三、文件管理器与文件对接器 #
 
-文件管理器与文件连接器之间的区别
+**文件管理器与文件连接器之间的区别**
+
 * 文件管理器主要是对文件进行操作（创建、删除、改名等）以及文件信息的获取
 * 文件连接器主要是对文件内容进行读取与写入操作
 
 ***
 
-文件管理器
+**文件管理器**
 
 使用文件管理器创建文件夹
-```objc
+
+{% highlight ruby %}
     // 获取到Caches文件夹路径
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     
@@ -193,10 +221,13 @@ NSData的写入与读取
     [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
     
     NSLog(@"%@", dirPath);
-```
+{% endhighlight %}
 
-通过文件管理器创建文件以及获取文件信息
-```objc
+***
+
+**通过文件管理器创建文件以及获取文件信息**
+
+{% highlight ruby %}
     // 得到Documents路径
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     
@@ -217,10 +248,13 @@ NSData的写入与读取
     NSInteger size = number.intValue;
 
     NSLog(@"%@", number);
-```
+{% endhighlight %}
 
-文件移动
-```objc
+***
+
+**文件移动**
+
+{% highlight ruby %}
     // 创建文件夹
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *pathPath = [docPath stringByAppendingPathComponent:@"path"];
@@ -236,13 +270,14 @@ NSData的写入与读取
 
     // 移动文件
     [fileManager moveItemAtPath:path toPath:desPath error:nil]; // 移动文件的核心代码
-
-```
+{% endhighlight %}
 
 ***
 
-文件对接器
-```objc
+**文件对接器**
+
+{% highlight ruby %}
+
 /**
  *  练习要求：从一个文件中指定的位置开始追加内容
  提示:
@@ -271,33 +306,38 @@ NSData的写入与读取
     
     // 执行完操作之后不要忘记关闭文件
     [handle closeFile];
-```
+{% endhighlight %}
 
 ***
 
-#四、复杂对象的读写（I/O）操作#
+# 四、复杂对象的读写（I/O）操作 #
 
 复杂对象指的是在Foundation框架内不存在的数据类，如自定以的Person类，像这种自定义的类是无法在程序内部通过writeToFile：这个方法写入到文件内
+
 既然复杂对象无法使用内部方法进行数据持久化，那么只能通过将复杂对象转换成NSData，然后在通过上面的方法写入文件，而这种转换的步骤就被称为**归档**，从文件中读取NSData数据，将NSData转换为复杂对象，这个步骤就是**反归档**
->记住
->>* 复杂对象写入文件的过程（复杂对象->归档->NSData->writeToFile）
->>* 从文件中读取出复杂对象过程（读取文件->NSData->反归档->复杂对象）
+
+> **记住**
+
+> * 复杂对象写入文件的过程（复杂对象->归档->NSData->writeToFile）
+> * 从文件中读取出复杂对象过程（读取文件->NSData->反归档->复杂对象）
 
 > 1. 首先，复杂对象所属的类要遵守<NSCoding>
 2. 其次，实现协议中的两个方法：
-  * -(void)encodeWithCoder:(NSCoder *)aCoder; 序列化
-  * -(id)initWithCoder:(NSCoder *)aDecoder; 反序列化
+  * -(void)encodeWithCoder:(NSCoder *)aCoder; **序列化**
+  * -(id)initWithCoder:(NSCoder *)aDecoder; **反序列化**
 
-1. 首先，遵守NSCoding协议 
-```objc 
+**首先，遵守NSCoding协议**
+
+{% highlight ruby %}
 @interface Person:NSObject<NSCoding> 
       @property(nonatomic,copy) NSString *name 
       @property(nonatomic,assign) integer age; 
 @end 
-``` 
-2. 其次，实现协议中的两个方法：
+{% endhighlight %}
 
-```objc
+**其次，实现协议中的两个方法：**
+
+{% highlight ruby %}
 // 对person对象进行归档时，此方法执行。
 // 对person中想要进行归档的所有属性，进行序列化操作。
 -(void)encodeWithCoder:(NSCoder *)aCoder
@@ -340,4 +380,4 @@ NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithDat
 Person *p2 = [unArchiver decodeObjectForKey:@"p1"];
 // 反归档结束
 [unArchiver finshDeoding];
-```51
+{% endhighlight %}

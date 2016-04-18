@@ -118,38 +118,65 @@
 
 <hr />
 
-<p>沙盒机制
-1. iOS中的沙盒不仅仅是一个文件目录，TA其实更是一种安全体系
-2. TA规定了应用程序只能在为该应用程序创建的文件夹（也就是沙盒）内访问文件，不可以访问其他沙盒内的内容（iOS已经部分开放访问）
-3. 所有的非代码文件都保存在沙盒中，图片、音频、视频、属性列表（plist）、sqlite数据库以及文本文件等。</p>
+<p><strong>沙盒机制</strong></p>
+
+<blockquote>
+  <ol>
+    <li>iOS中的沙盒不仅仅是一个文件目录，TA其实更是一种安全体系</li>
+    <li>TA规定了应用程序只能在为该应用程序创建的文件夹（也就是沙盒）内访问文件，不可以访问其他沙盒内的内容（iOS已经部分开放访问）</li>
+    <li>所有的非代码文件都保存在沙盒中，图片、音频、视频、属性列表（plist）、sqlite数据库以及文本文件等。</li>
+  </ol>
+</blockquote>
 
 <hr />
 
-<p>沙盒机制的特点
-1. 每个应用程序的活动范围都限定在自己的沙盒里
-2. 不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容（iOS8已经部分开放访问）
-3. 应用程序想外请求或者接手数据都需要经过权限认证</p>
+<p><strong>沙盒机制的特点</strong></p>
+
+<blockquote>
+  <ol>
+    <li>每个应用程序的活动范围都限定在自己的沙盒里</li>
+    <li>不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容（iOS8已经部分开放访问）</li>
+    <li>应用程序想外请求或者接手数据都需要经过权限认证</li>
+  </ol>
+</blockquote>
 
 <hr />
 
-<p>沙盒文件系统目录
-获取某个模拟器下某个应用程序沙盒的所在位置
-&gt;/Users/用户名/Library/Developer/CoreSimulator/Devices/<strong><em>6892D97C-37CD-4788-9EAF-DD65C0C5480C</em></strong>/data/Containers/Data/Application/<strong><em>85F0B633-0C22-4511-BCD8-3C531D9C9750</em></strong>
-* PS1：上面的文件路径就是一个应用程序的沙盒所在位置，也就是沙盒的根目录
-* PS2：第一个粗体显示的路径是设备（模拟器）的路径，第二个粗体显示的路径表示这个应用程序沙盒的路径</p>
+<p><strong>沙盒文件系统目录</strong></p>
+
+<p>获取某个模拟器下某个应用程序沙盒的所在位置
+&gt;/Users/用户名/Library/Developer/CoreSimulator/Devices/<strong><em>6892D97C-37CD-4788-9EAF-DD65C0C5480C</em></strong>/data/Containers/Data/Application/<strong><em>85F0B633-0C22-4511-BCD8-3C531D9C9750</em></strong></p>
+
+<blockquote>
+  <ul>
+    <li>PS1：上面的文件路径就是一个应用程序的沙盒所在位置，也就是沙盒的根目录</li>
+    <li>PS2：第一个粗体显示的路径是设备（模拟器）的路径，第二个粗体显示的路径表示这个应用程序沙盒的路径</li>
+  </ul>
+</blockquote>
 
 <hr />
 
-<p>打开某个应用程序的沙盒
-1. <strong>三击</strong>你的沙盒路径（选中区域前后有多余的文字，并不会干扰接下来的操作，Mac系统会自动识别其中的文件路径）
-2. 点击鼠标右键选择Services
-3. 在Services的子选项中选择Reveal in Finder
- * PS：连续点击三次鼠标左键，选中光标所在位置的行，双击选中光标所在位置的单词</p>
+<p><strong>打开某个应用程序的沙盒</strong></p>
+
+<blockquote>
+  <ol>
+    <li><strong>三击</strong>你的沙盒路径（选中区域前后有多余的文字，并不会干扰接下来的操作，Mac系统会自动识别其中的文件路径）</li>
+    <li>点击鼠标右键选择Services</li>
+    <li>在Services的子选项中选择Reveal in Finder</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>PS：连续点击三次鼠标左键，选中光标所在位置的行，双击选中光标所在位置的单词</li>
+  </ul>
+</blockquote>
 
 <hr />
 
-<p>应用程序的沙盒目录
-应用程序的沙盒目录下拥有三个很特殊的文件夹分别是Documents、Library（拥有Caches和Preferences目录）、tmp。</p>
+<p><strong>应用程序的沙盒目录</strong></p>
+
+<p>应用程序的沙盒目录下拥有三个很特殊的文件夹分别是Documents、Library（拥有Caches和Preferences目录）、tmp。</p>
 
 <blockquote>
   <p><strong>Documents</strong>：保存应用程序运行时生成的需要持久化数据，iTunes会自动备份该目录
@@ -167,290 +194,312 @@
 </blockquote>
 
 <hr />
-<p>获取沙盒内文件的路径
-```objc
-// 获取Documents目录
-NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];</p>
+<p>获取沙盒内文件的路径</p>
 
-<p>// 获取tmp目录
-NSString *tmpPath = NSTemporaryDirectory();</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">获取</span><span class="no">Documents</span><span class="err">目录</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">docPath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSDocumentDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
 
-<p>// 获取Library目录
-NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];</p>
+<span class="sr">//</span> <span class="err">获取</span><span class="n">tmp</span><span class="err">目录</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">tmpPath</span> <span class="o">=</span> <span class="no">NSTemporaryDirectory</span><span class="p">();</span>
 
-<p>// 获取Library/Caches目录
-NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</p>
+<span class="sr">//</span> <span class="err">获取</span><span class="no">Library</span><span class="err">目录</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">libPath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSLibraryDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
 
-<p>// 获取Library/Preferences目录
-NSString *prePath = [NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSUserDomainMask, YES) lastObject];
-//通常情况下，Preferences由系统维护，我们很少去操作TA</p>
+<span class="sr">//</span> <span class="err">获取</span><span class="no">Library</span><span class="o">/</span><span class="no">Caches</span><span class="err">目录</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">cachePath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSCachesDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
 
-<p>// 获取应用程序包的路径
-NSString *path = [NSBundle mainBundle].resourcePath;
-```</p>
+<span class="sr">//</span> <span class="err">获取</span><span class="no">Library</span><span class="o">/</span><span class="no">Preferences</span><span class="err">目录</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">prePath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSPreferencePanesDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
+<span class="sr">//</span><span class="err">通常情况下，</span><span class="no">Preferences</span><span class="err">由系统维护，我们很少去操作</span><span class="no">TA</span>
+
+<span class="sr">//</span> <span class="err">获取应用程序包的路径</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSBundle</span> <span class="n">mainBundle</span><span class="p">].</span><span class="nf">resourcePath</span><span class="p">;</span></code></pre></figure>
 
 <hr />
 
-<p>#二、简单对象的读写（I/O）操作#</p>
+<h1 id="io">二、简单对象的读写（I/O）操作</h1>
 
-<p>简单对象
-iOS中提供四种类型可以直接进行文件存取：
-&gt;####NSString（字符串）
-####NSArray（数组）
-####NSDictionary（字典）
-####NSData（数据）
-* <code class="highlighter-rouge">包括上述类型的子类</code></p>
+<p><strong>简单对象</strong></p>
 
-<p>NSString的写入与读取
-```objc
-    // 字符串写入沙盒
-    // 在Documents下面创建一个文本路径，假设文本名称为objc.txt
-    NSString *txtPath = [docPath stringByAppendingPathComponent:@”objc.txt”]; // 此时仅存在路径，文件并没有真实存在
-    NSString *string = @”Objective-C”;</p>
+<p>iOS中提供四种类型可以直接进行文件存取：</p>
 
-<p>    // 字符串写入时执行的方法
+<h4 id="nsstring">NSString（字符串）</h4>
+
+<h4 id="nsarray">NSArray（数组）</h4>
+
+<h4 id="nsdictionary">NSDictionary（字典）</h4>
+
+<h4 id="nsdata">NSData（数据）</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">包括上述类型的子类</code></li>
+</ul>
+
+<hr />
+
+<p>NSString的写入与读取</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="sr">//</span> <span class="err">字符串写入沙盒</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 在Documents下面创建一个文本路径，假设文本名称为objc.txt
+    NSString *txtPath = [docPath stringByAppendingPathComponent:@"objc.txt"]; /</span><span class="o">/</span> <span class="err">此时仅存在路径，文件并没有真实存在</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="err">@</span><span class="s2">"Objective-C"</span><span class="p">;</span>
+
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 字符串写入时执行的方法
     [string writeToFile:txtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@”txtPath is %@”, txtPath);</p>
+    NSLog(@"txtPath is %@", txtPath);
 
-<div class="highlighter-rouge"><pre class="highlight"><code>// 字符串读取的方法     NSString *resultStr = [NSString stringWithContentsOfFile:txtPath encoding:NSUTF8StringEncoding error:nil];     NSLog(@"resultStr is %@", resultStr); ```
-</code></pre>
-</div>
+    /</span><span class="o">/</span> <span class="err">字符串读取的方法</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">resultStr</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSString</span> <span class="n">stringWithContentsOfFile</span><span class="ss">:txtPath</span> <span class="n">encoding</span><span class="ss">:NSUTF8StringEncoding</span> <span class="n">error</span><span class="ss">:nil</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"resultStr is %@"</span><span class="p">,</span> <span class="n">resultStr</span><span class="p">);</span></code></pre></figure>
 
-<p>NSArray的写入与读取
-```objc
-    // 数组写入文件
-    // 创建一个存储数组的文件路径
-    NSString *filePath = [docPath stringByAppendingPathComponent:@”language.txt”];
-    NSArray *array = @[@”C语言”, @”JAVA”,@”Objective-C”, @”Swift”, @”PHP”, @”C++”, @”C#”];
-    // 数组写入文件执行的方法
-    [array writeToFile:filePath atomically:YES];
-    NSLog(@”filePath is %@”, filePath);
-    
-    // 从文件中读取数据数组的方法
+<hr />
+
+<p>NSArray的写入与读取</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="sr">//</span> <span class="err">数组写入文件</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建一个存储数组的文件路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"language.txt"];
+    NSArray *array = @[@"C语言", @"JAVA",@"Objective-C", @"Swift", @"PHP", @"C++", @"C#"];
+    /</span><span class="o">/</span> <span class="err">数组写入文件执行的方法</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">array</span> <span class="n">writeToFile</span><span class="ss">:filePath</span> <span class="n">atomically</span><span class="ss">:YES</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"filePath is %@"</span><span class="p">,</span> <span class="n">filePath</span><span class="p">);</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 从文件中读取数据数组的方法
     NSArray *resultArr = [NSArray arrayWithContentsOfFile:filePath];
-    NSLog(@”%@”, resultArr[1]);</p>
+    NSLog(@"%@", resultArr[1]);</span></code></pre></figure>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-NSDictionary的写入与读取
-```objc
-    // 字典写入文件
-    // 创建一个存储字典的文件路径
+<hr />
+
+<p>NSDictionary的写入与读取</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="sr">//</span> <span class="err">字典写入文件</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建一个存储字典的文件路径
     NSString *fileDicPath = [docPath stringByAppendingPathComponent:@"love.txt"];
     NSDictionary *dic = @{@"职业":@"程序员", @"梦想":@"代码无BUG"};
     
-    // 字典写入时执行的方法
-    [dic writeToFile:fileDicPath atomically:YES];
-    NSLog(@"fileDicPath is %@", fileDicPath);
-    
-    // 从文件中读取数据字典的方法
+    /</span><span class="o">/</span> <span class="err">字典写入时执行的方法</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">dic</span> <span class="n">writeToFile</span><span class="ss">:fileDicPath</span> <span class="n">atomically</span><span class="ss">:YES</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"fileDicPath is %@"</span><span class="p">,</span> <span class="n">fileDicPath</span><span class="p">);</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 从文件中读取数据字典的方法
     NSDictionary *resultDic = [NSDictionary dictionaryWithContentsOfFile:fileDicPath];
-    NSLog(@"%@", resultDic[@"梦想"]);
-</code></pre>
-</div>
+    NSLog(@"%@", resultDic[@"梦想"]);</span></code></pre></figure>
 
-<p>NSData的写入与读取
-<code class="highlighter-rouge">objc
-    // NSData写入文件
-    // 创建一个存放NSData数据的路径
+<hr />
+
+<p>NSData的写入与读取</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="sr">//</span> <span class="no">NSData</span><span class="err">写入文件</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建一个存放NSData数据的路径
     NSString *fileDataPath = [docPath stringByAppendingPathComponent:@"icon"];
     
-    // 得到一个UIImage对象
-    UIImage *image = [UIImage imageNamed:@"icon.jpg"];
-    
-    // 将UIImage对象转换成NSData对象
+    /</span><span class="o">/</span> <span class="err">得到一个</span><span class="no">UIImage</span><span class="err">对象</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="no">UIImage</span> <span class="n">imageNamed</span><span class="p">:</span><span class="err">@</span><span class="s2">"icon.jpg"</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 将UIImage对象转换成NSData对象
     NSData *data = UIImageJPEGRepresentation(image, 0);
     [data writeToFile:fileDataPath atomically:YES];
     NSLog(@"fileDataPath is %@", fileDataPath);
     
-    // 从文件读取存储的NSData数据
-    NSData *resultData = [NSData dataWithContentsOfFile:fileDataPath];
-    // 将得到的NSData数据转换成原有的图片对象
+    /</span><span class="o">/</span> <span class="err">从文件读取存储的</span><span class="no">NSData</span><span class="err">数据</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSData</span> <span class="o">*</span><span class="n">resultData</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSData</span> <span class="n">dataWithContentsOfFile</span><span class="ss">:fileDataPath</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 将得到的NSData数据转换成原有的图片对象
     UIImage *resultImage = [UIImage imageWithData:resultData];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageView.image = resultImage;
-    [self.view addSubview:imageView];
-</code></p>
+    [self.view addSubview:imageView];</span></code></pre></figure>
 
 <hr />
 
-<p>#三、文件管理器与文件对接器#</p>
+<h1 id="section-1">三、文件管理器与文件对接器</h1>
 
-<p>文件管理器与文件连接器之间的区别
-* 文件管理器主要是对文件进行操作（创建、删除、改名等）以及文件信息的获取
-* 文件连接器主要是对文件内容进行读取与写入操作</p>
+<p><strong>文件管理器与文件连接器之间的区别</strong></p>
+
+<ul>
+  <li>文件管理器主要是对文件进行操作（创建、删除、改名等）以及文件信息的获取</li>
+  <li>文件连接器主要是对文件内容进行读取与写入操作</li>
+</ul>
 
 <hr />
 
-<p>文件管理器</p>
+<p><strong>文件管理器</strong></p>
 
-<p>使用文件管理器创建文件夹
-<code class="highlighter-rouge">objc
-    // 获取到Caches文件夹路径
+<p>使用文件管理器创建文件夹</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 获取到Caches文件夹路径
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     
-    // 获取创建文件夹的路径
-    NSString *dirPath = [cachePath stringByAppendingPathComponent:@"testDirectroy"];
-    
-    // 创建文件管理对象
+    /</span><span class="o">/</span> <span class="err">获取创建文件夹的路径</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">dirPath</span> <span class="o">=</span> <span class="p">[</span><span class="n">cachePath</span> <span class="n">stringByAppendingPathComponent</span><span class="p">:</span><span class="err">@</span><span class="s2">"testDirectroy"</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建文件管理对象
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    // 创建文件夹
-    [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    /</span><span class="o">/</span> <span class="err">创建文件夹</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">createDirectoryAtPath</span><span class="ss">:dirPath</span> <span class="n">withIntermediateDirectories</span><span class="ss">:YES</span> <span class="n">attributes</span><span class="ss">:nil</span> <span class="n">error</span><span class="ss">:nil</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"%@"</span><span class="p">,</span> <span class="n">dirPath</span><span class="p">);</span></code></pre></figure>
+
+<hr />
+
+<p><strong>通过文件管理器创建文件以及获取文件信息</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="sr">//</span> <span class="err">得到</span><span class="no">Documents</span><span class="err">路径</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">docPath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSDocumentDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建一个文件路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"objc.txt"];
     
-    NSLog(@"%@", dirPath);
-</code></p>
-
-<p>通过文件管理器创建文件以及获取文件信息
-```objc
-    // 得到Documents路径
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    /</span><span class="o">/</span> <span class="err">创建文件首先需要一个文件管理对象</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSFileManager</span> <span class="o">*</span><span class="n">fileManager</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSFileManager</span> <span class="n">defaultManager</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建文件
+    [fileManager createFileAtPath:filePath contents:[@"Objective-C" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+    NSLog(@"%@",filePath);
     
-    // 创建一个文件路径
-    NSString *filePath = [docPath stringByAppendingPathComponent:@”objc.txt”];
-    
-    // 创建文件首先需要一个文件管理对象
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    // 创建文件
-    [fileManager createFileAtPath:filePath contents:[@”Objective-C” dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-    NSLog(@”%@”,filePath);
-    
-    // 获取某个文件或者某个文件夹的大小
-    NSDictionary *dic = [fileManager attributesOfItemAtPath:filePath error:nil];
-    NSLog(@”%@”, dic);
-    NSNumber *number = [dic objectForKey:NSFileSize];
-    NSInteger size = number.intValue;</p>
+    /</span><span class="o">/</span> <span class="err">获取某个文件或者某个文件夹的大小</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSDictionary</span> <span class="o">*</span><span class="n">dic</span> <span class="o">=</span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">attributesOfItemAtPath</span><span class="ss">:filePath</span> <span class="n">error</span><span class="ss">:nil</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"%@"</span><span class="p">,</span> <span class="n">dic</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSNumber</span> <span class="o">*</span><span class="n">number</span> <span class="o">=</span> <span class="p">[</span><span class="n">dic</span> <span class="n">objectForKey</span><span class="ss">:NSFileSize</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSInteger</span> <span class="n">size</span> <span class="o">=</span> <span class="n">number</span><span class="p">.</span><span class="nf">intValue</span><span class="p">;</span>
 
-<p>    NSLog(@”%@”, number);
-```</p>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s2">"%@"</span><span class="p">,</span> <span class="n">number</span><span class="p">);</span></code></pre></figure>
 
-<p>文件移动
-```objc
-    // 创建文件夹
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *pathPath = [docPath stringByAppendingPathComponent:@”path”];</p>
+<hr />
 
-<div class="highlighter-rouge"><pre class="highlight"><code>// 创建文件     NSString *path = [pathPath stringByAppendingPathComponent:@"test.txt"];     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];     NSString *dirPath = [cachePath stringByAppendingPathComponent:@"testDirectroy"];     NSString *desPath = [dirPath stringByAppendingPathComponent:@"test.txt"];
+<p><strong>文件移动</strong></p>
 
-// 创建文件管理器对象，进行文件移动操作     NSFileManager *fileManager = [NSFileManager defaultManager];
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="sr">//</span> <span class="err">创建文件夹</span>
+    <span class="no">NSString</span> <span class="o">*</span><span class="n">docPath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSDocumentDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">pathPath</span> <span class="o">=</span> <span class="p">[</span><span class="n">docPath</span> <span class="n">stringByAppendingPathComponent</span><span class="p">:</span><span class="err">@</span><span class="s2">"path"</span><span class="p">];</span>
 
-// 移动文件     [fileManager moveItemAtPath:path toPath:desPath error:nil]; // 移动文件的核心代码
-</code></pre>
-</div>
+    <span class="sr">//</span> <span class="err">创建文件</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">pathPath</span> <span class="n">stringByAppendingPathComponent</span><span class="p">:</span><span class="err">@</span><span class="s2">"test.txt"</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">cachePath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSCachesDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">dirPath</span> <span class="o">=</span> <span class="p">[</span><span class="n">cachePath</span> <span class="n">stringByAppendingPathComponent</span><span class="p">:</span><span class="err">@</span><span class="s2">"testDirectroy"</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">desPath</span> <span class="o">=</span> <span class="p">[</span><span class="n">dirPath</span> <span class="n">stringByAppendingPathComponent</span><span class="p">:</span><span class="err">@</span><span class="s2">"test.txt"</span><span class="p">];</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-***
+    <span class="sr">//</span> <span class="err">创建文件管理器对象，进行文件移动操作</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSFileManager</span> <span class="o">*</span><span class="n">fileManager</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSFileManager</span> <span class="n">defaultManager</span><span class="p">];</span>
 
-文件对接器
-```objc
-/**
+    <span class="sr">//</span> <span class="err">移动文件</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">moveItemAtPath</span><span class="ss">:path</span> <span class="n">toPath</span><span class="ss">:desPath</span> <span class="n">error</span><span class="ss">:nil</span><span class="p">];</span> <span class="sr">//</span> <span class="err">移动文件的核心代码</span></code></pre></figure>
+
+<hr />
+
+<p><strong>文件对接器</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">/**
  *  练习要求：从一个文件中指定的位置开始追加内容
  提示:
  1、在documents目录下创建一个test.txt文件,文件中的内容为"abcdefg"
  2、从文件偏移量为3那个位置开始追加内容"1234"
- */
+ */</span>
 
-    // 获取Documents文件夹路径
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    
-    // 创建文件路径
+    <span class="sr">//</span> <span class="err">获取</span><span class="no">Documents</span><span class="err">文件夹路径</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSString</span> <span class="o">*</span><span class="n">docPath</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSDocumentDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建文件路径
     NSString *filePath = [docPath stringByAppendingPathComponent:@"test.txt"];
     
-    // 使用文件管理对象创建文件
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createFileAtPath:filePath contents:[@"abcdefg" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
-    
-    // 创建文件对接对象
-    NSFileHandle *handle = [NSFileHandle fileHandleForUpdatingAtPath:filePath]; // 文件对接对象此时针对文件既可以读取又可以写入
-    
-    // 将偏移量挪到3的位置
+    /</span><span class="o">/</span> <span class="err">使用文件管理对象创建文件</span>
+<span class="err"> </span> <span class="err"> </span> <span class="no">NSFileManager</span> <span class="o">*</span><span class="n">fileManager</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSFileManager</span> <span class="n">defaultManager</span><span class="p">];</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">createFileAtPath</span><span class="ss">:filePath</span> <span class="n">contents</span><span class="p">:[</span><span class="err">@</span><span class="s2">"abcdefg"</span> <span class="n">dataUsingEncoding</span><span class="ss">:NSUTF8StringEncoding</span><span class="p">]</span> <span class="n">attributes</span><span class="ss">:nil</span><span class="p">];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 创建文件对接对象
+    NSFileHandle *handle = [NSFileHandle fileHandleForUpdatingAtPath:filePath]; /</span><span class="o">/</span> <span class="err">文件对接对象此时针对文件既可以读取又可以写入</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 将偏移量挪到3的位置
     [handle seekToFileOffset:3];
     
-    // 写入数据
-    [handle writeData:[@"1234" dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // 执行完操作之后不要忘记关闭文件
-    [handle closeFile];
-</code></pre>
-</div>
+    /</span><span class="o">/</span> <span class="err">写入数据</span>
+<span class="err"> </span> <span class="err"> </span> <span class="p">[</span><span class="n">handle</span> <span class="n">writeData</span><span class="p">:[</span><span class="err">@</span><span class="s2">"1234"</span> <span class="n">dataUsingEncoding</span><span class="ss">:NSUTF8StringEncoding</span><span class="p">]];</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">/</span><span class="sr">/ 执行完操作之后不要忘记关闭文件
+    [handle closeFile];</span></code></pre></figure>
 
 <hr />
 
-<p>#四、复杂对象的读写（I/O）操作#</p>
+<h1 id="io-1">四、复杂对象的读写（I/O）操作</h1>
 
-<p>复杂对象指的是在Foundation框架内不存在的数据类，如自定以的Person类，像这种自定义的类是无法在程序内部通过writeToFile：这个方法写入到文件内
-既然复杂对象无法使用内部方法进行数据持久化，那么只能通过将复杂对象转换成NSData，然后在通过上面的方法写入文件，而这种转换的步骤就被称为<strong>归档</strong>，从文件中读取NSData数据，将NSData转换为复杂对象，这个步骤就是<strong>反归档</strong>
-&gt;记住
-»* 复杂对象写入文件的过程（复杂对象-&gt;归档-&gt;NSData-&gt;writeToFile）
-»* 从文件中读取出复杂对象过程（读取文件-&gt;NSData-&gt;反归档-&gt;复杂对象）</p>
+<p>复杂对象指的是在Foundation框架内不存在的数据类，如自定以的Person类，像这种自定义的类是无法在程序内部通过writeToFile：这个方法写入到文件内</p>
+
+<p>既然复杂对象无法使用内部方法进行数据持久化，那么只能通过将复杂对象转换成NSData，然后在通过上面的方法写入文件，而这种转换的步骤就被称为<strong>归档</strong>，从文件中读取NSData数据，将NSData转换为复杂对象，这个步骤就是<strong>反归档</strong></p>
+
+<blockquote>
+  <p><strong>记住</strong></p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>复杂对象写入文件的过程（复杂对象-&gt;归档-&gt;NSData-&gt;writeToFile）</li>
+    <li>从文件中读取出复杂对象过程（读取文件-&gt;NSData-&gt;反归档-&gt;复杂对象）</li>
+  </ul>
+</blockquote>
 
 <blockquote>
   <ol>
     <li>首先，复杂对象所属的类要遵守<nscoding></nscoding></li>
     <li>其次，实现协议中的两个方法：
       <ul>
-        <li>-(void)encodeWithCoder:(NSCoder *)aCoder; 序列化</li>
-        <li>-(id)initWithCoder:(NSCoder *)aDecoder; 反序列化</li>
+        <li>-(void)encodeWithCoder:(NSCoder *)aCoder; <strong>序列化</strong></li>
+        <li>-(id)initWithCoder:(NSCoder *)aDecoder; <strong>反序列化</strong></li>
       </ul>
     </li>
   </ol>
 </blockquote>
 
-<ol>
-  <li>首先，遵守NSCoding协议 
-<code class="highlighter-rouge"><span class="n">objc</span> 
-<span class="k">@interface</span> <span class="nc">Person</span><span class="p">:</span><span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">NSCoding</span><span class="o">&gt;</span> 
-   <span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">name</span> 
-   <span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">)</span> <span class="n">integer</span> <span class="n">age</span><span class="p">;</span> 
-<span class="k">@end</span> 
-</code></li>
-  <li>其次，实现协议中的两个方法：</li>
-</ol>
+<p><strong>首先，遵守NSCoding协议</strong></p>
 
-<p>```objc
-// 对person对象进行归档时，此方法执行。
-// 对person中想要进行归档的所有属性，进行序列化操作。
--(void)encodeWithCoder:(NSCoder *)aCoder
-{
-  [aCoder encodeObject:self.name forKey:@”name”];
-  [aCoder encodeInteger:self.age forKey:@”age”];
-}
-// 对person对象进行反归档时，该方法执行。
-// 创建一个新的person对象，所有属性都是通过反序列化得到的。
--(id)initWithCoder:(NSCoder *)aDecoder 
-{
-  self = [super init];
-  if (self) {
-    self.name = [aDecoder decodeObjectForKey:@”name”];
-    self.age = [aDecoder decodeIntegerForKey:@”age”];
-  }
-  return self;
-}</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@interface</span> <span class="no">Person</span><span class="ss">:NSObject</span><span class="o">&lt;</span><span class="no">NSCoding</span><span class="o">&gt;</span> 
+      <span class="vi">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span> <span class="no">NSString</span> <span class="o">*</span><span class="nb">name</span> 
+      <span class="vi">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">)</span> <span class="n">integer</span> <span class="n">age</span><span class="p">;</span> 
+<span class="vi">@end</span> </code></pre></figure>
 
-<p>// 准备一个NSMutableData, 用于保存归档后的对象
-NSMutableData *data = [NSMutableData data];
-// 创建归档工具
-NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingMutableData:data];
-// 归档
-[archiver encodeObject:p] forKey:@”p1”];
-// 结束
-[archiver finishEncoding];
-// 拼音写入沙盒路径
-NSString *caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-NSString *filePath = [caches stringByAppendingPathComPonent:@”person”];
-// 写入沙盒
-[data writeToFile:filePath atomically:YES];</p>
+<p><strong>其次，实现协议中的两个方法：</strong></p>
 
-<p>// 反归档
-// 从filePath文件路径读取
-NSData *data = [NSData dataWithContentsOfFile:filePath];
-// 反归档工具
-NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-// 反归档成对象
-Person *p2 = [unArchiver decodeObjectForKey:@”p1”];
-// 反归档结束
-[unArchiver finshDeoding];
-```51</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="err">对</span><span class="n">person</span><span class="err">对象进行归档时，此方法执行。</span>
+<span class="sr">//</span> <span class="err">对</span><span class="n">person</span><span class="err">中想要进行归档的所有属性，进行序列化操作。</span>
+<span class="o">-</span><span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">encodeWithCoder</span><span class="p">:(</span><span class="no">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">aCoder</span>
+<span class="p">{</span>
+  <span class="p">[</span><span class="n">aCoder</span> <span class="n">encodeObject</span><span class="ss">:self</span><span class="p">.</span><span class="nf">name</span> <span class="n">forKey</span><span class="p">:</span><span class="err">@</span><span class="s2">"name"</span><span class="p">];</span>
+  <span class="p">[</span><span class="n">aCoder</span> <span class="n">encodeInteger</span><span class="ss">:self</span><span class="p">.</span><span class="nf">age</span> <span class="n">forKey</span><span class="p">:</span><span class="err">@</span><span class="s2">"age"</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="sr">//</span> <span class="err">对</span><span class="n">person</span><span class="err">对象进行反归档时，该方法执行。</span>
+<span class="sr">//</span> <span class="err">创建一个新的</span><span class="n">person</span><span class="err">对象，所有属性都是通过反序列化得到的。</span>
+<span class="o">-</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span><span class="n">initWithCoder</span><span class="p">:(</span><span class="no">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">aDecoder</span> 
+<span class="p">{</span>
+  <span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="k">super</span> <span class="n">init</span><span class="p">];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="p">[</span><span class="n">aDecoder</span> <span class="n">decodeObjectForKey</span><span class="p">:</span><span class="err">@</span><span class="s2">"name"</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">age</span> <span class="o">=</span> <span class="p">[</span><span class="n">aDecoder</span> <span class="n">decodeIntegerForKey</span><span class="p">:</span><span class="err">@</span><span class="s2">"age"</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sr">//</span> <span class="err">准备一个</span><span class="no">NSMutableData</span><span class="p">,</span> <span class="err">用于保存归档后的对象</span>
+<span class="no">NSMutableData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSMutableData</span> <span class="n">data</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">创建归档工具</span>
+<span class="no">NSKeyedArchiver</span> <span class="o">*</span><span class="n">archiver</span> <span class="o">=</span> <span class="p">[[</span><span class="no">NSKeyedArchiver</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initForWritingMutableData</span><span class="ss">:data</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">归档</span>
+<span class="p">[</span><span class="n">archiver</span> <span class="n">encodeObject</span><span class="ss">:p</span><span class="p">]</span> <span class="n">forKey</span><span class="p">:</span><span class="err">@</span><span class="s2">"p1"</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">结束</span>
+<span class="p">[</span><span class="n">archiver</span> <span class="n">finishEncoding</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">拼音写入沙盒路径</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">caches</span> <span class="o">=</span> <span class="no">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="no">NSCachesDirectory</span><span class="p">,</span> <span class="no">NSUserDomainMask</span><span class="p">,</span> <span class="no">YES</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="no">NSString</span> <span class="o">*</span><span class="n">filePath</span> <span class="o">=</span> <span class="p">[</span><span class="n">caches</span> <span class="n">stringByAppendingPathComPonent</span><span class="p">:</span><span class="err">@</span><span class="s2">"person"</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">写入沙盒</span>
+<span class="p">[</span><span class="n">data</span> <span class="n">writeToFile</span><span class="ss">:filePath</span> <span class="n">atomically</span><span class="ss">:YES</span><span class="p">];</span>
+
+<span class="sr">//</span> <span class="err">反归档</span>
+<span class="sr">//</span> <span class="err">从</span><span class="n">filePath</span><span class="err">文件路径读取</span>
+<span class="no">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="no">NSData</span> <span class="n">dataWithContentsOfFile</span><span class="ss">:filePath</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">反归档工具</span>
+<span class="no">NSKeyedUnarchiver</span> <span class="o">*</span><span class="n">unArchiver</span> <span class="o">=</span> <span class="p">[[</span><span class="no">NSKeyedUnarchiver</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initForReadingWithData</span><span class="ss">:data</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">反归档成对象</span>
+<span class="no">Person</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="n">unArchiver</span> <span class="n">decodeObjectForKey</span><span class="p">:</span><span class="err">@</span><span class="s2">"p1"</span><span class="p">];</span>
+<span class="sr">//</span> <span class="err">反归档结束</span>
+<span class="p">[</span><span class="n">unArchiver</span> <span class="n">finshDeoding</span><span class="p">];</span></code></pre></figure>
 
             </article>
 
