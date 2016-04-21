@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "cocoapods下载很慢的解决办法",
+      "category" : "Git",
+      "tags"     : "GitHub and Git",
+      "url"      : "/cocoapods%E4%B8%8B%E8%BD%BD%E5%BE%88%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/",
+      "date"     : "21 Apr 2016"
+    } ,
+  
+    {
       "title"    : "iOS进阶——数据处理之文件读写",
       "category" : "iOS_Objective-C",
       "tags"     : "iOS and Objective-C",

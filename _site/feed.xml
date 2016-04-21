@@ -5,9 +5,69 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Apr 2016 22:32:54 +0800</pubDate>
-    <lastBuildDate>Mon, 18 Apr 2016 22:32:54 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Apr 2016 22:14:28 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Apr 2016 22:14:28 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>cocoapods下载很慢的解决办法</title>
+        <description>&lt;p&gt;我们喜欢用cocoapods下载第三方的类库到我们的项目中,但是我们会遇到下载这些第三方时总是要等待很长的时间,,我在网上找到了解决这个问题的办法&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ pod install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行这行命令的时候下载的速度很慢,这是因为cocoapods的install和update的默认源是国外的源,所以速度很慢
+我这里指的源跟之前在安装的时候更换的taobao的镜像不是一个概念,taobao的这个镜像是用在下载cocoapods时用到的,这个镜像在安装完cocoapods之后,两者就没有关系了
+所以想要提高install和update的速度我这里提供了两个方法&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;方法一. 更换源&lt;/h3&gt;
+
+&lt;p&gt;在终端中输入下面的命令更换源&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ pod repo remove master
+$ pod repo add master https://gitcafe.com/akuandev/Specs.git
+$ pod repo update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果想用别的镜像的话也可以将第二条命令的镜像换成 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://git.oschina.net/akuandev/Specs.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;需要注意的是执行第二条命令的时候会很慢因为里面的东西有160M,所以慢慢等吧*&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在将镜像更换之后还没有结束,在每一个项目中创建的podfile文件的第一行都要填写下面这行source命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source &#39;http://git.oschina.net/akuandev/Specs.git&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;specs&quot;&gt;方法二.忽略升级specs库&lt;/h3&gt;
+
+&lt;p&gt;在进行&lt;code class=&quot;highlighter-rouge&quot;&gt;pod install&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;pod update&lt;/code&gt;时候忽略升级specs库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ pod install --verbose --no-repo-update
+$ pod update --verbose --no-repo-update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果想跟深的了解详情请看这篇&lt;a href=&quot;http://akinliu.github.io/2014/05/03/cocoapods-specs-/&quot;&gt;博客&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 Apr 2016 22:06:48 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/cocoapods%E4%B8%8B%E8%BD%BD%E5%BE%88%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/cocoapods%E4%B8%8B%E8%BD%BD%E5%BE%88%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+        
+        <category>GitHub</category>
+        
+        <category>Git</category>
+        
+        
+        <category>Git</category>
+        
+      </item>
     
       <item>
         <title>iOS进阶——数据处理之文件读写</title>
@@ -168,63 +228,6 @@
         <pubDate>Thu, 03 Mar 2016 21:12:24 +0800</pubDate>
         <link>https://neighborwangshushu.github.io/iOS_UI(%E4%B9%9D)UITabBarController/</link>
         <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E4%B9%9D)UITabBarController/</guid>
-        
-        <category>iOS</category>
-        
-        <category>UI</category>
-        
-        <category>Objective-C</category>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS_UI(八)界面通信</title>
-        <description>&lt;p&gt;属性传值&lt;/p&gt;
-
-&lt;p&gt;1.属性传值用于第一个界面向第二个界面传送值&lt;/p&gt;
-
-&lt;p&gt;2.明确二者联系的桥梁，也就是触发跳转的地方&lt;/p&gt;
-
-&lt;p&gt;3.明确传输的值类型是什么&lt;/p&gt;
-
-&lt;p&gt;4.在第二个视图控制器内部声明相对应类型的属性，来接收传输的值&lt;/p&gt;
-
-&lt;p&gt;5.在第二个界面使用传入的值&lt;/p&gt;
-
-&lt;p&gt;代理传值&lt;/p&gt;
-
-&lt;p&gt;代理传值用于后面的界面向之前的界面传送值&lt;/p&gt;
-
-&lt;p&gt;第1步:声明协议&lt;/p&gt;
-
-&lt;p&gt;第2步:声明代理&lt;/p&gt;
-
-&lt;p&gt;第3步:执行协议方法&lt;/p&gt;
-
-&lt;p&gt;第4步:签订协议&lt;/p&gt;
-
-&lt;p&gt;第5步:指定代理&lt;/p&gt;
-
-&lt;p&gt;第6步:实现协议方法&lt;/p&gt;
-
-&lt;p&gt;block传值&lt;/p&gt;
-
-&lt;p&gt;block传值用于后面的界面向之前的界面传送值&lt;/p&gt;
-
-&lt;p&gt;1.重定义block&lt;/p&gt;
-
-&lt;p&gt;2.将block声明为属性&lt;/p&gt;
-
-&lt;p&gt;3.执行block&lt;/p&gt;
-
-&lt;p&gt;4.实现block&lt;/p&gt;
-</description>
-        <pubDate>Wed, 02 Mar 2016 21:20:54 +0800</pubDate>
-        <link>https://neighborwangshushu.github.io/iOS_UI(%E5%85%AB)%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1/</link>
-        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%85%AB)%E7%95%8C%E9%9D%A2%E9%80%9A%E4%BF%A1/</guid>
         
         <category>iOS</category>
         
