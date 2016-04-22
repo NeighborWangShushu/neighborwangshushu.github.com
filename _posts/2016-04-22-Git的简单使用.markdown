@@ -1,0 +1,148 @@
+---
+layout: post
+title: "Git的简单使用"
+date: 2016-04-22 21:45:50 + 8:00
+image: '/assets/img/'
+description: 'Git'
+tags:
+- Git
+categories:
+- Git
+twitter_text:
+---
+
+### 一.什么是Git
+
+git 是一款开源的分布式版本管理工具,最初由Linus Torvalds创作,于2005年以GPL发布,最初目的是为了更好的管理Linux内核开发而设计.
+
+git 最初的开发动力是来自于BitKeeper和Monotone,git最初只是作为一个可以被其他前端包装的后端而开发的,但后来git内核已经成熟到可以独立地用作版本控制,很多著名的软件都使用git进行版本控制.
+
+现在世界上所有的分布式版本控制工具中，git是最快、最简单、最流行的
+
+版本控制：集中式、分布式
+
+集中式：集中式版本控制系统，版本库是集中存放在中央服务器的，而工作的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书管，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回到图书馆。
+缺点：必须得联网时才能工作，自己电脑上没有服务器，只能请求网上的服务器获得资源。(SVN)
+
+分布式：分布式版本控制系统没有中央服务器，每一个电脑上都是一个完整的版本库，工作的时候都不需要联网当两个或者两个以上的人分别修改了不同的文件的时候，只需要把各自修改的内容推送给对方即可，可以互相看到对方的修改了。安全性高，只要有一台电脑没有坏，就能重新得到完整的版本库，不会跟集中式的一样，中央服务器炸了就什么都没有了。
+
+git是一款开源的分布式版本控制工具，在世界上所有的分布式版本控制工具中，git是最快、最简单、最流行的
+
+作者是Linux之父： Linus Benedict Torvalds
+当初开发git仅仅是为了辅助Linux内核的发开(管理源代码)
+
+国外非常普及，国内一般
+越来越多的开源项目已经转移到git
+
+显示隐藏文件(Mac OS)
+
+    $ defaults write com.apple.finder AppleShowAllFiles -bool true
+
+* 需要重启Finder
+
+</br>
+
+### 二. 个人开发(命令行)
+
+1.进入到工作目录中(就是你想要将git仓库创建的位置),初始化一个代码仓库
+
+    $ git init
+
+2.给这个git仓库配置一个用户名和邮箱
+
+    $ git config user.name "username"
+    $ git config user.email "useremail@gmail.com"
+
+3.初始化代码
+
+    $ touch main.m
+    $ git add main.m
+
+4.查看文件状态
+
+    $ git status
+
+* 文件显示为红色:新添加的文件或者修改的文件在工作区中,没有被添加到暂缓区
+* 文件显示为绿色:添加的文件已经添加到暂缓区中,这种状态下的文件就可以被提交到代码仓库中了
+
+5.修改文件
+
+    $ open main.m
+
+6.将工作区中的文件添加到暂缓区中
+
+    $ git add main.m
+
+* 要是想将所有文件添加到暂缓区中
+
+	    $ git add .
+
+7.给git命令起别名
+
+    $ git config alias.st "status"
+    $ git config alias.ci "commit -m"
+
+* alias.后面是别名," "中的是被起别名的命令
+
+8.查看历史版本
+
+    $ git log
+    $ git reflog
+
+* git版本号是由sha1加密算法生成的一个40位的哈希码
+* 例如: 7c4a8d09ca3762af61e59520943dc26494f8941b
+
+9.版本回退
+
+    $ git reset --hard HEAD  重置到当前版本
+    $ git reset --hard HEAD^ 重置到上个版本
+    $ git reset --hard HEAD^^  重置到上上个版本
+    $ git reset --hard HEAD~1024 重置到往上1024个版本
+    $ git reset --hard git版本号前7位 重置到指定版本
+
+10.--global的作用(可以用来配置全局的用户名和密码)
+
+    $ git config --global user.name "username"
+    $ git config --global user.email "useremail@gmail.com"
+
+
+### 三. 团队开发
+
+在团队开发程序时就需要创建一个代码共享库
+
+1.创建代码共享库(让一个文件成为共享库)
+
+    $ git init --bare
+
+2.A将共享代码仓库中的内容clone下来
+
+    $ git clone 代码共享库的地址
+
+**3.A初始化项目**
+
+>操作流程
+
+* 忽略文件:在与.git同级目录下创建一个.gitgnore文件,在该文件中指定需要忽略的文件
+* 可以去 https://github.com/github/gitignore  查看OC需要忽略的内容,将内容填写到.gitgnore中
+https://github.com/github/gitignore/blob/master/Objective-C.gitignore **(Objective-C)**
+* git add .  /  git commit -m "注释"将.gitignore添加到本地仓库中
+* 初始化项目在与.git同级目录下
+* 将初始化的项目提交到本地
+* 将本地代码库中的内容push到服务器中
+
+**4.B也开始进行开发**
+
+>操作流程
+
+* git clone 共享代码库的地址
+* 修改代码或者文件
+* git commit
+* git push
+
+>**注意**:
+
+* 同一个文件的共享
+* 同一个文件共享时发生的代码冲突
+* 创建新文件的共享
+* **storyboard**的共享(**仅限iOS开发**)
+* 静态库的共享(不需要像类似svn一样执行add命令)

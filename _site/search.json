@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Git的简单使用",
+      "category" : "Git",
+      "tags"     : "Git",
+      "url"      : "/Git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/",
+      "date"     : "22 Apr 2016"
+    } ,
+  
+    {
       "title"    : "cocoapods下载很慢的解决办法",
       "category" : "Git",
       "tags"     : "GitHub and Git",

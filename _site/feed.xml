@@ -5,9 +5,23 @@
     <description>A blog about lorem ipsum dolor sit amet</description>
     <link>https://neighborwangshushu.github.io/</link>
     <atom:link href="https://neighborwangshushu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Apr 2016 22:14:28 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Apr 2016 22:14:28 +0800</lastBuildDate>
+    <pubDate>Fri, 22 Apr 2016 21:52:40 +0800</pubDate>
+    <lastBuildDate>Fri, 22 Apr 2016 21:52:40 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Git的简单使用</title>
+        <description>&lt;h3 id=&quot;git&quot;&gt;一.什么是Git&lt;/h3&gt; &lt;p&gt;git 是一款开源的分布式版本管理工具,最初由Linus Torvalds创作,于2005年以GPL发布,最初目的是为了更好的管理Linux内核开发而设计.&lt;/p&gt; &lt;p&gt;git 最初的开发动力是来自于BitKeeper和Monotone,git最初只是作为一个可以被其他前端包装的后端而开发的,但后来git内核已经成熟到可以独立地用作版本控制,很多著名的软件都使用git进行版本控制.&lt;/p&gt; &lt;p&gt;现在世界上所有的分布式版本控制工具中，git是最快、最简单、最流行的&lt;/p&gt; &lt;p&gt;版本控制：集中式、分布式&lt;/p&gt; &lt;p&gt;集中式：集中式版本控制系统，版本库是集中存放在中央服务器的，而工作的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书管，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回到图书馆。 缺点：必须得联网时才能工作，自己电脑上没有服务器，只能请求网上的服务器获得资源。(SVN)&lt;/p&gt; &lt;p&gt;分布式：分布式版本控制系统没有中央服务器，每一个电脑上都是一个完整的版本库，工作的时候都不需要联网当两个或者两个以上的人分别修改了不同的文件的时候，只需要把各自修改的内容推送给对方即可，可以互相看到对方的修改了。安全性高，只要有一台电脑没有坏，就能重新得到完整的版本库，不会跟集中式的一样，中央服务器炸了就什么都没有了。&lt;/p&gt; &lt;p&gt;git是一款开源的分布式版本控制工具，在世界上所有的分布式版本控制工具中，git是最快、最简单、最流行的&lt;/p&gt; &lt;p&gt;作者是Linux之父： Linus Benedict Torvalds 当初开发git仅仅是为了辅助Linux内核的发开(管理源代码)&lt;/p&gt; &lt;p&gt;国外非常普及，国内一般 越来越多的开源项目已经转移到git&lt;/p&gt; &lt;p&gt;显示隐藏文件(Mac OS)&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ defaults write com.apple.finder AppleShowAllFiles -bool true &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; &lt;ul&gt; &lt;li&gt;需要重启Finder&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&amp;lt;/br&amp;gt;&lt;/p&gt; &lt;h3 id=&quot;section&quot;&gt;二. 个人开发(命令行)&lt;/h3&gt; &lt;p&gt;1.进入到工作目录中(就是你想要将git仓库创建的位置),初始化一个代码仓库&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; &lt;p&gt;2.给这个git仓库配置一个用户名和邮箱&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config user.name &quot;username&quot; $ git config user.email &quot;useremail@gmail.com&quot; &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; &lt;p&gt;3.初始化代码&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ touch main.m $ git add main.m &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; &lt;p&gt;4.查看文件状态&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; &lt;ul&gt; &lt;li&gt;文件显示为红色:新添加的文件或者修改的文件在工作区中,没有被添加到暂缓区&lt;/li&gt; &lt;li&gt;文件显示为绿色:添加的文件已经添加到暂缓区中,这种状态下的文件就可以被提交到代码仓库中了&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;5.修改文件&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ open main.m &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; &lt;p&gt;6.将工作区中的文件添加到暂缓区中&lt;/p&gt; &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git...</description>
+        <pubDate>Fri, 22 Apr 2016 21:45:50 +0800</pubDate>
+        <link>https://neighborwangshushu.github.io/Git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</link>
+        <guid isPermaLink="true">https://neighborwangshushu.github.io/Git%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
+        
+        <category>Git</category>
+        
+        
+        <category>Git</category>
+        
+      </item>
     
       <item>
         <title>cocoapods下载很慢的解决办法</title>
@@ -210,24 +224,6 @@ $ pod update --verbose --no-repo-update
         <pubDate>Fri, 04 Mar 2016 22:07:09 +0800</pubDate>
         <link>https://neighborwangshushu.github.io/iOS_UI(%E5%8D%81)UITableView/</link>
         <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E5%8D%81)UITableView/</guid>
-        
-        <category>iOS</category>
-        
-        <category>UI</category>
-        
-        <category>Objective-C</category>
-        
-        
-        <category>iOS_Objective-C</category>
-        
-      </item>
-    
-      <item>
-        <title>iOS_UI(九)UITabBarController</title>
-        <description>&lt;p&gt;创建标签视图控制器，并且指定其为window的根视图控制器&lt;/p&gt; &lt;p&gt;UITabBarController *tabBar = [UITabBarController alloc] init];&lt;/p&gt; &lt;p&gt;设置标签视图控制器需要管理的子视图控制器&lt;/p&gt; &lt;p&gt;tabBar.viewControllers = @[naVC, naVC2, thirdVC, fourthVC];&lt;/p&gt; &lt;p&gt;改变标签视图控制器的颜色 [[UITabBar appearance] setTintColor:[UIColor orangeColor]];&lt;/p&gt; &lt;p&gt;设定标签栏最先显示的子视图控制器(标签下标) tabBar.selectedIndex = 2;&lt;/p&gt; &lt;p&gt;标签视图控制器的子视图控制器都带有tabBarItem的属性&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;标签显示文本&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thirdVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tabBarItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@“”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;设置标签角标&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thirdVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tabBarItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;badgeValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@“”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;设置标签显示图片&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thirdVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tabBarItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UIImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imageNamed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@“”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;图片格式必须为&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;png&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;也可以通过创建item来设置标签的相关属性&lt;/p&gt; &lt;p&gt;第一种标签创建方式：&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UITabBarItem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;...</description>
-        <pubDate>Thu, 03 Mar 2016 21:12:24 +0800</pubDate>
-        <link>https://neighborwangshushu.github.io/iOS_UI(%E4%B9%9D)UITabBarController/</link>
-        <guid isPermaLink="true">https://neighborwangshushu.github.io/iOS_UI(%E4%B9%9D)UITabBarController/</guid>
         
         <category>iOS</category>
         
