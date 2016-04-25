@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "GitHub的使用",
+      "category" : "GitHubGit",
+      "tags"     : "GitHub and Git",
+      "url"      : "/GitHub%E7%9A%84%E4%BD%BF%E7%94%A8/",
+      "date"     : "25 Apr 2016"
+    } ,
+  
+    {
       "title"    : "Git的简单使用",
       "category" : "Git",
       "tags"     : "Git",

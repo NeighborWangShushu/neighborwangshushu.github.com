@@ -1,0 +1,65 @@
+---
+layout: post
+title: "GitHub的使用"
+date: 2016-04-25 22:39:50 + 8:00
+image: '/assets/img/'
+description: 'GitHub'
+tags:
+- GitHub
+- Git
+categories:
+- GitHub
+- Git
+twitter_text:
+---
+
+打开github注册账号
+注册并登录之后点击右上角的加号选择new repository创建项目仓库
+
+
+![new repository](http://upload-images.jianshu.io/upload_images/1520495-3f8e2523cc8c56af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+在根据图片中的样式添加信息
+![添加信息](http://upload-images.jianshu.io/upload_images/1520495-6aa3f09a01a1b6bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+创建成功后显示这个界面
+
+![创建成功](http://upload-images.jianshu.io/upload_images/1520495-ff48bd2128750054.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+在图片中的位置上选择方式(有https和ssh两种),并将后面的链接复制
+
+![选择方式](http://upload-images.jianshu.io/upload_images/1520495-e037efd00dce9b56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+随便打开一个工程,打开Xcode的Account,点击左下角添加一个repositories
+
+![Add repositories](http://upload-images.jianshu.io/upload_images/1520495-78d012c78b3718f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+在弹出的窗口中添加信息(第一个是我们复制的链接,第4个和第5个是你的用户账号和密码)然后Add
+![Add](http://upload-images.jianshu.io/upload_images/1520495-1409e61a708a5b19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+重新打开Xcode,点击下面的Check out选项
+
+![重新打开Xcode](http://upload-images.jianshu.io/upload_images/1520495-e1ea35a55d84788a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+选择刚刚创建的git项目,然后点next
+![选中git项目](http://upload-images.jianshu.io/upload_images/1520495-b48ecc87d32c49ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+选择你想要添加git本地仓库的路径
+![选择路径](http://upload-images.jianshu.io/upload_images/1520495-73da062f1507788e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+然后就是等待,因为是下载国外的东西会很慢
+
+![download](http://upload-images.jianshu.io/upload_images/1520495-08f021ef15c941c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+下载完成之后自动跳到文件目录
+![文件目录](http://upload-images.jianshu.io/upload_images/1520495-435dcabbf85f26a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+之后创建一个项目将项目路径放入本地的git文件目录下,在项目中点击顶部的Source Control,点击该目录下的push选项
+![Source Control](http://upload-images.jianshu.io/upload_images/1520495-012e7991c6b61c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+点击push之后会出现这个窗口直接点击push
+![push](http://upload-images.jianshu.io/upload_images/1520495-8b623ca03e12174f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+完成这些操作之后到github上就会看到你的项目上传了
+
+![上传成功](http://upload-images.jianshu.io/upload_images/1520495-93ded3eb15b9e2e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
